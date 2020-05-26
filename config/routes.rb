@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'messages/index'
-  get 'messages/new'
-  get 'messages/create'
   root to: 'pages#home'
 
   get '/welcome', to: 'pages#welcome', as: 'welcome'
