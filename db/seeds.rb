@@ -101,6 +101,14 @@ def generate_events
   puts ""
 end
 
+def generate_messages
+  Message.destroy_all
+  Message.create(receiver: User.first, sender: User.second, content: "hello Solene from Daniela")
+  Message.create(receiver: User.first, sender: User.third, content: "hello Solene from Celine")
+  Message.create(receiver: User.first, sender: User.fourth, content: "hello Solene from Samantha")
+  Message.create(receiver: User.second, sender: User.first, content: "hello Daniela from Solene")
+end
+
 Language.destroy_all
 %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
@@ -111,3 +119,4 @@ puts "> Generated languages, could add more...."
 
 generate_users
 generate_events
+generate_messages
