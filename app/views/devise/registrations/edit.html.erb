@@ -19,6 +19,12 @@
     <%= f.input :age,
                 required: false,
                 input_html: { autocomplete: "" } %>
+    <div class="form-group">
+        <%= f.label "Profile picture" %>
+        <%= f.file_field :photo,
+                    required: false,
+                    input_html: { autocomplete: "Last name" } %>          
+        </div>
     <%= f.input :bio,
                 required: false,
                 input_html: { autocomplete: "" } %>
