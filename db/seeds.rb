@@ -48,14 +48,15 @@ def generate_users
            )
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
   samantha.save
-  # => Console messages
-
   puts ""
   puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts ""
   puts "> Attached profile pictures to users"
   puts ""
 end
+
+
+# => Getting ready to generate events
 
 def attach_image(event, counter)
   event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928724/art-bnb/paintings/painting20_ockfp2.jpg",
@@ -75,10 +76,13 @@ def attach_image(event, counter)
   counter += 1
 end
 
-Event.destroy_all
-puts "> Destroyed all events"
+
+# => Generate events
 
 def generate_events
+  Event.destroy_all
+  puts ""
+  puts "> Destroyed all events"
   counter = 0
   User.all.each do |user|
     3.times do
@@ -101,22 +105,47 @@ def generate_events
   puts ""
 end
 
+
+# => Generate messages
+
 def generate_messages
   Message.destroy_all
-  Message.create(receiver: User.first, sender: User.second, content: "hello Solene from Daniela")
-  Message.create(receiver: User.first, sender: User.third, content: "hello Solene from Celine")
-  Message.create(receiver: User.first, sender: User.fourth, content: "hello Solene from Samantha")
-  Message.create(receiver: User.second, sender: User.first, content: "hello Daniela from Solene")
+  puts ""
+  puts "> Destroyed all messages"
+  solene = User.first
+  daniela = User.second
+  celine = User.third
+  samantha = User.fourth
+  Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
+  Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
+  Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
+  Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
+  Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
+  Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
+  Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
+  Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
+  Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
+  Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
+  Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
+  Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
+  puts ""
+  puts "> Generated messages"
+  puts ""
 end
 
-Language.destroy_all
-%w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
+def generate_languages
+  Language.destroy_all
+  puts ""
+  puts "> Destroyed all langua-..qwalnasdekj2101010 :("
+  %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
-puts "> Generated languages, could add more....  lol"
+  puts ""
+  puts "> Generated languages, could add more....  lol"
+  puts ""
+end
 
-
-
+generate_languages
 generate_users
 generate_events
 generate_messages
