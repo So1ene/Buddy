@@ -1,2 +1,7 @@
 <h1>Requests#incoming</h1>
 <p>Find me in app/views/requests/incoming.html.erb</p>
+
+<% @requests.each do |request| %>
+<% request.event.name %>
+<% request.motivation %>
+<% end %>

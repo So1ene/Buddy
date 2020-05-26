@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
   get '/calendar', to: 'pages#calendar', as: 'calendar'
 
+  get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
   resources :requests, only: [:show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
-  get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
 
   get '/inbox', to: 'messages#index', as: 'messages'
   get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
