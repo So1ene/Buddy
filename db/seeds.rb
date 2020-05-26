@@ -101,6 +101,7 @@ def generate_events
   puts ""
 end
 
+Language.destroy_all
 %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end

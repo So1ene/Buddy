@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
   post '/inbox', to: 'messages#create'
 
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
