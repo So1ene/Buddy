@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   resources :requests, only: [:show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
 
-  get '/messages', to: 'messages#index', as: 'messages'
-  get '/messages/:user_id', to: 'messages#new', as: 'new_message'
-  post '/messages', to: 'messages#create'
+  get '/inbox', to: 'messages#index', as: 'messages'
+  get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
+  post '/inbox', to: 'messages#create'
 
   get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
 
