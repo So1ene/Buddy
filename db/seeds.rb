@@ -50,7 +50,7 @@ def generate_users
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
   samantha.save
   # => Console messages
-  puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com"
+  puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts "> Attached profile pictures to users"
 end
 
