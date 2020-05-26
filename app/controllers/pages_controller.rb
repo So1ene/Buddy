@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
     # => GET    /
@@ -7,9 +6,14 @@ class PagesController < ApplicationController
 
   def welcome
     # => GET    /welcome
+    @user = current_user
   end
 
   def buddy
     # => GET    /buddy
+  end
+
+  def calendar
+    # => GET /calendar
   end
 end
