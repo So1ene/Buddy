@@ -2,3 +2,18 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
+
+<br /><br />
+<h1>TO-DO: Filters</h1>
+<h1>TO-DO: Calendar</h1>
+<h1>TO-DO: Search bar</h1>
+<br />
+
+
+<h2>Closest to you:</h2>
+<p>TO-DO: sort by closest to you</p>
+<ul>
+  <% @events.each do |event| %>
+    <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
+  <% end %>
+</ul>
