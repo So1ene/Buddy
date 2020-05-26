@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
 
 
+  get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
   resources :requests, only: [:show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
-  get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
 
   get '/messages', to: 'messages#index', as: 'messages'
   get '/messages/:user_id', to: 'messages#new', as: 'new_message'
@@ -26,3 +26,4 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
+
