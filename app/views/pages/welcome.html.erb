@@ -9,8 +9,8 @@
 <h2>Search for an event</h2>
 
 
-<%= simple_form_for @user, wrapper: :inline_form, html: { class: 'form-inline' }, url: root_path, method: :patch do |f| %>
-  <%= f.input :search_location %>
+<%= simple_form_for @user, html: { class: 'form-inline' }, url: root_path, method: :patch do |f| %>
+  <%= f.input :search_location, placeholder: 'Input a location', label:false %>
   <%= f.submit '>', class: "btn btn-primary" %>
 <% end %>
 
