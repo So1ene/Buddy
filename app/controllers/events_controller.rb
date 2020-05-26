@@ -22,14 +22,14 @@ class EventsController < ApplicationController
 
   def create
     # => POST   /events
-    @event = Event.new(event_params)
-    authorize @event
-    @event.user = current_user
-    if @event.save
-      redirect_to event_path(@event)
-    else
-      render :new
-    end
+    # @event = Event.new(event_params)
+    # authorize @event
+    # @event.user = current_user
+    # if @event.save
+    #   redirect_to event_path(@event)
+    # else
+    #   render :new
+    # end
   end
 
   def delete
