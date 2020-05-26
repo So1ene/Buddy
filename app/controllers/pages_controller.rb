@@ -9,11 +9,16 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
+  def update_location
+    # => PATCH    /
+
+  end
+
   def buddy
     # => GET    /buddy
   end
 
   def calendar
-    # => GET /calendar
+    # => GET    /calendar
   end
 end
