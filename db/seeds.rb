@@ -59,18 +59,18 @@ end
 # => Getting ready to generate events
 
 def attach_image(event, counter)
-  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928724/art-bnb/paintings/painting20_ockfp2.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928661/art-bnb/paintings/painting4_d984nt.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928657/art-bnb/paintings/painting8_iznx7y.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928656/art-bnb/paintings/painting5_iypu5m.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928656/art-bnb/paintings/painting7_xu2l1s.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting2_lv0jx2.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting19_bjlfa4.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting6_pls0ck.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928654/art-bnb/paintings/painting11_mlog0v.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928654/art-bnb/paintings/painting9_bot1zq.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928653/art-bnb/paintings/painting15_duxzb7.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928653/art-bnb/paintings/painting18_zgt3yv.jpg"]
+  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event9_l50xz0.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event11_yejiuj.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event6_huhh2b.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event12_cnifny.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event5_swmkbh.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event1_m9i2h6.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event7_odrnin.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
   counter += 1
@@ -133,10 +133,13 @@ def generate_messages
   puts ""
 end
 
+
+# => Generate languages
+
 def generate_languages
   Language.destroy_all
   puts ""
-  puts "> Destroyed all langua-..qwalnasdekj2101010 :("
+  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
   %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
