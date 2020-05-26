@@ -9,11 +9,23 @@ class PagesController < ApplicationController
     @user = current_user
   end
 
+  def update_location
+    # => PATCH    /
+    current_user.update(user_params)
+    redirect_to root_path
+  end
+
   def buddy
     # => GET    /buddy
   end
 
   def calendar
-    # => GET /calendar
+    # => GET    /calendar
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:search_location)
   end
 end
