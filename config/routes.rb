@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
-
+  get 'messages/index'
+  get 'messages/new'
+  get 'messages/create'
   root to: 'pages#home'
 
   get '/welcome', to: 'pages#welcome', as: 'welcome'
@@ -13,6 +14,11 @@ Rails.application.routes.draw do
   resources :requests, only: [:new, :create, :show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
   get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
+
+  get '/inbox', to: 'messages#index', as: 'messages'
+  get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
+  post '/inbox', to: 'messages#create'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
