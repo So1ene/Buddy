@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/welcome', to: 'pages#welcome', as: 'welcome'
-  get '/buddy', to: 'pages#buddy', as: 'buddy'
+  get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
 
-  resources :events, except: [:edit, :update]
+  resources :events, except: [:edit, :update] do
+    resources :requests, only: [:new, :create]
+  end
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
 
-  resources :requests, only: [:new, :create, :show, :update]
+  resources :requests, only: [:show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
   get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
 
