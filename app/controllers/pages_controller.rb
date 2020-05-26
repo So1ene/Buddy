@@ -11,7 +11,8 @@ class PagesController < ApplicationController
 
   def update_location
     # => PATCH    /
-
+    current_user.update(user_params)
+    redirect_to root_path
   end
 
   def buddy
@@ -20,5 +21,11 @@ class PagesController < ApplicationController
 
   def calendar
     # => GET    /calendar
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:search_location)
   end
 end

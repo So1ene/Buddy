@@ -9,10 +9,13 @@
 <h2>Search for an event</h2>
 
 
-<%= link_to "!!!!TO DO!!! input form for location", root_path %>
+<%= simple_form_for @user, wrapper: :inline_form, html: { class: 'form-inline' }, url: root_path, method: :patch do |f| %>
+  <%= f.input :search_location %>
+  <%= f.submit '>', class: "btn btn-primary" %>
+<% end %>
 
 
 <h2>or</h2>
 
 
-<%= link_to "Suggest an event", new_event_path %>
+<%= link_to "Suggest an event", new_event_path, class: "btn btn-primary" %>
