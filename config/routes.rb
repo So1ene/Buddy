@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   get '/welcome', to: 'pages#welcome', as: 'welcome'
   get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
 
-  resources :events, except: [:edit, :update] do
+  resources :events, except: [:edit, :update] do 
     resources :requests, only: [:new, :create]
-  end
+  end 
+
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
   get '/calendar', to: 'pages#calendar', as: 'calendar'
 

@@ -2,6 +2,7 @@ class RequestsController < ApplicationController
 
   def new
     # => GET    /requests/new
+    # @request = Request.new
   end
 
   def create
@@ -9,7 +10,7 @@ class RequestsController < ApplicationController
   end
 
   def show
-    # => GET    /events/:id
+    # => GET    /requests/:id
   end
 
   def update
