@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create]
   end
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
+  get '/calendar', to: 'pages#calendar', as: 'calendar'
 
   resources :requests, only: [:show, :update]
   get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'

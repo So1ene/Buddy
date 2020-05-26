@@ -13,4 +13,7 @@ class PagesController < ApplicationController
     # => GET    /buddy
   end
 
+  def calendar
+    # => GET /calendar
+  end
 end
