@@ -7,9 +7,11 @@
 
 <div class="card">
   <div class="card-body">
-  <form action="<%#= path %>" method="POST">
+  <form action="<%= event_requests_path(@event) %>" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+
     <h5 class="card-title">Card title</h5>
-    <textarea id="motivation" name="message" style="width:400px; height:100px;" maxlength="200" placeholder="Let them know why you are interested in the event!" ></textarea><br>
+    <textarea id="motivation" name="request[motivation]" style="width:400px; height:100px;" maxlength="200" placeholder="Let them know why you are interested in the event!" ></textarea><br>
     <a href="#" class="max-length" >Max 200 characters</a><br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
