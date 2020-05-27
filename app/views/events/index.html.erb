@@ -4,14 +4,14 @@
 
 <div class="navbar-dropdown-categories">
   <%= form_tag("/") do %>
-    <%= select_tag("categories", options_for_select(["outdoors", "movies", "play"], "Outdoors") ) %>
+    <%= select_tag("categories", options_for_select(["outdoors", "just drinks", "live music", "karaoke", "theater", "other"], "outdoors") ) %>
     <%= submit_tag(">") %>
   <% end %>
 </div>
 
 <div class="navbar-dropdown-time">
   <%= form_tag("/") do %>
-    <%= select_tag("time", options_for_select(["6:00pm", "7:00pm", "8:00pm"], "6:00pm") ) %>
+    <%= select_tag("time", options_for_select(["11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm", "9:00pm", "10:00pm"], "11:00am") ) %>
     <%= submit_tag(">") %>
   <% end %>
 </div>
