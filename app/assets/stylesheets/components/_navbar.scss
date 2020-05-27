@@ -199,3 +199,27 @@ header {
   top: 1rem;
   right: 1rem;
 }
+
+#dim-background{
+    background-color: rgba(0, 0,0, 0.2);
+    size: fill;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    z-index: -100;
+}
+
+.hide-dim-background {
+  opacity: 0 !important;
+  z-index: -100 !important;
+  transition: 0.3s;
+}
+
+.show-dim-background {
+  opacity: 1 !important;
+  z-index: 90 !important;
+  transition: 0.3s;
+}
