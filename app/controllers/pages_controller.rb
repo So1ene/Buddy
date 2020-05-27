@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   def home
     # => GET    /
     @user = current_user
-    if @user.search_location == "" || @user.search_location == nil
+    if @user == nil || @user.search_location == "" || @user.search_location == nil
       redirect_to welcome_path
     end
     @events = Event.all
