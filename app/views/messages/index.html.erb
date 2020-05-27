@@ -9,7 +9,7 @@
         <div><%= cl_image_tag(message.other_user(current_user).photo.key, class: "avatar") %></div>
           <div>
             <div class="px-3"><strong><%= message.other_user(current_user).first_name %></strong></div>
-            <div class="px-3"><%= message.content %></div>
+            <div class="px-3"><%= link_to message.content, new_message_path(:user_id) %></div>
           </div>
       </div>
     </div>
