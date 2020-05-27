@@ -136,6 +136,9 @@ header {
 @media screen and (min-width: 1220px) {
   header {
     padding: 0.5rem 2.5rem;
+    border-bottom: 1px solid silver;
+    position: relative;
+    margin-bottom: 10px;
 
     span.menu-control-open,
     span.menu-control-close {
@@ -188,9 +191,11 @@ header {
 .back-button {
   padding: 20px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   z-index: 2000;
   color: black;
+  top: 0px;
+  left: 0px;
 }
 
 .menu-control-close i {
