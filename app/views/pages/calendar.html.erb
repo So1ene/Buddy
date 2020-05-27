@@ -1,2 +1,28 @@
-<h1>Pages#calendar</h1>
-<p>Find me in app/views/pages/calendar.html.erb</p>
+<%= link_to welcome_path, class: "back-button" do %>
+  <i class="fas fa-arrow-left"></i>
+<% end %>
+
+
+
+<div class="container">
+
+
+
+
+
+<br /><br />
+<h1>TO-DO: Calendar</h1>
+<br />
+
+<h2>Coming up:</h2>
+
+<ul>
+  <% @events.each do |event| %>
+    <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
+  <% end %>
+</ul>
+
+
+
+
+</div>

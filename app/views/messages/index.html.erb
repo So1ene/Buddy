@@ -1,4 +1,7 @@
-<div class="container d-flex justify-content-center">
+<%= link_to root_path, class: "back-button" do %>
+  <i class="fas fa-arrow-left"></i>
+<% end %>
+<div class="container">
   <% @messages.each do |message| %>
     <div class="card" style="width: 26rem;">
       <div class="d-flex align-items-center p-2">

@@ -21,11 +21,22 @@ class PagesController < ApplicationController
   end
 
   def buddy
-    # => GET    /buddy
+    # => GET    /buddy/:user_id
   end
 
   def calendar
     # => GET    /calendar
+
+    # !!! Do not touch this, it works somehow !!!
+
+    requests = []
+    requests << Request.where(status: "Accepted", user: current_user)
+    current_user.events.each do |event|
+      requests << event.requests.where(status: "Accepted")
+    end
+    @events = requests.flatten.map do |request|
+      request.event
+    end
   end
 
   private

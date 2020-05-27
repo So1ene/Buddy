@@ -48,8 +48,6 @@ def generate_users
            )
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
   samantha.save
-  # => Console messages
-
   puts ""
   puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts ""
@@ -57,28 +55,34 @@ def generate_users
   puts ""
 end
 
+
+# => Getting ready to generate events
+
 def attach_image(event, counter)
-  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928724/art-bnb/paintings/painting20_ockfp2.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928661/art-bnb/paintings/painting4_d984nt.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928657/art-bnb/paintings/painting8_iznx7y.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928656/art-bnb/paintings/painting5_iypu5m.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928656/art-bnb/paintings/painting7_xu2l1s.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting2_lv0jx2.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting19_bjlfa4.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928655/art-bnb/paintings/painting6_pls0ck.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928654/art-bnb/paintings/painting11_mlog0v.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928654/art-bnb/paintings/painting9_bot1zq.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928653/art-bnb/paintings/painting15_duxzb7.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589928653/art-bnb/paintings/painting18_zgt3yv.jpg"]
+  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event9_l50xz0.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event11_yejiuj.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event6_huhh2b.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event12_cnifny.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event5_swmkbh.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event1_m9i2h6.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event7_odrnin.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
   counter += 1
 end
 
-Event.destroy_all
-puts "> Destroyed all events"
+
+# => Generate events
 
 def generate_events
+  Event.destroy_all
+  puts ""
+  puts "> Destroyed all events"
   counter = 0
   User.all.each do |user|
     3.times do
@@ -101,22 +105,50 @@ def generate_events
   puts ""
 end
 
+
+# => Generate messages
+
 def generate_messages
   Message.destroy_all
-  Message.create(receiver: User.first, sender: User.second, content: "hello Solene from Daniela")
-  Message.create(receiver: User.first, sender: User.third, content: "hello Solene from Celine")
-  Message.create(receiver: User.first, sender: User.fourth, content: "hello Solene from Samantha")
-  Message.create(receiver: User.second, sender: User.first, content: "hello Daniela from Solene")
+  puts ""
+  puts "> Destroyed all messages"
+  solene = User.first
+  daniela = User.second
+  celine = User.third
+  samantha = User.fourth
+  Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
+  Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
+  Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
+  Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
+  Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
+  Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
+  Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
+  Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
+  Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
+  Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
+  Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
+  Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
+  puts ""
+  puts "> Generated messages"
+  puts ""
 end
 
-Language.destroy_all
-%w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
+
+# => Generate languages
+
+def generate_languages
+  Language.destroy_all
+  puts ""
+  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
+  %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
-puts "> Generated languages, could add more....  lol"
+  puts ""
+  puts "> Generated languages, could add more....  lol"
+  puts ""
+end
 
-
-
+generate_languages
 generate_users
 generate_events
 generate_messages
