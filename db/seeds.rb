@@ -123,7 +123,7 @@ def generate_requests
     end
   end
   puts ""
-  puts "> Gave each user 3 requests per event"
+  puts "> Gave each event 3 requests"
   puts ""
 end
 
