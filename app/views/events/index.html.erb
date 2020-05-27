@@ -1,21 +1,34 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+
+<div class="navbar-dropdown-categories">
+  <%= form_tag("/") do %>
+    <%= select_tag("categories", options_for_select(["outdoors", "movies", "play"], "Outdoors") ) %>
+    <%= submit_tag(">") %>
+  <% end %>
+</div>
+
+<div class="navbar-dropdown-time">
+  <%= form_tag("/") do %>
+    <%= select_tag("time", options_for_select(["6:00pm", "7:00pm", "8:00pm"], "6:00pm") ) %>
+    <%= submit_tag(">") %>
+  <% end %>
+</div>
+
 <div class="container">
 
+  <h1>Events for 20/02/2020</h1>
 
-
-
-
-
-
-<h1>Events for 20/02/2020</h1>
-<p>Type of event</p>
-<p>Time of day</p>
-
-<div class="cards"></div>
-
-
+  <% @events.each do |event|  %>
+    <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+    <div class="cards">
+      <p>Event name: <%= event.name  %></p>
+      <p>Date: <%= event.date %></p>
+      <p>Address: <%= event.address %></p>
+    </div>
+  <% end %>
+</div>
 
 
 
