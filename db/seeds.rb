@@ -161,7 +161,7 @@ def generate_languages
   Language.destroy_all
   puts ""
   puts "> Destroyed all langua-...qwalnasdekj1010010 :("
-  %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
+  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
   puts ""
