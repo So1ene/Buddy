@@ -3,16 +3,6 @@
 <% end %>
 <div class="container">
 
-
-
-
-
-
-
-
-<h1>Requests#submitted</h1>
-<p>Find me in app/views/requests/submitted.html.erb</p>
-
 <% @requests.each do |request| %>
 <h2>Buddy request has been submitted to Will P.</h2>
 <div class="card mb-3" style="max-width: 540px;">
@@ -21,30 +11,25 @@
       <img src="https://userstock.io/data/wp-content/uploads/2017/07/pexels-photo-26939-1.jpg" class="card-img" alt="...">
     </div>
     <div class="col-md-8">
-    
-      <div class="card-body">        
-        <h3 class="card-title"> Event name <%= request.event.name  %> </h3> 
+
+      <div class="card-body">
+        <h3 class="card-title"> <%= request.event.name  %> </h3>
         <div class="card-info">
           <p>Address: <%= request.event.address  %> </p>
-          <p>10/02/2020 - 6:00PM</p> <p> <%= request.event.date  %> <%= request.event.time  %> </p>
-          
+          <p> <%= request.event.date  %> <%= request.event.time  %> </p>
+
         </div>
 
-        <span class="badge badge-primary">Live Music</span> <span class="badge badge-primary">Live Music</span>
+        <div class="category-container">
+          <% request.event.categories.each do |category| %>
+            <% if category.present? %>
+              <span class="badge badge-primary"> <%= category.name %> </span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-      
+
     </div>
   </div>
 </div>
 <% end  %>
-
-
-
-
-
-
-
-
-
-
-</div>
