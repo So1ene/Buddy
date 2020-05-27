@@ -134,6 +134,9 @@ header {
 
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
+  #dim-background {
+    display: none;
+  }
   header {
     padding: 0.5rem 2.5rem;
     border-bottom: 1px solid silver;
@@ -209,17 +212,19 @@ header {
     top: 0;
     width: 100%;
     opacity: 0;
-    z-index: -100;
+    z-index: 90;
+    pointer-events: none;
+
 }
 
 .hide-dim-background {
   opacity: 0 !important;
-  z-index: -100 !important;
+  pointer-events: none !important;
   transition: 0.3s;
 }
 
 .show-dim-background {
   opacity: 1 !important;
-  z-index: 90 !important;
+  pointer-events: auto !important;
   transition: 0.3s;
 }

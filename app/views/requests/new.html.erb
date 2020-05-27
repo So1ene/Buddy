@@ -3,22 +3,18 @@
 <% end %>
 <div class="container">
 
-
-
-
-<h1>Requests#new</h1>
-<p>Find me in app/views/requests/new.html.erb</p>
-
-
 <h2>Send a message</h2>
 
 <div class="card">
   <div class="card-body">
+  <form action="<%#= path %>" method="POST">
     <h5 class="card-title">Card title</h5>
-    <input type="text" id="motivation" style="width:400px; height:100px;" maxlength="200"><br>
+    <textarea id="motivation" name="message" style="width:400px; height:100px;" maxlength="200" placeholder="Let them know why you are interested in the event!" ></textarea><br>
     <a href="#" class="max-length" >Max 200 characters</a><br>
-    <button type="button" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
   </div>
+
 </div>
 
 </div>
