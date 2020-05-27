@@ -134,6 +134,9 @@ header {
 
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
+  .container {
+    padding-top: 4rem;
+  }
   #dim-background {
     display: none;
   }
