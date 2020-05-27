@@ -11,3 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+.back-button {
+  padding: 20px;
+  display: inline-block;
+}

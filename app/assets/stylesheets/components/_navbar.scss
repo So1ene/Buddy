@@ -1,12 +1,175 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
+header {
+  position: absolute;
+  overflow: visible;
+  z-index: 100;
+  background-color: transparent;
+  width: 100%;
+
+  a {
+    text-decoration: none;
+  }
+
+  span.menu-control-open,
+  span.menu-control-close,
+  nav,
+  a {
+    color: gray;
+  }
+  a:hover{
+    color: black;
+    text-decoration: none;
+  }
+
+  span.menu-control-open,
+  span.menu-control-close,
+  nav a {
+    font-size: 1.2rem;
+    padding-bottom: 0.3rem;
+    margin-bottom: 3rem;
+  }
+
+  span.menu-control-open,
+  span.menu-control-close {
+    display: block;
+    cursor: pointer;
+  }
+
+  span.menu-control-open {
+    position: relative;
+    font-size: 1.5rem;
+    line-height: 150%;
+    float: right;
+    margin: 12px;
+    margin-right: 16px;
+    margin-bottom: 6px;
+  }
+
+  span.menu-control-close {
+    font-size: 1.5rem;
+    text-align: right;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.menu {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: white;
+  color: gray;
+  height: 100vh;
+  width: 0;
+  overflow: hidden;
+  transition: all .3s ease-in-out;
+  a {
+    transform: translate3d(-150px, 0, 0);
+    transition: transform .15s ease-in;
+  }
+
+  .menu-inner {
+    position: relative;
+    height: 100%;
+    width: 50vw;
+    padding: 1.5rem;
+  }
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.menu--active {
+  height: 100vh;
+  overflow: hidden;
+
+  nav a {
+    transform: translate3d(0, 0, 0);
+    transition: transform 500ms ease-out;
+
+    /* Handles items within the slide-out to give them the delayed slide-in */
+    &:first-child {
+      transition-delay: .1s;
+    }
+    &:nth-child(3) {
+      transition-delay: .175s;
+    }
+    &:nth-child(4) {
+      transition-delay: .25s;
+    }
+    &:nth-child(5) {
+      transition-delay: .325s;
+    }
+    &:nth-child(6) {
+      transition-delay: .4s;
+    }
+    &:last-child {
+      transition-delay: .4s;
+    }
+  }
+}
+
+// This media query sets the width of the menu to be larger on a smaller screen
+ @media screen and (max-width: 750px) {
+  .menu--active .menu {
+    width: 50%; }
+}
+
+// This media query sets the menu width to be slightly smaller on a larger screen (think an iPad)
+@media screen and (min-width: 750px) and (max-width: 1220px) {
+  .menu--active .menu {
+    width: 35%;
+    .menu-inner {
+      width: 35vw;
+    }
+  }
+}
+
+// This media query styles the menu for a large environment (think a desktop)
+@media screen and (min-width: 1220px) {
+  header {
+    padding: 0.5rem 2.5rem;
+
+    span.menu-control-open,
+    span.menu-control-close {
+      display: none;
+
+    }
+
+    .menu {
+      position: static;
+      overflow: visible;
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      margin-top: 0;
+
+      .menu-inner {
+        padding: 0;
+        width: 100%;
+      }
+
+      a {
+        transform: none;
+        transition: none;
+      }
+    }
+
+    nav {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      a {
+        font-size: 1.1rem;
+        margin-left: 2.3rem;
+        margin-right: 1.2rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+i {
+  color: black;
+  z-index: 2000;
 }
