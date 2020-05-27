@@ -1,9 +1,12 @@
 <div class="container d-flex justify-content-center">
   <% @messages.each do |message| %>
-    <div class="card" style="width: 28rem;">
+    <div class="card" style="width: 26rem;">
       <div class="d-flex align-items-center p-2">
         <div><%= cl_image_tag(message.other_user(current_user).photo.key, class: "avatar") %></div>
-        <div><%= message.content %></div>
+          <div>
+            <div class="px-3"><strong><%= message.other_user(current_user).first_name %></strong></div>
+            <div class="px-3"><%= message.content %></div>
+          </div>
       </div>
     </div>
   <% end %>
