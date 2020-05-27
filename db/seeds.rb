@@ -5,7 +5,6 @@ require "open-uri"
 
 def generate_users
 
-  User.delete_all
   # => Generate solene@email.com, password 123456
   solene = User.new(email: "solene@email.com",
            password: "123456",
