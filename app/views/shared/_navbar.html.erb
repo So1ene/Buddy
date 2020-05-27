@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
-  <% unless current_page?('/welcome') %>
-    <header class="border-bottom">
+    <header>
       <span class="menu-control-open" id="menuControlOpen">
         <i class="fas fa-bars"></i>
       </span>
@@ -27,5 +26,4 @@
         </div>
       </div>
     </header>
-  <% end %>
 <% end %>
