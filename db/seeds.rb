@@ -114,7 +114,7 @@ def generate_requests
   counter = 0
   Event.all.each do |event|
     3.times do
-      request = Request.new(user: User.find(rand(1..5)),
+      request = Request.new(user: User.find(rand(1..4)),
                         motivation: Faker::Lorem.sentence(word_count: rand(180)),
                         status: "Pending",
                         event: event
@@ -123,7 +123,7 @@ def generate_requests
     end
   end
   puts ""
-  puts "> Gave each user 3 request"
+  puts "> Gave each user 3 requests per event"
   puts ""
 end
 
