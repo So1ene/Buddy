@@ -1,3 +1,7 @@
+
+// Don't touch this file, the navbar is perfect right now and somehow works, don't break it!
+
+
 header {
   position: absolute;
   overflow: visible;
@@ -172,4 +176,12 @@ header {
 i {
   color: black;
   z-index: 2000;
+}
+
+.navbar-avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
 }

@@ -11,9 +11,9 @@
       <nav>
         <%= link_to edit_user_registration_path do %>
           <% if current_user.photo.attached? %>
-            <%= cl_image_tag url_for(current_user.photo), class: "border avatar mr-3" %>
+            <%= cl_image_tag url_for(current_user.photo), class: "border navbar-avatar mr-3" %>
           <% else %>
-            <%= image_tag "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589987704/art-bnb/default_icon_c0dy7j.png", class: "border avatar mr-3" %>
+            <%= image_tag "https://res.cloudinary.com/dkbbawtjw/image/upload/v1589987704/art-bnb/default_icon_c0dy7j.png", class: "border navbar-avatar mr-3" %>
           <% end %>
         <% end %>
         <%= link_to "Home", root_path %>

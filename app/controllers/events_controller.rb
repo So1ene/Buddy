@@ -38,6 +38,11 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def my_events
+    # => GET    /events/pending, prefix: my_events
+
+  end
+
   private
 
   def set_event

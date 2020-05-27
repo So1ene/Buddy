@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   end
 
   def buddy
-    # => GET    /buddy
+    # => GET    /buddy/:user_id
   end
 
   def calendar

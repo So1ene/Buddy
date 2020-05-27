@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
-
+  get '/events/pending', to: 'events#my_events', as: 'my_events'
 
   get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
   resources :requests, only: [:show, :update]
@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   post '/inbox', to: 'messages#create'
 
   get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
-
   get '/welcome', to: 'pages#welcome', as: 'welcome'
   get '/calendar', to: 'pages#calendar', as: 'calendar'
   patch '/', to: 'pages#update_location'
