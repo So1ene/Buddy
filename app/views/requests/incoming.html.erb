@@ -1,8 +1,20 @@
-<h1>Requests#incoming</h1>
-<p>Find me in app/views/requests/incoming.html.erb</p>
+<%= link_to root_path, class: "back-button" do %>
+  <i class="fas fa-arrow-left"></i>
+<% end %>
+<div class="container">
+
+
+
+
 
 <% @requests.each do |request| %>
 <% request.event.name %>
 <% request.motivation %>
 
 <% end %>
+
+
+
+
+
+</div>

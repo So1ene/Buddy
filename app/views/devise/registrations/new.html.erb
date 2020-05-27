@@ -1,3 +1,4 @@
+<div class="container">
 <h2>Sign up</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -18,11 +19,11 @@
         <%= f.label "Profile picture" %>
         <%= f.file_field :photo,
                     required: false,
-                    input_html: { autocomplete: "Last name" } %>          
+                    input_html: { autocomplete: "Last name" } %>
         </div>
     <%= f.input :bio,
                 required: true,
-                input_html: { autocomplete: "Tell us about yourself!" }%>            
+                input_html: { autocomplete: "Tell us about yourself!" }%>
     <%= f.input :email,
                 required: true,
                 input_html: { autocomplete: "email" }%>
@@ -41,3 +42,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

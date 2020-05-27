@@ -1,20 +1,31 @@
-<%= link_to welcome_path do %>
+<%= link_to welcome_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
 
-<br /><br />
-<h1>TO-DO: Filters</h1>
-<h1>TO-DO: Calendar</h1>
-<%= link_to "..(Select a date)", events_path %>
-<h1>TO-DO: Search bar</h1>
-<br />
 
 
-<h2>Closest to you:</h2>
-<p>TO-DO: sort by closest to you if search bar is empty, else call the above h2 "Search results" and display search results below</p>
-<ul>
-  <% @events.each do |event| %>
-    <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
-  <% end %>
-</ul>
+<div class="container">
+
+
+
+  <br /><br />
+  <h1>TO-DO: Filters</h1>
+  <h1>TO-DO: Calendar</h1>
+  <%= link_to "..(Select a date)", events_path %>
+  <h1>TO-DO: Search bar</h1>
+  <br />
+
+
+  <h2>Closest to you:</h2>
+  <p>TO-DO: sort by closest to you if search bar is empty, else call the above h2 "Search results" and display search results below</p>
+  <ul>
+    <% @events.each do |event| %>
+      <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
+    <% end %>
+  </ul>
+
+
+
+
+</div>
