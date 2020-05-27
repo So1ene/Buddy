@@ -1,15 +1,10 @@
-<div class="container">
-  <h1>Messages</h1>
-
+<div class="container d-flex justify-content-center">
   <% @messages.each do |message| %>
-    <div class="card flex-container">
-          <!-- email-1 -->
-        <div class="card-wrapper">
-          <%= cl_image_tag(message.other_user(current_user).photo.key, class: "rounded-circle") %>
-          <a href="#!" class="flex-item" >
-            <p class="content"><%= message.content %></p>
-          </a>
-        </div>
+    <div class="card" style="width: 28rem;">
+      <div class="d-flex align-items-center p-2">
+        <div><%= cl_image_tag(message.other_user(current_user).photo.key, class: "avatar") %></div>
+        <div><%= message.content %></div>
+      </div>
     </div>
   <% end %>
 </div>
