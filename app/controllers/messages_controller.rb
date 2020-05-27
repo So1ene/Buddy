@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
+    # @event =
   end
 
   def create
