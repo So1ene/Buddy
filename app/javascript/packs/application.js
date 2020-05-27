@@ -31,18 +31,27 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-});
 
-var body = document.getElementById('body');
-var openMenu = document.getElementById('menuControlOpen'); // or whatever triggers the toggle
-var closeMenu = document.getElementById('menuControlClose'); // or whatever triggers the toggle
+
+
+  // Navbar
+
+const body = document.getElementById('body');
+const openMenu = document.getElementById('menuControlOpen');
+const closeMenu = document.getElementById('menuControlClose');
 
 openMenu.addEventListener('click', function(e) {
-body.classList.toggle('menu--active'); // or whatever your active class is
+body.classList.toggle('menu--active');
 });
 
 closeMenu.addEventListener('click', function(e) {
-body.classList.toggle('menu--active'); // or whatever your active class is
+body.classList.toggle('menu--active');
 });
+
+
+
+});
+
+
 
 
