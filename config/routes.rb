@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :requests, only: [:new, :create]
   end
 
-  get '/requests/:id/submitted', to: 'requests#submitted', as: 'submitted_request'
+  get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
   get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
   resources :requests, only: [:show, :update]
 
