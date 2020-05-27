@@ -114,7 +114,7 @@ def generate_requests
   counter = 0
   Event.all.each do |event|
     3.times do
-      request = Request.new(user: User.find(rand(1..5)),
+      request = Request.new(user: User.find(rand(1..4)),
                         motivation: Faker::Lorem.sentence(word_count: rand(180)),
                         status: "Pending",
                         event: event
@@ -161,7 +161,7 @@ def generate_languages
   Language.destroy_all
   puts ""
   puts "> Destroyed all langua-...qwalnasdekj1010010 :("
-  %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
+  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
   puts ""

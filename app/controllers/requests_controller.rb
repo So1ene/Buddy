@@ -28,6 +28,9 @@ class RequestsController < ApplicationController
     if ["Accepted", "Declined", "Deleted"].include?(status_params[:status])
       @request.status = status_params[:status]
       @request.save!
+      if status_params[:status] == "Accepted"
+        Message.create(sender: current_user, receiver: request.user, content: "Your request has been accepted! Lets start planning :) (this is an automated message)")
+      end
     end
     session[:return_to] = request.referer
     redirect_to session.delete(:return_to)
@@ -49,7 +52,7 @@ class RequestsController < ApplicationController
     # => GET    /requests/:id
     @request = Request.find(params[:id])
   end
-  
+
   private
 
   def request_params

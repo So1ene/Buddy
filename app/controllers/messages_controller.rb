@@ -1,16 +1,13 @@
 class MessagesController < ApplicationController
   def index
     # => GET    /inbox
-    @messages = Message.where("sender_id = :user or receiver_id = :user", user: current_user.id).order(created_at: :desc).to_a.uniq do |message|
-      message.other_user(current_user)
-    end
+    @my_requests = current_user.requests.where(status: "Accepted")
+    @incoming_requests = current_user.incoming_requests.where(status: "Accepted")
   end
 
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
-    # @event = Event.find("user_id = user")
-    # @event = Event.find(params[:id])
   end
 
   def create
