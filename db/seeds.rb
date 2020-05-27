@@ -110,7 +110,7 @@ end
 def generate_requests
   Request.destroy_all
   puts ""
-  puts "> Destroyed all request"
+  puts "> Destroyed all requests"
   counter = 0
   Event.all.each do |event|
     3.times do
@@ -123,7 +123,7 @@ def generate_requests
     end
   end
   puts ""
-  puts "> Gave each user 3 request"
+  puts "> Gave each event 3 requests"
   puts ""
 end
 
