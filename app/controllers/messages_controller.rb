@@ -9,7 +9,8 @@ class MessagesController < ApplicationController
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
-    # @event =
+    # @event = Event.find("user_id = user")
+    # @event = Event.find(params[:id])
   end
 
   def create
