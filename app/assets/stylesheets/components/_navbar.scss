@@ -24,6 +24,10 @@ header {
     text-decoration: none;
   }
 
+  i {
+    color: black;
+  }
+
   span.menu-control-open,
   span.menu-control-close,
   nav a {
@@ -173,15 +177,24 @@ header {
   }
 }
 
-i {
-  color: black;
-  z-index: 2000;
-}
-
 .navbar-avatar {
   width: 37px;
   height: 37px;
   border-radius: 50%;
   margin: 0;
   padding: 0;
+}
+
+.back-button {
+  padding: 20px;
+  display: inline-block;
+  position: relative;
+  z-index: 2000;
+  color: black;
+}
+
+.menu-control-close i {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
