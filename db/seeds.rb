@@ -105,6 +105,27 @@ def generate_events
   puts ""
 end
 
+# => Generate requests
+
+def generate_requests
+  Request.destroy_all
+  puts ""
+  puts "> Destroyed all request"
+  counter = 0
+  Event.all.each do |event|
+    3.times do
+      request = Request.new(user: User.find(rand(1..5)),
+                        motivation: Faker::Lorem.sentence(word_count: rand(180)),
+                        status: "Pending",
+                        event: event
+                        )
+      request.save!
+    end
+  end
+  puts ""
+  puts "> Gave each user 3 request"
+  puts ""
+end
 
 # => Generate messages
 
@@ -152,3 +173,4 @@ generate_languages
 generate_users
 generate_events
 generate_messages
+generate_requests
