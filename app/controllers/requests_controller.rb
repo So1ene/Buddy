@@ -29,7 +29,7 @@ class RequestsController < ApplicationController
       @request.status = status_params[:status]
       @request.save!
       if status_params[:status] == "Accepted"
-        Message.create(sender: current_user, receiver: request.user, content: "Your request has been accepted! Lets start planning :) (this is an automated message)")
+        Message.create(sender: current_user, receiver: @request.user, content: "Your request has been accepted! Lets start planning :) (this is an automated message)")
       end
     end
     session[:return_to] = request.referer
