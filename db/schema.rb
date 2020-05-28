@@ -54,8 +54,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_165840) do
   create_table "events", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
-    t.date "date"
-    t.time "time"
+    t.datetime "date_time"
     t.string "address"
     t.text "description"
     t.string "ticket_url"

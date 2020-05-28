@@ -8,7 +8,7 @@ def generate_users
   # => Generate solene@email.com, password 123456
   solene = User.new(email: "solene@email.com",
            password: "123456",
-           first_name: "Solene",
+           first_name: "Solène",
            last_name: "Duprat",
            age: 22,
            bio: "My name is Solene and I love dogs!",
@@ -87,11 +87,9 @@ def generate_events
   counter = 0
   User.all.each do |user|
     3.times do
-      date = Faker::Date.forward(days: 14)
-      event = Event.new(user: user,
+      event = Event.new(user: User.first,
                         name: Faker::Lorem.sentence(word_count: 2),
-                        date: date,
-                        time: Faker::Time.between_dates(from: date - 1, to: date, period: :day), # .strftime("%I:%M%p")
+                        date_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 14, period: :day),
                         address: Faker::Address.full_address,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
