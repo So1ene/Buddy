@@ -7,4 +7,33 @@
 <h1>Requests#show</h1>
 <p>Find me in app/views/requests/show.html.erb</p>
 
+<h1> <%= @request.event.name %></h1>
+
+<div class="card" style="width: 30rem;">
+  <%= cl_image_tag url_for(@request.event.photo), class:"card-img-top" %>
+  <div class="card-img-overlay">
+    <span class="badge badge-primary">
+      <span class="badge badge-primary"> Example </span>
+      <% @request.event.categories.each do |category| %>
+        <% if category.present? %>
+          <span class="badge badge-primary"> <%= category.name %> </span>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="card-body">
+    <div class="card-body">
+      <h5 class="card-title">Event details</h5>
+        <ul>
+          <li><i class="far fa-calendar-alt"></i> <span style="color: gray"> <%= @request.event.date  %> <%= @request.event.time  %> </p></span></li><br>
+          <li><i class="fas fa-map-marker-alt"></i> <span style="color: gray"> <%= @request.event.address %></span></li>
+          <% if @request.event.ticket_url.present? %>
+            <li><i class="far fa-calendar-alt"></i> Ticket URL: <span style="color: gray"> <%= @request.event.ticket_url  %> </span></li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Message Buddy</button>
 </div>
+
+
