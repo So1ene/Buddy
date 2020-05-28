@@ -103,10 +103,10 @@ def generate_categories
   Category.destroy_all
   Category.create!(name: "outdoors", id: 1)
   Category.create!(name: "live music", id: 2)
-  Category.create!(name: "theater", id: 3)
-  Category.create!(name: "just drinks", id: 4)
+  Category.create!(name: "food", id: 3)
+  Category.create!(name: "drinks", id: 4)
   Category.create!(name: "sports", id: 5)
-  Category.create!(name: "food", id: 6)
+  Category.create!(name: "theater", id: 6)
   Category.create!(name: "festival", id: 7)
   Category.create!(name: "other", id: 8)
     puts ""
