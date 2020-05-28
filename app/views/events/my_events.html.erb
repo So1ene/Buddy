@@ -6,13 +6,12 @@
   <h1>Choose a buddy</h1>
 
   <div class="cards">
-    <p>Event: <%= @event.name %></p>
-    <p>Date: <%= @event.date %></p>
-    <p>Time: <%= @event.time %></p>
-    <p>Address: <%= @event.address %></p>
-    <p>Ticket Url: <%= @event.ticket_url %></p>
-    <p>Description: <%= @event.description %></p>
-  
+    <% @events.each do |event| %> 
+      <%= event.name %>
+      <%= event.address %>
+      <%= event.date %>
+      <%= event.time %>
+    <% end %>
   
   
   
