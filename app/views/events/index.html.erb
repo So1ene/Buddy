@@ -26,7 +26,8 @@
     <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
     <div class="cards">
       <p>Event name: <%= event.name  %></p>
-      <p>Date: <%= event.date %></p>
+      <p>Date: <%= @event.date_time.strftime("%m/%d/%Y") %></p>
+      <p>Time: <%= @event.date_time.strftime("%I:%M%p") %></p>
       <p>Address: <%= event.address %></p>
     </div>
   <% end %>
