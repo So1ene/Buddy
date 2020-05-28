@@ -4,6 +4,7 @@ require "open-uri"
 # => Generate users
 
 def generate_users
+
   # => Generate solene@email.com, password 123456
   solene = User.new(email: "solene@email.com",
            password: "123456",
@@ -112,9 +113,10 @@ def generate_requests
   puts ""
   puts "> Destroyed all requests"
   counter = 0
+  user_id_range = (User.last.id-3)..User.last.id
   Event.all.each do |event|
     3.times do
-      request = Request.new(user: User.find(rand(1..4)),
+      request = Request.new(user: User.find(rand(user_id_range)),
                         motivation: Faker::Lorem.sentence(word_count: rand(180)),
                         status: "Pending",
                         event: event
@@ -161,7 +163,7 @@ def generate_languages
   Language.destroy_all
   puts ""
   puts "> Destroyed all langua-...qwalnasdekj1010010 :("
-  %w[English French German Spanish Japanese Arabic Russion Portuguese Indonesian Hindi Mandarin Other].each do |language|
+  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
     Language.create(name: language)
   end
   puts ""

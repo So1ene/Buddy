@@ -1,7 +1,11 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+<div class="container">
 
+  <h1>Events for 20/02/2020</h1>
+
+<div class="d-flex">
 <div class="navbar-dropdown-categories">
   <%= form_tag("/") do %>
     <%= select_tag("categories", options_for_select(["outdoors", "just drinks", "live music", "karaoke", "theater", "other"], "outdoors") ) %>
@@ -15,10 +19,7 @@
     <%= submit_tag(">") %>
   <% end %>
 </div>
-
-<div class="container">
-
-  <h1>Events for 20/02/2020</h1>
+</div>
 
   <% @events.each do |event|  %>
     <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
