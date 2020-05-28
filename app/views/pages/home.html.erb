@@ -7,7 +7,13 @@
 
 
   <h1>TO-DO: Filters</h1>
-  <h1>TO-DO: Calendar</h1>
+
+  <br />
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+  <br />
+
   <%= link_to "..(Select a date)", events_path %>
   <h1>TO-DO: Search bar</h1>
   <br />
