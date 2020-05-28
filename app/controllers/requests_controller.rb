@@ -42,10 +42,9 @@ class RequestsController < ApplicationController
   end
 
   def incoming
-    # => GET    /requests/incoming
-    events = current_user.events
-    array = events.map { |event| event.requests }
-    @requests = array.flatten
+    # => GET    /events/:event_id/requests/incoming
+    event = Event.find(params[:event_id])
+    @requests = event.requests
   end
 
   def show
