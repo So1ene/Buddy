@@ -4,6 +4,7 @@ require "open-uri"
 # => Generate languages
 
 def generate_languages
+  SpokenLanguage.destroy_all
   Language.destroy_all
   puts ""
   puts "> Destroyed all langua-...qwalnasdekj1010010 :("
@@ -95,7 +96,6 @@ def attach_image(event, counter)
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
-  counter += 1
 end
 
 def generate_categories
@@ -115,6 +115,7 @@ end
 # => Generate events
 
 def generate_events
+  EventCategory.destroy_all
   Event.destroy_all
   puts ""
   puts "> Destroyed all events"
@@ -124,6 +125,30 @@ def generate_events
       event = Event.new(user: User.first,
                         name: Faker::Lorem.sentence(word_count: 2),
                         date_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 14, period: :day),
+                        address: Faker::Address.full_address,
+                        description: Faker::Lorem.sentence(word_count: rand(20))
+                        )
+      attach_image(event, counter)
+      counter += 1
+      event.save!
+      rand(1..3).times do
+        first_id = rand(1..8)
+        random = rand(1..8)
+        second_id = random unless random == first_id
+        random = rand(1..8)
+        third_id = random unless random == first_id || random == second_id
+        EventCategory.create!(event: event, category: Category.find(first_id))
+        EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+        EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
+      end
+    end
+  end
+  counter = 0
+  User.all.each do |user|
+    3.times do
+      event = Event.new(user: User.first,
+                        name: Faker::Lorem.sentence(word_count: 2),
+                        date_time: Faker::Time.between_dates(from: Date.today + 14, to: Date.today + 28, period: :day),
                         address: Faker::Address.full_address,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
