@@ -10,8 +10,8 @@
 <h2 class="mb-3 mt-2">Search for an event</h2>
 
 
-<%= simple_form_for @user, url: root_path, method: :patch do |f| %>
-  <%= f.input :search_location, placeholder: 'Input a location', label:false %>
+<%= form_for @user, url: root_path, method: :patch do |f| %>
+  <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
 <% end %>
 
 
