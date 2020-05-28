@@ -234,18 +234,18 @@ end
 # end
 
 def generate_accepted_requests
-  Request.new(user_id: 1, event: Event.find(user_id: 2), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find(user_id: 3), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find(user_id: 4), status: "Accepted")
-  Request.new(user_id: 2, event: Event.find(user_id: 1), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find(user_id: 3), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find(user_id: 4), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find(user_id: 1), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find(user_id: 2), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find(user_id: 4), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find(user_id: 1), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find(user_id: 2), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find(user_id: 3), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find_by(user_id: 2), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find_by(user_id: 3), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find_by(user_id: 4), status: "Accepted")
+  Request.new(user_id: 2, event: Event.find_by(user_id: 1), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find_by(user_id: 3), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find_by(user_id: 4), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find_by(user_id: 1), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find_by(user_id: 2), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find_by(user_id: 4), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find_by(user_id: 1), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find_by(user_id: 2), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find_by(user_id: 3), status: "Accepted")
 end
 
 generate_languages
