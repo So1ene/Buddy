@@ -3,6 +3,19 @@
 <% end %>
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
+  
+  <% @messages.each do |message| %>
+    <div class="card" style="width: 26rem;">
+      <div class="d-flex align-items-center p-2">
+        <div><%= cl_image_tag(message.other_user(current_user).photo.key, class: "avatar") %></div>
+          <div>
+            <div class="px-3"><strong><%= message.other_user(current_user).first_name %></strong></div>
+            <div class="px-3"><%= message.content %></div>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
   <h1 class="pb-3">Inbox</h1>
   <% @my_requests.each do |request| %>
@@ -12,6 +25,3 @@
   <% @incoming_requests.each do |request| %>
     <%= render partial: "inbox_message_incoming", locals: { request: request } %>
   <% end %>
-</div>
-
-
