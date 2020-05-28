@@ -6,17 +6,14 @@
 
 
 
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
-
-<div class="cards">
-  <p>Event: <%= @event.name %></p>
-  <p>Date: <%= @event.date_time %></p>
-  <p>Time: <%= @event.date_time.strftime("%I:%M%p") %></p>
-  <p>Address: <%= @event.address %></p>
-  <p>Ticket Url: <%= @event.ticket_url %></p>
-  <p>Description: <%= @event.description %></p>
-</div>
+  <div class="cards">
+    <p>Event: <%= @event.name %></p>
+    <p>Date: <%= @event.date %></p>
+    <p>Time: <%= @event.time %></p>
+    <p>Address: <%= @event.address %></p>
+    <p>Ticket Url: <%= @event.ticket_url %></p>
+    <p>Description: <%= @event.description %></p>
+  </div>
 
 
 

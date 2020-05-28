@@ -44,7 +44,7 @@ class EventsController < ApplicationController
 
   def my_events
     # => GET    /events/pending, prefix: my_events
-
+    @events = current_user.events
   end
 
   private

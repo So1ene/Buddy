@@ -4,20 +4,16 @@
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
+  <h1>Choose a buddy</h1>
 
+  <div class="cards">
 
+    <% @events.each do |event| %> 
+      <p><%= event.name %></p>
+      <p><%= event.address %></p>
+      <p><%= event.date %></p>
+      <p><%= event.time %></p>
+    <% end %>
 
-
-
-
-<h1>Events#my_events</h1>
-<p>Find me in app/views/events/my_events.html.erb</p>
-
-
-
-
-
-
-
-
+  </div>
 </div>
