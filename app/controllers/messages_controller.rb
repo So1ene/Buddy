@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
-    @event = current_user.requests.where(status: "Accepted").event
+    # @event = current_user.requests.where(status: "Accepted")
   end
 
   def create
