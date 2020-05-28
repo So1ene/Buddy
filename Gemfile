@@ -13,6 +13,7 @@ gem 'faker'
 # Calendar
 gem "simple_calendar", "~> 2.0"
 
+gem 'turbolinks_render'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use postgresql as the database for Active Record
