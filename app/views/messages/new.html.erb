@@ -3,9 +3,9 @@
 <% end %>
 
 <div class="container">
-
-  <div class="card p-4" style="background-color: #D3D3D3;">
-    <h1>You are now buddies for <%= @event.name %>!</h1>
+  <div class="card p-4 align-items-center" style="background-color: #D3D3D3;">
+    <h3>You are now buddies for</h3><br>
+    <h3><%= @event.name %>!</h3>
     <div>
       <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
