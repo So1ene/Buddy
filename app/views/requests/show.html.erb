@@ -32,6 +32,10 @@
         </ul>
       </div>
   </div>
+  <div>
+    <%= cl_image_tag url_for(@request.user.photo), class:"avatar" %>
+    <%= cl_image_tag url_for(@request.event.user.photo), class:"avatar" %>
+  </div>
 
   <button type="submit" class="btn btn-primary">Message Buddy</button>
 </div>
