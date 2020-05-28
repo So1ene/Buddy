@@ -6,8 +6,10 @@
 
   <div class="card p-4" style="background-color: #D3D3D3;">
     <h1>You are now buddies for <%= @event.name %>!</h1>
-    <div><%#= cl_image_tag(request.user.photo.key, class: "avatar") %></div>
-    <div><%= cl_image_tag(current_user.photo.key, class: "avatar") %></div>
+    <div>
+      <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
+      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
+    </div>
     <p>Start your conversation below</p>
   </div>
 
