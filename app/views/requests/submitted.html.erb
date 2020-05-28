@@ -1,28 +1,38 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+<h1 class="page-title">BUDDY</h1>
 <div class="container">
 
+<% @requests.each do |request| %>
+<h2>Buddy request has been submitted to <%= request.event.user.first_name %> <%= request.event.user.last_name %> </h2>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= cl_image_tag request.event.user.photo.key, class:"card-img" %>
 
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title"> <%= request.event.name  %> </h3>
+        <div class="card-info">
+          <p>Address: <%= request.event.address  %> </p>
+          <p> <%= request.event.date  %> <%= request.event.time  %> </p>
 
-
-
-
-
-
-<h1>Requests#submitted</h1>
-<p>Find me in app/views/requests/submitted.html.erb</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
+        </div>
+        <div class="category-container">
+          <% request.event.categories.each do |category| %>
+            <% if category.present? %>
+              <span class="badge badge-primary"> <%= category.name %> </span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+  <p> <%= request.event.user.first_name %> has received your Buddy request!</p>
+  <p> If it is accepted, you will get a match notification. </p>
+
+<% end  %>

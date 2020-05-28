@@ -4,7 +4,7 @@
     <title>Buddy</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="icon" href="https://img.icons8.com/dusk/2x/friends.png" type="image/icon type">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,12 +12,13 @@
 
   <body>
 
-    <div id="body">
+  <div id="body">
     <%= render 'shared/navbar' %>
       <div>
         <%= render 'shared/flashes' %>
         <%= yield %>
       </div>
+      <%= render 'shared/navbarbottom' %>
     </div>
   </body>
 </html>

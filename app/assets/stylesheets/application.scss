@@ -13,6 +13,20 @@
 @import "pages/index";
 
 .container {
-  max-width: 900px;
-  margin: 50px auto;
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+@media screen and (min-width: 1220px) {
+  .container {
+    width: 700ox;
+  }
 }

@@ -3,11 +3,12 @@
 
 
 header {
-  position: absolute;
+  position: fixed;
   overflow: visible;
   z-index: 100;
-  background-color: transparent;
+  background-color: rgba(255, 118, 98, 1);
   width: 100%;
+  padding-top: 0.5rem;
 
   a {
     text-decoration: none;
@@ -34,6 +35,7 @@ header {
     font-size: 1.2rem;
     padding-bottom: 0.3rem;
     margin-bottom: 3rem;
+    top: 0.1rem;
   }
 
   span.menu-control-open,
@@ -44,16 +46,25 @@ header {
 
   span.menu-control-open {
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 150%;
     float: right;
     margin: 12px;
     margin-right: 16px;
     margin-bottom: 6px;
+    color: white;
+  }
+
+  #menuControlOpen i {
+    color: white;
+  }
+
+  #menuControlClose i {
+    top: 1.9rem;
   }
 
   span.menu-control-close {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     text-align: right;
   }
 
@@ -121,6 +132,10 @@ header {
   .menu--active .menu {
     width: 50%; }
 }
+  .container {
+    padding-top: 5rem;
+    padding-bottom: 4.5rem;
+  }
 
 // This media query sets the menu width to be slightly smaller on a larger screen (think an iPad)
 @media screen and (min-width: 750px) and (max-width: 1220px) {
@@ -134,8 +149,32 @@ header {
 
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
+
+.page-title {
+  display: none;
+}
+  .back-button {
+  top: -0.2rem !important;
+}
+  .navbar-avatar{
+    border: none !important;
+  }
+header nav a {
+  color: white !important;
+}
+header nav a:hover {
+  color: rgba(0,0,0,0.9) !important;
+}
+
+  .container {
+    padding-top: 8rem;
+  }
+  #dim-background {
+    display: none;
+  }
   header {
     padding: 0.5rem 2.5rem;
+    border-bottom: 1px solid silver;
 
     span.menu-control-open,
     span.menu-control-close {
@@ -188,13 +227,66 @@ header {
 .back-button {
   padding: 20px;
   display: inline-block;
-  position: relative;
-  z-index: 2000;
-  color: black;
+  position: fixed;
+  z-index: 2000 !important;
+  color: white;
+  font-size: 1.3rem;
+  top: 0.5rem;
 }
+
+.back-button:active {
+  color: white;
+}
+.back-button:hover {
+  color: white;
+}
+
 
 .menu-control-close i {
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+#dim-background{
+    background-color: rgba(0, 0,0, 0.2);
+    size: fill;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: 0;
+    z-index: 90;
+    pointer-events: none;
+
+}
+
+.hide-dim-background {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: 0.3s;
+}
+
+.show-dim-background {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transition: 0.3s;
+}
+
+.page-title {
+  letter-spacing: 2px;
+  color: white;
+  font-size: 18px;
+  z-index: 30000;
+  position: fixed;
+  top: 2.1rem;
+  font-weight: bold;
+  left: 50%;
+  width: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
