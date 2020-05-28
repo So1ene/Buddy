@@ -99,9 +99,6 @@ def attach_image(event, counter)
 end
 
 def generate_categories
-  Category.destroy_all
-  puts ""
-  puts "> Destroyed all categories"
   Category.create!(name: "outdoors")
   Category.create!(name: "live music")
   Category.create!(name: "theater")
@@ -205,7 +202,7 @@ end
 
 generate_languages
 generate_users
-generate_categories
+generate_categories if Category.all.length == 0
 generate_events
 generate_messages
 generate_requests
