@@ -3,20 +3,18 @@
 <% end %>
 <div class="container">
 
+  <h1>Choose a buddy</h1>
 
-
-
-
-
-
-<h1>Events#my_events</h1>
-<p>Find me in app/views/events/my_events.html.erb</p>
-
-
-
-
-
-
-
-
+  <div class="cards">
+    <p>Event: <%= @event.name %></p>
+    <p>Date: <%= @event.date %></p>
+    <p>Time: <%= @event.time %></p>
+    <p>Address: <%= @event.address %></p>
+    <p>Ticket Url: <%= @event.ticket_url %></p>
+    <p>Description: <%= @event.description %></p>
+  
+  
+  
+  
+  </div>
 </div>
