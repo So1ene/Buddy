@@ -1,9 +1,8 @@
-<span class="back-button">
-</span>
-
+<span class="back-button"></span>
+<h1 class="page-title">BUDDY</h1>
 <div class="container">
 
-<%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large" %>
+<%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large mt-3" %>
 
 
 <h1 class="mt-4 mb-5">Hi <%= @user.first_name %></h1>
