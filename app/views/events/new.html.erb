@@ -7,14 +7,13 @@
 
 
   <div class="cards">
-    
+
     <h2>Suggest an event</h2>
 
     <%= simple_form_for @event do |f| %>
       <%= f.input :name, placeholder: 'Event name', label:false %>
       <%= f.input :photo, placeholder: 'photo', label:false %>
-      <%= f.input :date, placeholder: 'Date', label:false %>
-      <%= f.input :time, placeholder: 'Time', label:false %>
+      <%= f.input :date_time, label:false %>
       <%= f.input :address, placeholder: 'Address', label:false %>
     <% end %>
 
