@@ -7,11 +7,7 @@
 
 
 
-  <br />
-  <%= month_calendar do |date| %>
-    <%= date.day %>
-  <% end %>
-  <br />
+<%= render partial: "calendar"#, locals: { events: @events } %>
 
 <h2>Coming up:</h2>
 

@@ -4,5 +4,15 @@ class Event < ApplicationRecord
   has_many :event_categories
   has_many :categories, through: :event_categories
   has_one_attached :photo
-  validates :user, :name, :date, :time, :address, :photo, :description, presence: true
+  validates :user, :name, :date_time, :address, :photo, :description, presence: true
+
+
+  # Calendar stuff:
+
+    def start_time
+        self.date_time
+    end
+    def end_time
+        self.date_time
+    end
 end
