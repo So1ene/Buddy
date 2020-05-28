@@ -1,8 +1,9 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-
+<h1 class="page-title">BUDDY</h1>
 <div class="container">
+
   <h1 class="pb-3">Inbox</h1>
   <% @my_requests.each do |request| %>
     <%= render partial: "inbox_message", locals: { request: request } %>
