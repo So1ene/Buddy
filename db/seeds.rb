@@ -8,7 +8,7 @@ def generate_languages
   puts ""
   puts "> Destroyed all langua-...qwalnasdekj1010010 :("
   %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
-    Language.create(name: language)
+    Language.create!(name: language)
   end
   puts ""
   puts "> Generated languages, could add more....  lol"
@@ -68,12 +68,12 @@ def generate_users
   puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts ""
   puts "> Attached profile pictures to users"
-  SpokenLanguage.create!(user: solene, language: Language.find(1))
-  SpokenLanguage.create!(user: solene, language: Language.find(2))
-  SpokenLanguage.create!(user: daniela, language: Language.find(1))
-  SpokenLanguage.create!(user: celine, language: Language.find(1))
-  SpokenLanguage.create!(user: samantha, language: Language.find(1))
-  SpokenLanguage.create!(user: samantha, language: Language.find(2))
+  SpokenLanguage.create!(user: User.find(1), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(1), language: Language.find_by(name: "French"))
+  SpokenLanguage.create!(user: User.find(2), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(3), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "French"))
   puts "> Attached languages to users"
   puts ""
 end
@@ -133,7 +133,14 @@ def generate_events
       attach_image(event, counter)
       event.save!
       rand(1..3).times do
-        EventCategory.create!(event: event, category: Category.find(rand(1..8)))
+        first_id = rand(1..8)
+        random = rand(1..8)
+        second_id = random unless random == first_id
+        random = rand(1..8)
+        third_id = random unless random == first_id || random == second_id
+        EventCategory.create!(event: event, category: Category.find(first_id))
+        EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+        EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
       end
     end
   end
