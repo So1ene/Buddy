@@ -1,11 +1,12 @@
 <%= link_to inbox_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+
 <h1 class="page-title">Name of Person</h1>
 <div class="container">
-  <div class="card p-4 align-items-center" style="background-color: #D3D3D3;">
-    <h3>You are now buddies for</h3><br>
-    <h3><%= @event.name %>!</h3>
+  <div class="card p-3 align-items-center" style="background-color: #D3D3D3;">
+    <h4>You are now buddies for</h4><br>
+    <h4><%= @event.name %>!</h4>
     <div>
       <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
@@ -13,9 +14,18 @@
     <p>Start your conversation below</p>
   </div>
 
+  <div>
+    <div>
+      <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
+      <%= @event.user.first_name %>
+      <%= @message.content %>
+    </div>
 
-
-
+    <div>
+      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
+      <%= current_user.first_name %>
+    </div>
+  </div>
 
 
 </div>
