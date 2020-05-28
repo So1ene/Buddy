@@ -9,7 +9,7 @@ class Request < ApplicationRecord
   end
 
   def accepted?
-    status == "Acceped"
+    status == "Accepted"
   end
 
   def declined?
