@@ -6,7 +6,7 @@
 
 <% @requests.each do |request| %>
 <h2>Buddy request has been submitted to <%= request.event.user.first_name %> <%= request.event.user.last_name %> </h2>
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card shadow p-3 mb-3 bg-white rounded" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
       <%= cl_image_tag request.event.user.photo.key, class:"card-img" %>
