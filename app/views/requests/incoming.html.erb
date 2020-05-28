@@ -29,8 +29,22 @@
           <% end %>
         </div>
       </div>
-      <button type="button" class="btn btn-primary">Accept</button>
-      <button type="button" class="btn btn-danger">Decline</button>
+      <% if request.pending? %>
+                  <div class="d-flex justify-content align-items-center">
+                  <%= form_for request, url: request_path(request), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Accepted" %>
+                    <%= f.submit 'Accept', class: "btn btn-success" %>
+                  <% end %>
+                  <%= form_for request, url: request_path(request), method: :patch do |f| %>
+                    <%= f.hidden_field :status, value: "Declined" %>
+                    <%= f.submit 'Decline', class: "btn btn-danger my-2 ml-3" %>
+                  <% end %>
+                  </div>
+                <% elsif request.accepted? %>
+                    <span class="green-text font-weight-bold mt-3"><%= request.status %></span>
+                <% elsif request.declined? %>
+                    <span class="red-text font-weight-bold mt-3"><%= request.status %></span>
+                <% end %>
     </div>
   </div>
 
