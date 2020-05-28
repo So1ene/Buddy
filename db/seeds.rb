@@ -101,6 +101,8 @@ end
 def generate_categories
   EventCategory.destroy_all
   Category.destroy_all
+  puts ""
+  puts "> Destroyed all categories"
   Category.create!(name: "outdoors", id: 1)
   Category.create!(name: "live music", id: 2)
   Category.create!(name: "food", id: 3)
@@ -232,7 +234,18 @@ end
 # end
 
 def generate_accepted_requests
-
+  Request.new(user_id: 1, event: Event.find(user_id: 2), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find(user_id: 3), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find(user_id: 4), status: "Accepted")
+  Request.new(user_id: 2, event: Event.find(user_id: 1), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find(user_id: 3), status: "Accepted")
+  Request.new(user_id: 1, event: Event.find(user_id: 4), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find(user_id: 1), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find(user_id: 2), status: "Accepted")
+  Request.new(user_id: 3, event: Event.find(user_id: 4), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find(user_id: 1), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find(user_id: 2), status: "Accepted")
+  Request.new(user_id: 4, event: Event.find(user_id: 3), status: "Accepted")
 end
 
 generate_languages
@@ -240,3 +253,4 @@ generate_users
 generate_categories
 generate_events
 generate_requests
+generate_accepted_requests
