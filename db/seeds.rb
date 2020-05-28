@@ -120,10 +120,11 @@ def generate_events
   Event.destroy_all
   puts ""
   puts "> Destroyed all events"
+
   counter = 0
   User.all.each do |user|
     3.times do
-      event = Event.new(user: User.first,
+      event = Event.new(user: user,
                         name: Faker::Lorem.sentence(word_count: 2),
                         date_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 14, period: :day),
                         address: Faker::Address.full_address,
@@ -144,10 +145,11 @@ def generate_events
       end
     end
   end
+
   counter = 0
   User.all.each do |user|
     3.times do
-      event = Event.new(user: User.first,
+      event = Event.new(user: user,
                         name: Faker::Lorem.sentence(word_count: 2),
                         date_time: Faker::Time.between_dates(from: Date.today + 14, to: Date.today + 28, period: :day),
                         address: Faker::Address.full_address,
@@ -168,6 +170,7 @@ def generate_events
       end
     end
   end
+
   puts ""
   puts "> Gave each user 3 events"
   puts ""
@@ -183,15 +186,16 @@ def generate_requests
   puts ""
   puts "> Destroyed all requests"
   counter = 0
-  user_id_range = (User.last.id-3)..User.last.id
-  Event.all.each do |event|
-    3.times do
-      request = Request.new(user: User.find(rand(user_id_range)),
-                        motivation: Faker::Lorem.sentence(word_count: rand(180)),
-                        status: "Pending",
-                        event: event
-                        )
-      request.save!
+  4.times do
+    counter += 1
+    Event.all.each do |event|
+      unless event.user_id == counter
+        Request.new(user_id: counter,
+                    motivation: Faker::Lorem.sentence(word_count: rand(180)),
+                    status: "Pending",
+                    event: event
+                    ).save!
+      end
     end
   end
   puts ""
@@ -199,37 +203,40 @@ def generate_requests
   puts ""
 end
 
-# => Generate messages
 
-def generate_messages
-  Message.destroy_all
-  puts ""
-  puts "> Destroyed all messages"
-  solene = User.first
-  daniela = User.second
-  celine = User.third
-  samantha = User.fourth
-  Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
-  Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
-  Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
-  Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
-  Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
-  Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
-  Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
-  Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
-  Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
-  Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
-  Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
-  Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
-  puts ""
-  puts "> Generated messages"
-  puts ""
+# # => Generate messages
+
+# def generate_messages
+#   Message.destroy_all
+#   puts ""
+#   puts "> Destroyed all messages"
+#   solene = User.first
+#   daniela = User.second
+#   celine = User.third
+#   samantha = User.fourth
+#   Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
+#   Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
+#   Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
+#   Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
+#   Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
+#   Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
+#   Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
+#   Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
+#   Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
+#   Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
+#   Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
+#   Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
+#   puts ""
+#   puts "> Generated messages"
+#   puts ""
+# end
+
+def generate_accepted_requests
+
 end
-
 
 generate_languages
 generate_users
 generate_categories
 generate_events
-generate_messages
 generate_requests
