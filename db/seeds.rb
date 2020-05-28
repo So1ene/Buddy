@@ -129,7 +129,6 @@ def generate_events
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
-      counter += 1
       event.save!
       rand(1..3).times do
         first_id = rand(1..8)
