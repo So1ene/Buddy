@@ -1,6 +1,8 @@
-<div class="navbar-bottom">
-  <%= link_to root_path do %><span class="navbar-bottom-item"><i class="fas fa-home"></i></span><% end %>
-  <%= link_to new_event_path do %><span class="navbar-bottom-item"><i class="fas fa-plus"></i></span><% end %>
-  <%= link_to calendar_path do %><span class="navbar-bottom-item"><i class="far fa-calendar-alt"></i></span><% end %>
-  <%= link_to messages_path do %><span class="navbar-bottom-item"><i class="far fa-comments"></i></span><% end %>
-</div>
+<% if user_signed_in? %>
+  <div class="navbar-bottom">
+    <%= link_to root_path do %><span class="navbar-bottom-item"><i class="fas fa-home"></i></span><% end %>
+    <%= link_to new_event_path do %><span class="navbar-bottom-item"><i class="fas fa-plus"></i></span><% end %>
+    <%= link_to calendar_path do %><span class="navbar-bottom-item"><i class="far fa-calendar-alt"></i></span><% end %>
+    <%= link_to messages_path do %><span class="navbar-bottom-item"><i class="far fa-comments"></i></span><% end %>
+  </div>
+<% end %>

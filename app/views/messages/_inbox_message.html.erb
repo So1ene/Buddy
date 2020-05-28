@@ -1,13 +1,17 @@
 <% last_message = Message.where("(sender_id = :user AND receiver_id = :host) OR (sender_id = :host AND receiver_id = :user)", user: current_user, host: request.event.user).order(created_at: :desc).first %>
-<div class="card" style="width: 24rem;">
-  <div class="d-flex align-items-center p-2">
-    <div><%= cl_image_tag(request.event.user.photo.key, class: "avatar") %></div>
-      <div>
-        <div class="px-3"><strong><%= request.event.user.first_name %></strong></div>
-        <% if last_message %>
-        <div class="px-3">
-          <%= link_to last_message.content, new_message_path(:user_id) %></div>
-        <% end %>
-      </div>
+
+<%= link_to new_message_path(:user_id, event: request.event) do %>
+  <div class="card" style="width: 24rem;">
+      <div class="d-flex align-items-center p-2">
+      <div><%= cl_image_tag(request.event.user.photo.key, class: "avatar") %></div>
+        <div>
+          <div class="px-3"><strong><%= request.event.user.first_name %></strong></div>
+          <% if last_message %>
+          <div class="px-3">
+            <p><%= last_message.content %></p>
+          </div>
+          <% end %>
+        </div>
+    </div>
   </div>
-</div>
+<% end %>

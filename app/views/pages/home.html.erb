@@ -1,13 +1,15 @@
 <%= link_to welcome_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-
-
-
-
+<h1 class="page-title">BUDDY</h1>
 <div class="container">
+
+
+
   <h1>TO-DO: Filters</h1>
-  <h1>TO-DO: Calendar</h1>
+
+  <%= render partial: "calendar", locals: { events: @events } %>
+
   <%= link_to "..(Select a date)", events_path %>
   <h1>TO-DO: Search bar</h1>
   <br />

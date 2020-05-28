@@ -1,6 +1,21 @@
 require "open-uri"
 
 
+# => Generate languages
+
+def generate_languages
+  Language.destroy_all
+  puts ""
+  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
+  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
+    Language.create!(name: language)
+  end
+  puts ""
+  puts "> Generated languages, could add more....  lol"
+  puts ""
+end
+
+
 # => Generate users
 
 def generate_users
@@ -8,7 +23,7 @@ def generate_users
   # => Generate solene@email.com, password 123456
   solene = User.new(email: "solene@email.com",
            password: "123456",
-           first_name: "Solene",
+           first_name: "Solène",
            last_name: "Duprat",
            age: 22,
            bio: "My name is Solene and I love dogs!",
@@ -53,9 +68,15 @@ def generate_users
   puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts ""
   puts "> Attached profile pictures to users"
+  SpokenLanguage.create!(user: User.find(1), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(1), language: Language.find_by(name: "French"))
+  SpokenLanguage.create!(user: User.find(2), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(3), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "English"))
+  SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "French"))
+  puts "> Attached languages to users"
   puts ""
 end
-
 
 # => Getting ready to generate events
 
@@ -77,6 +98,19 @@ def attach_image(event, counter)
   counter += 1
 end
 
+def generate_categories
+  Category.create!(name: "outdoors")
+  Category.create!(name: "live music")
+  Category.create!(name: "theater")
+  Category.create!(name: "just drinks")
+  Category.create!(name: "sports")
+  Category.create!(name: "food")
+  Category.create!(name: "festival")
+  Category.create!(name: "other")
+    puts ""
+  puts "> Created 8 categories"
+  puts ""
+end
 
 # => Generate events
 
@@ -87,22 +121,31 @@ def generate_events
   counter = 0
   User.all.each do |user|
     3.times do
-      date = Faker::Date.forward(days: 14)
-      event = Event.new(user: user,
+      event = Event.new(user: User.first,
                         name: Faker::Lorem.sentence(word_count: 2),
-                        date: date,
-                        time: Faker::Time.between_dates(from: date - 1, to: date, period: :day), # .strftime("%I:%M%p")
+                        date_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 14, period: :day),
                         address: Faker::Address.full_address,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
       event.save!
+      rand(1..3).times do
+        first_id = rand(1..8)
+        random = rand(1..8)
+        second_id = random unless random == first_id
+        random = rand(1..8)
+        third_id = random unless random == first_id || random == second_id
+        EventCategory.create!(event: event, category: Category.find(first_id))
+        EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+        EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
+      end
     end
   end
   puts ""
   puts "> Gave each user 3 events"
   puts ""
   puts "> Attached pictures to events"
+  puts "> Attached categories to events"
   puts ""
 end
 
@@ -157,22 +200,9 @@ def generate_messages
 end
 
 
-# => Generate languages
-
-def generate_languages
-  Language.destroy_all
-  puts ""
-  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
-  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
-    Language.create(name: language)
-  end
-  puts ""
-  puts "> Generated languages, could add more....  lol"
-  puts ""
-end
-
 generate_languages
 generate_users
+generate_categories if Category.all.length == 0
 generate_events
 generate_messages
 generate_requests

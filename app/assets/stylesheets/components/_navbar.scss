@@ -3,11 +3,12 @@
 
 
 header {
-  position: absolute;
+  position: fixed;
   overflow: visible;
   z-index: 100;
   background-color: rgba(255, 118, 98, 1);
   width: 100%;
+  padding-top: 0.5rem;
 
   a {
     text-decoration: none;
@@ -31,9 +32,10 @@ header {
   span.menu-control-open,
   span.menu-control-close,
   nav a {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding-bottom: 0.3rem;
     margin-bottom: 3rem;
+    top: 0.1rem;
   }
 
   span.menu-control-open,
@@ -55,6 +57,10 @@ header {
 
   #menuControlOpen i {
     color: white;
+  }
+
+  #menuControlClose i {
+    top: 1.9rem;
   }
 
   span.menu-control-close {
@@ -101,33 +107,41 @@ header {
 
     /* Handles items within the slide-out to give them the delayed slide-in */
     &:first-child {
-      transition-delay: .1s;
+      transition-delay: .05s;
     }
     &:nth-child(3) {
-      transition-delay: .175s;
+      transition-delay: .1s;
     }
     &:nth-child(4) {
-      transition-delay: .25s;
+      transition-delay: .15s;
     }
     &:nth-child(5) {
-      transition-delay: .325s;
+      transition-delay: .2s;
     }
     &:nth-child(6) {
-      transition-delay: .4s;
+      transition-delay: .25s;
+    }
+    &:nth-child(7) {
+      transition-delay: .3s;
     }
     &:last-child {
-      transition-delay: .4s;
+      transition-delay: .35s;
     }
   }
 }
 
 // This media query sets the width of the menu to be larger on a smaller screen
  @media screen and (max-width: 750px) {
+  .navbar-avatar{
+  padding-top: none;
+  margin-top: none;
+  }
   .menu--active .menu {
     width: 50%; }
 }
   .container {
-    padding-top: 2rem;
+    padding-top: 5rem;
+    padding-bottom: 4.5rem;
   }
 
 // This media query sets the menu width to be slightly smaller on a larger screen (think an iPad)
@@ -142,6 +156,13 @@ header {
 
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
+
+.page-title {
+  display: none;
+}
+  .back-button {
+  top: -0.2rem !important;
+}
   .navbar-avatar{
     border: none !important;
   }
@@ -153,7 +174,7 @@ header nav a:hover {
 }
 
   .container {
-    padding-top: 4rem;
+    padding-top: 8rem;
   }
   #dim-background {
     display: none;
@@ -213,11 +234,11 @@ header nav a:hover {
 .back-button {
   padding: 20px;
   display: inline-block;
-  position: relative;
-  z-index: 2000;
+  position: fixed;
+  z-index: 2000 !important;
   color: white;
   font-size: 1.3rem;
-  top: -0.2rem;
+  top: 0.5rem;
 }
 
 .back-button:active {
@@ -258,4 +279,21 @@ header nav a:hover {
   opacity: 1 !important;
   pointer-events: auto !important;
   transition: 0.3s;
+}
+
+.page-title {
+  letter-spacing: 2px;
+  color: white;
+  font-size: 18px;
+  z-index: 30000;
+  position: fixed;
+  top: 2.1rem;
+  font-weight: bold;
+  left: 50%;
+  width: auto;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
 }

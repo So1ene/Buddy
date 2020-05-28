@@ -1,9 +1,8 @@
-<span class="back-button">
-</span>
-
+<span class="back-button"></span>
+<h1 class="page-title">BUDDY</h1>
 <div class="container">
 
-<%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large" %>
+<%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large mt-3" %>
 
 
 <h1 class="mt-4 mb-5">Hi <%= @user.first_name %></h1>
@@ -11,8 +10,8 @@
 <h2 class="mb-3 mt-2">Search for an event</h2>
 
 
-<%= simple_form_for @user, url: root_path, method: :patch do |f| %>
-  <%= f.input :search_location, placeholder: 'Input a location', label:false %>
+<%= form_for @user, url: root_path, method: :patch do |f| %>
+  <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
 <% end %>
 
 
