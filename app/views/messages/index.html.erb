@@ -2,8 +2,8 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
-<div class="container justify-content-start mt-0">
-  <h1 class="pb-3 mt-5 pt-0">Inbox</h1>
+<div class="container">
+  <h1 class="pb-3">Inbox</h1>
   <% @my_requests.each do |request| %>
     <%= render partial: "inbox_message", locals: { request: request } %>
   <% end %>
