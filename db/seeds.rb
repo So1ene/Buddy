@@ -90,7 +90,7 @@ def attach_image(event, counter)
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event5_swmkbh.jpg",
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event1_m9i2h6.jpg",
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event7_odrnin.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg.jpg",
+                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg",
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
                    "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg"]
@@ -99,14 +99,16 @@ def attach_image(event, counter)
 end
 
 def generate_categories
-  Category.create!(name: "outdoors")
-  Category.create!(name: "live music")
-  Category.create!(name: "theater")
-  Category.create!(name: "just drinks")
-  Category.create!(name: "sports")
-  Category.create!(name: "food")
-  Category.create!(name: "festival")
-  Category.create!(name: "other")
+  EventCategory.destroy_all
+  Category.destroy_all
+  Category.create!(name: "outdoors", id: 1)
+  Category.create!(name: "live music", id: 2)
+  Category.create!(name: "theater", id: 3)
+  Category.create!(name: "just drinks", id: 4)
+  Category.create!(name: "sports", id: 5)
+  Category.create!(name: "food", id: 6)
+  Category.create!(name: "festival", id: 7)
+  Category.create!(name: "other", id: 8)
     puts ""
   puts "> Created 8 categories"
   puts ""
@@ -115,7 +117,6 @@ end
 # => Generate events
 
 def generate_events
-  EventCategory.destroy_all
   Event.destroy_all
   puts ""
   puts "> Destroyed all events"
@@ -130,6 +131,7 @@ def generate_events
                         )
       attach_image(event, counter)
       event.save!
+      counter += 1
       rand(1..3).times do
         first_id = rand(1..8)
         random = rand(1..8)
@@ -153,6 +155,7 @@ def generate_events
                         )
       attach_image(event, counter)
       event.save!
+      counter += 1
       rand(1..3).times do
         first_id = rand(1..8)
         random = rand(1..8)
@@ -226,7 +229,7 @@ end
 
 generate_languages
 generate_users
-generate_categories if Category.all.length == 0
+generate_categories
 generate_events
 generate_messages
 generate_requests
