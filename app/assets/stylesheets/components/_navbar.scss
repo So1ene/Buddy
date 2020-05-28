@@ -107,22 +107,25 @@ header {
 
     /* Handles items within the slide-out to give them the delayed slide-in */
     &:first-child {
-      transition-delay: .1s;
+      transition-delay: .05s;
     }
     &:nth-child(3) {
-      transition-delay: .175s;
+      transition-delay: .1s;
     }
     &:nth-child(4) {
-      transition-delay: .25s;
+      transition-delay: .15s;
     }
     &:nth-child(5) {
-      transition-delay: .325s;
+      transition-delay: .2s;
     }
     &:nth-child(6) {
-      transition-delay: .4s;
+      transition-delay: .25s;
+    }
+    &:nth-child(7) {
+      transition-delay: .3s;
     }
     &:last-child {
-      transition-delay: .4s;
+      transition-delay: .35s;
     }
   }
 }
