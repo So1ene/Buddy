@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
-  get '/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
+  get '/events/:event_id/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
   resources :requests, only: [:show, :update]
 
   get '/inbox', to: 'messages#index', as: 'messages'
