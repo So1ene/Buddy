@@ -206,46 +206,49 @@ def generate_requests
 end
 
 
-# # => Generate messages
+# => Generate messages
 
-# def generate_messages
-#   Message.destroy_all
-#   puts ""
-#   puts "> Destroyed all messages"
-#   solene = User.first
-#   daniela = User.second
-#   celine = User.third
-#   samantha = User.fourth
-#   Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
-#   Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
-#   Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
-#   Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
-#   Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
-#   Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
-#   Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
-#   Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
-#   Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
-#   Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
-#   Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
-#   Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
-#   puts ""
-#   puts "> Generated messages"
-#   puts ""
-# end
+def generate_messages
+  Message.destroy_all
+  puts ""
+  puts "> Destroyed all messages"
+  solene = User.first
+  daniela = User.second
+  celine = User.third
+  samantha = User.fourth
+  Message.create(receiver: solene, sender: daniela, content: "hello Solene from Daniela")
+  Message.create(receiver: solene, sender: celine, content: "hello Solene from Celine")
+  Message.create(receiver: solene, sender: samantha, content: "hello Solene from Samantha")
+  Message.create(receiver: daniela, sender: solene, content: "hello Daniela from Solene")
+  Message.create(receiver: daniela, sender: celine, content: "hello Daniela from Celine")
+  Message.create(receiver: daniela, sender: samantha, content: "hello Daniela from Samantha")
+  Message.create(receiver: celine, sender: solene, content: "hello Celine from Solene")
+  Message.create(receiver: celine, sender: daniela, content: "hello Celine from Daniela")
+  Message.create(receiver: celine, sender: samantha, content: "hello Celine from Samantha")
+  Message.create(receiver: samantha, sender: solene, content: "hello Samantha from Solene")
+  Message.create(receiver: samantha, sender: celine, content: "hello Samantha from Celine")
+  Message.create(receiver: samantha, sender: daniela, content: "hello Samantha from Daniela")
+  puts ""
+  puts "> Generated messages"
+  puts ""
+end
 
 def generate_accepted_requests
-  Request.new(user_id: 1, event: Event.find_by(user_id: 2), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find_by(user_id: 3), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find_by(user_id: 4), status: "Accepted")
-  Request.new(user_id: 2, event: Event.find_by(user_id: 1), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find_by(user_id: 3), status: "Accepted")
-  Request.new(user_id: 1, event: Event.find_by(user_id: 4), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find_by(user_id: 1), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find_by(user_id: 2), status: "Accepted")
-  Request.new(user_id: 3, event: Event.find_by(user_id: 4), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find_by(user_id: 1), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find_by(user_id: 2), status: "Accepted")
-  Request.new(user_id: 4, event: Event.find_by(user_id: 3), status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.find_by(user_id: 2)).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.find_by(user_id: 3)).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.find_by(user_id: 4)).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.find_by(user_id: 1)).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.find_by(user_id: 3)).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.find_by(user_id: 4)).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.find_by(user_id: 1)).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.find_by(user_id: 2)).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.find_by(user_id: 4)).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.find_by(user_id: 1)).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.find_by(user_id: 2)).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.find_by(user_id: 3)).update(status: "Accepted")
+  puts ""
+  puts "> Generated some accepted requests (to test inbox)"
+  puts ""
 end
 
 generate_languages
@@ -254,3 +257,4 @@ generate_categories
 generate_events
 generate_requests
 generate_accepted_requests
+generate_messages
