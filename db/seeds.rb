@@ -1,6 +1,21 @@
 require "open-uri"
 
 
+# => Generate languages
+
+def generate_languages
+  Language.destroy_all
+  puts ""
+  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
+  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
+    Language.create(name: language)
+  end
+  puts ""
+  puts "> Generated languages, could add more....  lol"
+  puts ""
+end
+
+
 # => Generate users
 
 def generate_users
@@ -53,9 +68,15 @@ def generate_users
   puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
   puts ""
   puts "> Attached profile pictures to users"
+  SpokenLanguage.create!(user: solene, language: Language.find(1))
+  SpokenLanguage.create!(user: solene, language: Language.find(2))
+  SpokenLanguage.create!(user: daniela, language: Language.find(1))
+  SpokenLanguage.create!(user: celine, language: Language.find(1))
+  SpokenLanguage.create!(user: samantha, language: Language.find(1))
+  SpokenLanguage.create!(user: samantha, language: Language.find(2))
+  puts "> Attached languages to users"
   puts ""
 end
-
 
 # => Getting ready to generate events
 
@@ -77,6 +98,22 @@ def attach_image(event, counter)
   counter += 1
 end
 
+def generate_categories
+  Category.destroy_all
+  puts ""
+  puts "> Destroyed all categories"
+  Category.create!(name: "outdoors")
+  Category.create!(name: "live music")
+  Category.create!(name: "theater")
+  Category.create!(name: "just drinks")
+  Category.create!(name: "sports")
+  Category.create!(name: "food")
+  Category.create!(name: "festival")
+  Category.create!(name: "other")
+    puts ""
+  puts "> Created 8 categories"
+  puts ""
+end
 
 # => Generate events
 
@@ -95,12 +132,16 @@ def generate_events
                         )
       attach_image(event, counter)
       event.save!
+      rand(1..3).times do
+        EventCategory.create!(event: event, category: Category.find(rand(1..8)))
+      end
     end
   end
   puts ""
   puts "> Gave each user 3 events"
   puts ""
   puts "> Attached pictures to events"
+  puts "> Attached categories to events"
   puts ""
 end
 
@@ -155,22 +196,9 @@ def generate_messages
 end
 
 
-# => Generate languages
-
-def generate_languages
-  Language.destroy_all
-  puts ""
-  puts "> Destroyed all langua-...qwalnasdekj1010010 :("
-  %w[English French German Spanish Japanese Arabic Russian Portuguese Indonesian Hindi Mandarin Other].each do |language|
-    Language.create(name: language)
-  end
-  puts ""
-  puts "> Generated languages, could add more....  lol"
-  puts ""
-end
-
 generate_languages
 generate_users
+generate_categories
 generate_events
 generate_messages
 generate_requests
