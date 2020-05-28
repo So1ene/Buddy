@@ -135,16 +135,14 @@ def generate_events
       attach_image(event, counter)
       event.save!
       counter += 1
-      rand(1..3).times do
-        first_id = rand(1..8)
-        random = rand(1..8)
-        second_id = random unless random == first_id
-        random = rand(1..8)
-        third_id = random unless random == first_id || random == second_id
-        EventCategory.create!(event: event, category: Category.find(first_id))
-        EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-        EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-      end
+      first_id = rand(1..8)
+      random = rand(1..8)
+      second_id = random unless random == first_id
+      random = rand(1..8)
+      third_id = random unless random == first_id || random == second_id
+      EventCategory.create!(event: event, category: Category.find(first_id))
+      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
     end
   end
 
@@ -160,15 +158,14 @@ def generate_events
       attach_image(event, counter)
       event.save!
       counter += 1
-      rand(1..3).times do
-        first_id = rand(1..8)
-        random = rand(1..8)
-        second_id = random unless random == first_id
-        random = rand(1..8)
-        third_id = random unless random == first_id || random == second_id
-        EventCategory.create!(event: event, category: Category.find(first_id))
-        EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-        EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
+      first_id = rand(1..8)
+      random = rand(1..8)
+      second_id = random unless random == first_id
+      random = rand(1..8)
+      third_id = random unless random == first_id || random == second_id
+      EventCategory.create!(event: event, category: Category.find(first_id))
+      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
       end
     end
   end
