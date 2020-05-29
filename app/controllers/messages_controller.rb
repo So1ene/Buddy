@@ -13,10 +13,15 @@ class MessagesController < ApplicationController
 
   def create
     # => POST    /inbox
+    #@chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
+    #@message.chatroom = @chatroom
     @message.user = current_user
-    @message.save
-    render :new
+    #if @message.save
+      #redirect_to chatroom_path(@chatroom)
+    #else
+      #render "inbox/new"
+    #end
   end
 
 
