@@ -6,35 +6,37 @@
 
   <h1>Events for 20/02/2020</h1>
 
-<div class="d-flex">
-<div class="navbar-dropdown-categories">
-  <%= form_tag("/") do %>
-    <%= select_tag("categories", options_for_select(["outdoors", "just drinks", "live music", "karaoke", "theater", "other"], "outdoors") ) %>
-    <%= submit_tag(">") %>
-  <% end %>
-</div>
+  <div class="d-flex">
 
-<div class="navbar-dropdown-time">
-  <%= form_tag("/") do %>
-    <%= select_tag("time", options_for_select(["11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm", "9:00pm", "10:00pm"], "11:00am") ) %>
-    <%= submit_tag(">") %>
-  <% end %>
-</div>
-</div>
+    <div class="navbar-dropdown-categories">
+      <%= form_tag("/") do %>
+        <%= select_tag("categories", options_for_select(["outdoors", "just drinks", "live music", "karaoke", "theater", "other"], "outdoors") ) %>
+        <%= submit_tag(">") %>
+      <% end %>
+    </div>
 
-<div class="d-flex flex-column-reverse">
-  <% @events.each do |event|  %>
-    <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
-    <%= link_to event_path(event) do %>
-      <div class="cards my-4 shadow">
-        <p>Event name: <%= event.name  %></p>
-        <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
-        <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
-        <p>Address: <%= event.address %></p>
-      </div>
-    <% end %>
-  <% end %>
-</div>
+    <div class="navbar-dropdown-time">
+      <%= form_tag("/") do %>
+        <%= select_tag("time", options_for_select(["11:00am", "12:00pm", "1:00pm", "2:00pm", "3:00pm", "4:00pm", "5:00pm", "6:00pm", "7:00pm", "8:00pm", "9:00pm", "10:00pm"], "11:00am") ) %>
+        <%= submit_tag(">") %>
+      <% end %>
+    </div>
+    </div>
+
+    <div class="d-flex flex-column-reverse">
+      <% @events.each do |event|  %>
+        <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+        <%= link_to event_path(event) do %>
+          <div class="cards my-4 shadow">
+            <p>Event name: <%= event.name  %></p>
+            <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
+            <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
+            <p>Address: <%= event.address %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
 
 
