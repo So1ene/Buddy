@@ -1,10 +1,14 @@
+
+
 <div class="py-4">
 <%= month_calendar events: @events do |date, events| %>
   <%= date.day %>
 
   <div class="d-flex justify-content-start">
     <% events[0...3].each do |event| %>
-      <i class="fas fa-circle" style="font-size: 8px; padding-right: 2px; color: HotPink;"></i>
+
+
+      <i class="fas fa-circle" style="font-size: 8px; padding-right: 2px; color: <%= event.categories.first.color %>;"></i>
     <% end %>
   </div>
 <% end %>
