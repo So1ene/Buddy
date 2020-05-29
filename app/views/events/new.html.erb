@@ -19,15 +19,31 @@
 
     <div class="categories mt-2 mb-2">
 
-      <ul class="list-group list-group-horizontal">
+      <div class="d-flex">
+        <span class="filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "live music").color %>">live music</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "food").color %>">food</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "drinks").color %>">drinks</span>
+      </div>
+      <div class="d-flex">
+        <span class="filter" style="background-color: <%= Category.find_by(name: "sports").color %>">sports</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "theater").color %>">theater</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
+        <span class="filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
+      </div>
+
+      <%# <ul class="list-group list-group-horizontal">
         <li class="list-group-item">outdoors</li>
         <li class="list-group-item">live music</li>
         <li class="list-group-item">theatre</li>
         <li class="list-group-item">drinks</li>
+      </ul>
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">food</li>
         <li class="list-group-item">festival</li>
         <li class="list-group-item">sports</li>
         <li class="list-group-item">other</li>
-      </ul>
+      </ul> %>
     </div>
 
     <div class="description mt-3">
