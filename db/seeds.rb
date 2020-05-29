@@ -189,7 +189,7 @@ def generate_requests
     Event.all.each do |event|
       unless event.user_id == counter
         Request.new(user_id: counter,
-                    motivation: Faker::Lorem.sentence(word_count: rand(180)),
+                    motivation: Faker::Lorem.sentence(word_count: rand(20)),
                     status: "Pending",
                     event: event
                     ).save!
