@@ -128,7 +128,7 @@ def generate_events
     3.times do
       event = Event.new(user: user,
                         name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today, to: Date.today + 14, period: :day),
+                        date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today - 14, period: :day),
                         address: Faker::Address.full_address,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
@@ -146,58 +146,11 @@ def generate_events
     end
   end
 
-  counter = 0
   User.all.each do |user|
     3.times do
       event = Event.new(user: user,
                         name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today + 14, to: Date.today + 28, period: :day),
-                        address: Faker::Address.full_address,
-                        description: Faker::Lorem.sentence(word_count: rand(20))
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-
-    counter = 0
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today - 14, to: Date.today -1 , period: :day),
-                        address: Faker::Address.full_address,
-                        description: Faker::Lorem.sentence(word_count: rand(20))
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-
-    counter = 0
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today -30, to: Date.today -15, period: :day),
+                        date_time: Faker::Time.between_dates(from: Date.today - 14, to: Date.today + 1, period: :day),
                         address: Faker::Address.full_address,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
