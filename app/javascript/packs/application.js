@@ -59,6 +59,15 @@ document.addEventListener('turbolinks:load', () => {
   dimBackground.classList.add("hide-dim-background");
   });
 
+  // Filters
+
+  const filters = document.querySelectorAll('.filter')
+  for (const filter of filters) {
+  filter.addEventListener('click', function(event) {
+    filter.classList.toggle("deselected-filter");
+  })
+}
+
 });
 
 
