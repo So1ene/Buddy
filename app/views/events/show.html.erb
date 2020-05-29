@@ -1,22 +1,17 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+
 <h1 class="page-title">BUDDY</h1>
+
 <div class="container pt-5">
 <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
-
   <div class="cards">
-    <p>Event: <%= @event.name %></p>
-    <p>Date: <%= @event.date_time.strftime("%m/%d/%Y") %></p>
-    <p>Time: <%= @event.date_time.strftime("%I:%M%p") %></p>
-    <p>Address: <%= @event.address %></p>
-    <p>Ticket Url: <%= @event.ticket_url %></p>
-    <p>Description: <%= @event.description %></p>
+    <p><%= @event.name %></p>
+    <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
+    <p><%= @event.date_time.strftime("%I:%M%p") %></p>
+    <p><%= @event.address %></p>
+    <p><%= @event.ticket_url %></p>
+    <p><%= @event.description %></p>
   </div>
-
-
-
-
-
-
 </div>
