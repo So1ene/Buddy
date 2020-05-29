@@ -146,6 +146,7 @@ def generate_events
     end
   end
 
+  counter = 0
   User.all.each do |user|
     3.times do
       event = Event.new(user: user,
