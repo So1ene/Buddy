@@ -20,7 +20,7 @@
         <div class="card-info">
           <p>Address: <%= request.event.address  %> </p>
           <p> <%= request.event.date_time %> </p>
-
+          <p> <%= request.motivation %> </p>
         </div>
 
         <div class="category-container">
@@ -43,11 +43,9 @@
           <% end %>
         </div>
       <% elsif request.accepted? %>
-        <span class="green-text font-weight-bold mt-3"><%= request.status %></span>
+        <span class="green-text font-weight-bold mt-3" style="color:MediumSeaGreen;"><%= request.status %></span>
       <% elsif request.declined? %>
-        <span class="red-text font-weight-bold mt-3"><%= request.status %></span>
-      <% else %>
-      Hello!
+        <span class="red-text font-weight-bold mt-3" style="color:Tomato;"><%= request.status %></span>
       <% end %>
     </div>
   </div>
