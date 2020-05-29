@@ -2,9 +2,8 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title">BUDDY</h1>
+
 <div class="container">
-
-
 
   <h1>TO-DO: Filters</h1>
 
@@ -13,23 +12,25 @@
   <h1>TO-DO: Search bar</h1>
   <br />
 
-
   <h2>Closest to you:</h2>
   <div class="d-flex flex-column-reverse">
     <% @events.each do |event|  %>
       <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
       <%= link_to event_path(event) do %>
-        <div class="cards my-4 shadow">
-          <p>Event name: <%= event.name  %></p>
-        <% end %>
-          <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
-          <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
-          <p>Address: <%= event.address %></p>
+
+      <div class="card d-flex flex-row m-2 shadow">
+        <div style="max-width: 350px; max-height: 300px;">
+          <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
         </div>
+
+        <div class="m-3">
+          <p><%= event.name  %></p>
+        <% end %>
+          <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
+          <p><%= event.date_time.strftime("%I:%M%p") %></p>
+          <p><%= event.address %></p>
+        </div>
+      </div>
     <% end %>
   </div>
-
-
-
-
 </div>
