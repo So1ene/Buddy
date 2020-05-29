@@ -5,13 +5,15 @@
 <h1 class="page-title">BUDDY</h1>
 
 <div class="container pt-5">
-<%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
-  <div class="cards">
-    <p><%= @event.name %></p>
-    <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
-    <p><%= @event.date_time.strftime("%I:%M%p") %></p>
-    <p><%= @event.address %></p>
-    <p><%= @event.ticket_url %></p>
-    <p><%= @event.description %></p>
-  </div>
+  <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
+    <div class="cards">
+      <p><%= @event.name %></p>
+      <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
+      <p><%= @event.date_time.strftime("%I:%M%p") %></p>
+      <p><%= @event.address %></p>
+      <p><%= @event.ticket_url %></p>
+      <p><%= @event.description %></p>
+    </div>
+
+<%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
 </div>
