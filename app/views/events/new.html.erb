@@ -14,6 +14,7 @@
       <%= f.input :photo, placeholder: 'photo', label: false %>
       <%= f.input :date_time, label: false %>
       <%= f.input :address, placeholder: 'Address', label: false %>
+
       <h2>Pick your category:</h2>
 <div class="d-flex">
 <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
