@@ -166,7 +166,6 @@ def generate_events
       EventCategory.create!(event: event, category: Category.find(first_id))
       EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
       EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-      end
     end
   end
 
