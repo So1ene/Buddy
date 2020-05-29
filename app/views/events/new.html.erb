@@ -20,12 +20,26 @@
 
     <h2>Category</h2>
 
-    <%= simple_form_for @event do |f| %>
-      <%= f.input :ticket_url, placeholder: 'Ticket URL', label:false %>
-      <%= f.input :description, placeholder: 'Description of event', label:false %>
-      <%= f.submit 'Save' %>
-    <% end %>
+    <div class="categories mt-2 mb-2">
 
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item">outdoors</li>
+        <li class="list-group-item">live music</li>
+        <li class="list-group-item">theatre</li>
+        <li class="list-group-item">just drinks</li>
+        <li class="list-group-item">festival</li>
+        <li class="list-group-item">sports</li>
+        <li class="list-group-item">other</li>
+      </ul>
+    </div>
+
+    <div class="description mt-3">
+      <%= simple_form_for @event do |f| %>
+        <%= f.input :ticket_url, placeholder: 'Ticket URL', label:false %>
+        <%= f.input :description, placeholder: 'Description of event', label:false %>
+        <%= f.submit 'Save' %>
+      <% end %>
+    </div>
   </div>
 
 
