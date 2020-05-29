@@ -4,8 +4,9 @@
 
 <h1 class="page-title">BUDDY</h1>
 
-<div class="container pt-5">
-  <%= cl_image_tag @event.photo.key, class: "w-100 py-5" %>
+<div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;">
+<div class="card-body">
+  <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
     <div class="cards">
       <p><%= @event.name %></p>
       <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
@@ -15,5 +16,6 @@
       <p><%= @event.description %></p>
     </div>
 
-<%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
+  <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
+  </div>
 </div>
