@@ -8,12 +8,18 @@
 
   <div class="cards">
 
-    <% @events.each do |event| %>
-      <p><%= event.name %></p>
-      <p><%= event.address %></p>
-      <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
-      <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
+  <div class="d-flex flex-column-reverse">
+    <% @events.each do |event|  %>
+      <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+        <div class="cards my-4 shadow">
+          <p>Event name: <%= event.name  %></p>
+          <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
+          <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
+          <p>Address: <%= event.address %></p>
+          <%= link_to 'Choose me!', '#' %>
+        </div>
     <% end %>
+  </div>
 
   </div>
 </div>

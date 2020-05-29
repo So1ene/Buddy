@@ -20,11 +20,19 @@
 
 <h2>Coming up:</h2>
 
-<ul>
-  <% @events.each do |event| %>
-    <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
-  <% end %>
-</ul>
+  <div class="d-flex flex-column-reverse">
+    <% @events.each do |event|  %>
+      <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+      <%= link_to event_path(event) do %>
+        <div class="cards my-4 shadow">
+          <p>Event name: <%= event.name  %></p>
+          <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
+          <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
+          <p>Address: <%= event.address %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
 
 

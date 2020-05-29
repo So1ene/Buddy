@@ -2,9 +2,8 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title">BUDDY</h1>
-<div class="container">
-
-
+<div class="container pt-5">
+<%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
 
   <div class="cards">
     <p>Event: <%= @event.name %></p>

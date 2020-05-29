@@ -12,6 +12,7 @@
 
 <%= form_for @user, url: root_path, method: :patch do |f| %>
   <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
+  <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
 <% end %>
 
 

@@ -10,18 +10,24 @@
 
   <%= render partial: "calendar", locals: { events: @events } %>
 
-  <%= link_to "..(Select a date)", events_path %>
   <h1>TO-DO: Search bar</h1>
   <br />
 
 
   <h2>Closest to you:</h2>
-  <p>TO-DO: sort by closest to you if search bar is empty, else call the above h2 "Search results" and display search results below</p>
-  <ul>
-    <% @events.each do |event| %>
-      <li><%= link_to "event card for event: #{event.name}", event_path(event) %></li>
+  <div class="d-flex flex-column-reverse">
+    <% @events.each do |event|  %>
+      <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+      <%= link_to event_path(event) do %>
+        <div class="cards my-4 shadow">
+          <p>Event name: <%= event.name  %></p>
+          <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
+          <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
+          <p>Address: <%= event.address %></p>
+        </div>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 
 
 
