@@ -21,11 +21,11 @@
       <%= link_to event_path(event) do %>
         <div class="cards my-4 shadow">
           <p>Event name: <%= event.name  %></p>
+        <% end %>
           <p>Date: <%= event.date_time.strftime("%m/%d/%Y") %></p>
           <p>Time: <%= event.date_time.strftime("%I:%M%p") %></p>
           <p>Address: <%= event.address %></p>
         </div>
-      <% end %>
     <% end %>
   </div>
 
