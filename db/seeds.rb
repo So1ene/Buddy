@@ -190,7 +190,7 @@ def generate_events
       event = Event.new(user: user,
                         name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today + 13, to: Date.today + 30, period: :day),
-                        address: Faker::Address.street_address + ", Montreal QC,
+                        address: Faker::Address.street_address + ", Montreal QC",
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
