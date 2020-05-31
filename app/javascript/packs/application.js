@@ -25,48 +25,16 @@ require("channels")
 // External imports
 import "bootstrap";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+// Internal imports
+import { navbar } from '../components/navbar';
+import { filters } from '../components/filters';
+
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  // Call your functions here
 
-
-
-  // Navbar
-
-  const body = document.getElementById('body');
-  const openMenu = document.getElementById('menuControlOpen');
-  const closeMenu = document.getElementById('menuControlClose');
-  const dimBackground = document.getElementById('dim-background')
-
-  openMenu.addEventListener('click', function(e) {
-  body.classList.toggle('menu--active');
-  dimBackground.classList.remove("hide-dim-background");
-  dimBackground.classList.add("show-dim-background");
-  });
-
-  closeMenu.addEventListener('click', function(e) {
-  body.classList.toggle('menu--active');
-  dimBackground.classList.remove("show-dim-background");
-  dimBackground.classList.add("hide-dim-background");
-  });
-
-  dimBackground.addEventListener('click', function(e) {
-  body.classList.toggle('menu--active');
-  dimBackground.classList.remove("show-dim-background");
-  dimBackground.classList.add("hide-dim-background");
-  });
-
-  // Filters
-
-  const filters = document.querySelectorAll('.filter')
-  for (const filter of filters) {
-  filter.addEventListener('click', function(event) {
-    filter.classList.toggle("deselected-filter");
-  })
-}
+  navbar();
+  filters();
 
 });
 
