@@ -102,10 +102,10 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event8_vfvett.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg"]
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
 end
@@ -149,10 +149,10 @@ def event_name(counter)
   return "Pink Party" if counter == 17
   return "Surfing" if counter == 18
   return "Rave" if counter == 19
-  return "Light Garden" if counter == 20
-  return "Theme Park" if counter == 21
-  return "Open Mic Night" if counter == 22
-  return "Hike with Me" if counter == 23
+  return "Hike with Me" if counter == 20
+  return "Light Garden" if counter == 21
+  return "Theme Park" if counter == 22
+  return "Open Mic Night" if counter == 23
 end
 
 
