@@ -82,18 +82,30 @@ end
 # => Getting ready to generate events
 
 def attach_image(event, counter)
-  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event9_l50xz0.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event11_yejiuj.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event6_huhh2b.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event12_cnifny.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event5_swmkbh.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event1_m9i2h6.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event7_odrnin.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
-                   "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg"]
+  event_urls = ["https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event9_l50xz0.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event11_yejiuj.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event6_huhh2b.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event12_cnifny.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event5_swmkbh.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event1_m9i2h6.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event7_odrnin.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event2_w7znmo.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event4_xokpx4.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event2_mpz94s.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event1_ltudjt.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event9_hmkdqm.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event6_zeu3nn.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event8_vfvett.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
 end
@@ -116,6 +128,34 @@ def generate_categories
   puts ""
 end
 
+def event_name(counter)
+  return "Fireworks" if counter == 0
+  return "Movie Theater" if counter == 1
+  return "Golfing" if counter == 2
+  return "Lion King Show" if counter == 3
+  return "Concert" if counter == 4
+  return "Football Match" if counter == 5
+  return "Karaoke Night" if counter == 6
+  return "Pink Party" if counter == 7
+  return "Just Drinks" if counter == 8
+  return "Dinner at Herbert's" if counter == 9
+  return "Summer festival" if counter == 10
+  return "Beach relaxation" if counter == 11
+  return "Ice Skating" if counter == 12
+  return "Skiing" if counter == 13
+  return "Hot-Air Balloon Ride" if counter == 14
+  return "Theater Show" if counter == 15
+  return "Downtown Fun" if counter == 16
+  return "Pink Party" if counter == 17
+  return "Surfing" if counter == 18
+  return "Rave" if counter == 19
+  return "Light Garden" if counter == 20
+  return "Theme Park" if counter == 21
+  return "Open Mic Night" if counter == 22
+  return "Hike with Me" if counter == 23
+end
+
+
 # => Generate events
 
 def generate_events
@@ -127,9 +167,9 @@ def generate_events
   User.all.each do |user|
     3.times do
       event = Event.new(user: user,
-                        name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today - 30, to: Date.today - 14, period: :day),
-                        address: Faker::Address.full_address,
+                        name: event_name(counter),
+                        date_time: Faker::Time.between_dates(from: Date.today - 5, to: Date.today + 12, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC",
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
@@ -145,14 +185,12 @@ def generate_events
       EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
     end
   end
-
-  counter = 0
   User.all.each do |user|
     3.times do
       event = Event.new(user: user,
-                        name: Faker::Lorem.sentence(word_count: 2),
-                        date_time: Faker::Time.between_dates(from: Date.today - 14, to: Date.today + 1, period: :day),
-                        address: Faker::Address.street_address,
+                        name: event_name(counter),
+                        date_time: Faker::Time.between_dates(from: Date.today + 13, to: Date.today + 30, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC,
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
@@ -170,7 +208,7 @@ def generate_events
   end
 
   puts ""
-  puts "> Gave each user 3 events"
+  puts "> Gave each user 6 events"
   puts ""
   puts "> Attached pictures to events"
   puts "> Attached categories to events"
