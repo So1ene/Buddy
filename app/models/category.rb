@@ -18,7 +18,7 @@ class Category < ApplicationRecord
       when "theater"
         "#855BCE"
       when "festival"
-        "#DA9C91"
+        "#F87ABF"
       when "other"
         "#3E484A"
     end

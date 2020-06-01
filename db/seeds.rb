@@ -79,6 +79,7 @@ def generate_users
   puts ""
 end
 
+
 # => Getting ready to generate events
 
 def attach_image(event, counter)
@@ -146,7 +147,7 @@ def event_name(counter)
   return "Hot-Air Balloon Ride" if counter == 14
   return "Theater Show" if counter == 15
   return "Downtown Fun" if counter == 16
-  return "Pink Party" if counter == 17
+  return "Pink After-Party" if counter == 17
   return "Surfing" if counter == 18
   return "Rave" if counter == 19
   return "Hike with Me" if counter == 20
@@ -170,7 +171,7 @@ def generate_events
                         name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 5, to: Date.today + 12, period: :day),
                         address: Faker::Address.street_address + ", Montreal QC",
-                        description: Faker::Lorem.sentence(word_count: rand(20))
+                        description: Faker::Lorem.sentence(word_count: rand(20)),
                         )
       attach_image(event, counter)
       event.save!
@@ -214,6 +215,71 @@ def generate_events
   puts "> Attached categories to events"
   puts ""
 end
+
+
+# => Fix categories
+
+def fix_categories
+  # Category.create!(name: "outdoors", id: 1)
+  # Category.create!(name: "live music", id: 2)
+  # Category.create!(name: "food", id: 3)
+  # Category.create!(name: "drinks", id: 4)
+  # Category.create!(name: "sports", id: 5)
+  # Category.create!(name: "theater", id: 6)
+  # Category.create!(name: "festival", id: 7)
+  # Category.create!(name: "other", id: 8)
+  EventCategory.destroy_all
+  EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "festival"))
+  EventCategory.create!(event: Event.find_by(name: "Movie Theater"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Golfing"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Golfing"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Lion King Show"), category: Category.find_by(name: "theater"))
+  EventCategory.create!(event: Event.find_by(name: "Lion King Show"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Concert"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Concert"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Concert"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Pink Party"), category: Category.find_by(name: "food"))
+  EventCategory.create!(event: Event.find_by(name: "Pink Party"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Pink Party"), category: Category.find_by(name: "festival"))
+  EventCategory.create!(event: Event.find_by(name: "Just Drinks"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Dinner at Herbert's"), category: Category.find_by(name: "food"))
+  EventCategory.create!(event: Event.find_by(name: "Dinner at Herbert's"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Summer festival"), category: Category.find_by(name: "festival"))
+  EventCategory.create!(event: Event.find_by(name: "Summer festival"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Beach relaxation"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Ice Skating"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Skiing"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Skiing"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Hot-Air Balloon Ride"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Hot-Air Balloon Ride"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Theater Show"), category: Category.find_by(name: "theater"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Pink After-Party"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Pink After-Party"), category: Category.find_by(name: "food"))
+  EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
+end
+
 
 # => Generate requests
 
@@ -289,6 +355,7 @@ generate_languages
 generate_users
 generate_categories
 generate_events
+fix_categories
 generate_requests
 generate_accepted_requests
 generate_messages
