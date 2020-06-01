@@ -9,6 +9,9 @@ class PagesController < ApplicationController
     @events = Event.where("address ILIKE ?", "%#{current_user.search_location}%")
     @categories = Category.all
     @search_results = Event.where("name ILIKE ?", "%#{params[:query]}%")
+    if params[:categories].present?
+      @events = @events.joins(:categories).where(categories: {name: params[:categories]})
+    end
   end
 
   def welcome
