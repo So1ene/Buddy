@@ -14,10 +14,9 @@
           <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
         </div>
         <div class="m-3">
-          <p><%= event.name  %></p>
+          <h2 style="margin: 0"><strong><%= event.name %></h2></strong>
         <% end %>
-          <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
-          <p><%= event.date_time.strftime("%I:%M%p") %></p>
+          <p style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></p>
           <p><%= event.address %></p>
           <%= link_to 'Choose your Buddy!', incoming_requests_path(event), class: "btn btn-primary mb-3" %>
         </div>
