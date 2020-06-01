@@ -6,6 +6,9 @@
 <div class="container">
 <h1 class="py-3">Search events:</h1>
 
+  <% if @events.length == 0 %>
+    <p class="py-5">No events listed for "<%= current_user.search_location %>"</p>
+  <% end %>
 
   <div class="d-flex">
     <span class="filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
@@ -31,9 +34,7 @@
                 <%= submit_tag "Search", class: "btn btn-primary mb-3" %>
               <% end %>
 
-  <% if @events.length == 0 %>
-    <p>No results for "<%= current_user.search_location %>"</p>
-  <% else %>
+  <% if @events.length > 0 %>
     <% if @search_results.length == 0 && params[:query] != "" && params[:query] != nil%>
       <p>No results for "<%= params[:query] %>"</p>
     <% end %>
