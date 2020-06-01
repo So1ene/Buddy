@@ -1,28 +1,49 @@
-<%= link_to inbox_path, class: "back-button" do %>
+<%= link_to messages_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
 <h1 class="page-title">Name of Person</h1>
 <div class="container">
-  <div class="card p-3 m-3 align-items-center">
+  <div class="card p-1 m-1 align-items-center">
     <h4>You are now buddies for</h4><br>
     <h4><%= @event.name %>!</h4>
     <div>
-      <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
+      <%= cl_image_tag(@user.photo.key, class: "avatar") %>
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
     </div>
     <p>Start your conversation below</p>
   </div>
 
-  <div class="card d-flex flex-row m-2" style="width: 300px;">
+  <div class="container">
+  <div id="messages">
+    <% @messages.each do |message| %>
+      <div class="message-container" id="message-<%= message.id %>">
+        <i class="author">
+          <span><%= message.sender.first_name %></span>
+          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+        </i>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+
+<%= simple_form_for [ @event, @user, @message ] do |f| %>
+  <%= f.input :content, label: false, placeholder: "Message #{@user.first_name}" %>
+  <%= f.submit %>
+<% end %>
+
+</div>
+
+
+<!--   <div class="card d-flex flex-row m-2" style="width: 300px;">
     <div class="card p-2 m-2">
-      <%= cl_image_tag(@event.user.photo.key, class: "avatar") %>
-      <%= Time.now.strftime("%I:%M %P") %>
+      <%#= cl_image_tag(@event.user.photo.key, class: "avatar") %>
+      <%#= Time.now.strftime("%I:%M %P") %>
     </div>
 
     <div class="card p-2 m-2 flex-grow-1">
       <strong><%= @event.user.first_name %></strong>
-      <%= @message.content %>
+      <%#= @message.content %>
     </div>
   </div>
 
@@ -33,9 +54,9 @@
     </div>
 
     <div class="card p-2 m-2">
-      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
-      <%= Time.now.strftime("%I:%M %P") %>
+      <%#= cl_image_tag(current_user.photo.key, class: "avatar") %>
+      <%#= Time.now.strftime("%I:%M %P") %>
     </div>
-  </div>
+  </div> -->
 
 </div>

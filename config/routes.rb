@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   resources :events, except: [:edit, :update] do
     resources :requests, only: [:new, :create]
+    resources :users, only: [] do
+      resources :messages, only: [:create]
+    end
   end
 
   get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
@@ -14,7 +17,7 @@ Rails.application.routes.draw do
 
   get '/inbox', to: 'messages#index', as: 'messages'
   get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
-  post '/inbox', to: 'messages#create'
+
 
   get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
   get '/welcome', to: 'pages#welcome', as: 'welcome'
@@ -22,7 +25,6 @@ Rails.application.routes.draw do
   patch '/', to: 'pages#update_location'
 
   root to: 'pages#home'
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
 
