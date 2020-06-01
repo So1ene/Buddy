@@ -3,26 +3,13 @@
 <div class="container">
 
   <div class="py-3"><p></p></div>
-
 <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large mt-3" %>
-
-
 <h1 class="mt-4 mb-5">Hi <%= @user.first_name %></h1>
-
 <h2 class="mb-3 mt-2">Search for an event</h2>
-
-
 <%= form_for @user, url: root_path, method: :patch do |f| %>
   <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
   <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
 <% end %>
-
-
 <h2 class="mt-5">or</h2>
-
-
 <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5" %>
-
-
-
 </div>

@@ -6,7 +6,7 @@
 
   <% if @events.length == 0 %>
       <div class="py-3"><p></p></div>
-    <h3 class="mt-4 mb-5">No events listed for <%= current_user.search_location %>... :(</h3>
+    <h3 class="mt-4 mb-5">No events listed at the location "<%= current_user.search_location %>"... :(</h3>
     <h2 class="mb-3 mt-2">Try again</h2>
     <%= form_for @user, url: root_path, method: :patch do |f| %>
       <%= f.text_field :search_location, placeholder: 'Input another location', value: "", label:false %>
