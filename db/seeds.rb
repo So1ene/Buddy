@@ -104,9 +104,9 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg"]
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
 end
@@ -128,6 +128,18 @@ def generate_categories
   puts "> Created 8 categories"
   puts ""
 end
+
+def assign_random_categories(event)
+  first_id = rand(1..8)
+  random = rand(1..8)
+  second_id = random unless random == first_id
+  random = rand(1..8)
+  third_id = random unless random == first_id || random == second_id
+  EventCategory.create!(event: event, category: Category.find(first_id))
+  EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+  EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
+end
+
 
 def event_name(counter)
   return "Fireworks" if counter == 0
@@ -151,84 +163,15 @@ def event_name(counter)
   return "Surfing" if counter == 18
   return "Rave" if counter == 19
   return "Hike with Me" if counter == 20
-  return "Light Garden" if counter == 21
-  return "Theme Park" if counter == 22
-  return "Open Mic Night" if counter == 23
-end
-
-
-# => Generate events
-
-def generate_events
-  Event.destroy_all
-  puts ""
-  puts "> Destroyed all events"
-
-  counter = 0
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: event_name(counter),
-                        date_time: Faker::Time.between_dates(from: Date.today - 5, to: Date.today + 12, period: :day),
-                        address: Faker::Address.street_address + ", Montreal QC",
-                        description: Faker::Lorem.sentence(word_count: rand(20)),
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: event_name(counter),
-                        date_time: Faker::Time.between_dates(from: Date.today + 13, to: Date.today + 30, period: :day),
-                        address: Faker::Address.street_address + ", Montreal QC",
-                        description: Faker::Lorem.sentence(word_count: rand(20))
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-
-  puts ""
-  puts "> Gave each user 6 events"
-  puts ""
-  puts "> Attached pictures to events"
-  puts "> Attached categories to events"
-  puts ""
+  return "Open Mic Night" if counter == 21
+  return "Light Garden" if counter == 22
+  return "Theme Park" if counter == 23
 end
 
 
 # => Fix categories
 
 def fix_categories
-  # Category.create!(name: "outdoors", id: 1)
-  # Category.create!(name: "live music", id: 2)
-  # Category.create!(name: "food", id: 3)
-  # Category.create!(name: "drinks", id: 4)
-  # Category.create!(name: "sports", id: 5)
-  # Category.create!(name: "theater", id: 6)
-  # Category.create!(name: "festival", id: 7)
-  # Category.create!(name: "other", id: 8)
-  EventCategory.destroy_all
   EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "festival"))
   EventCategory.create!(event: Event.find_by(name: "Movie Theater"), category: Category.find_by(name: "other"))
@@ -272,12 +215,59 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
+end
+
+
+
+# => Generate events
+
+def generate_events
+  Event.destroy_all
+  puts ""
+  puts "> Destroyed all events"
+
+  counter = 0
+  User.all.each do |user|
+    6.times do
+      event = Event.new(user: user,
+                        name: Faker::TvShows::Simpsons.location,
+                        date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC",
+                        description: Faker::Lorem.sentence(word_count: rand(20)),
+                        )
+      attach_image(event, counter)
+      event.save!
+      counter += 1
+      assign_random_categories(Event.last)
+    end
+  end
+  counter = 0
+  User.all.each do |user|
+    6.times do
+      event = Event.new(user: user,
+                        name: event_name(counter),
+                        date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC",
+                        description: Faker::Lorem.sentence(word_count: rand(20))
+                        )
+      attach_image(event, counter)
+      event.save!
+      counter += 1
+    end
+  end
+
+  puts ""
+  puts "> Gave each user 6 events"
+  puts ""
+  puts "> Attached pictures to events"
+  puts "> Attached categories to events"
+  puts ""
 end
 
 
@@ -334,18 +324,18 @@ def generate_messages
 end
 
 def generate_accepted_requests
-  Request.find_by(user_id: 1, event: Event.where(user_id: 2).first).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 3).first).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 4).first).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 1).first).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 3).second).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 4).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 1).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 2).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 4).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 1).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 2).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 3).third).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 2)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 3)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 1)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 3)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 4)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 1)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 2)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 4)[8]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 1)[8]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 2)[8]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 3)[8]).update(status: "Accepted")
   puts ""
   puts "> Generated some accepted requests (to test inbox)"
   puts ""

@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   get '/events/pending', to: 'events#my_events', as: 'my_events'
   get '/events/:id/delete', to: 'events#delete', as: 'delete_event'
 
-  resources :events, except: [:edit, :update] do
+  resources :events, except: [:edit] do
     resources :requests, only: [:new, :create]
     resources :users, only: [] do
       resources :messages, only: [:create]
     end
   end
+  get '/requests/:id/delete', to: 'requests#delete', as: 'delete_request'
 
   get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
   get '/events/:event_id/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'

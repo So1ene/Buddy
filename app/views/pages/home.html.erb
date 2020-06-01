@@ -2,13 +2,21 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title">BUDDY</h1>
-
 <div class="container">
-<h1 class="py-3">Search events:</h1>
 
   <% if @events.length == 0 %>
-    <p class="py-5">No events listed for "<%= current_user.search_location %>"</p>
-  <% end %>
+      <div class="py-3"><p></p></div>
+    <h3 class="mt-4 mb-5">No events listed at the location "<%= current_user.search_location %>"... :(</h3>
+    <h2 class="mb-3 mt-2">Try again</h2>
+    <%= form_for @user, url: root_path, method: :patch do |f| %>
+      <%= f.text_field :search_location, placeholder: 'Input another location', value: "", label:false %>
+      <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
+    <% end %>
+    <h2 class="mt-5">or</h2>
+    <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5" %>
+  <% else %>
+
+<h1 class="py-3">Search events:</h1>
 
   <div class="d-flex">
     <span class="filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
@@ -42,45 +50,16 @@
       <h2 class="mt-5">Search results:</h2>
       <div class="d-flex flex-column-reverse">
         <% @search_results.each do |event|  %>
-          <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
-          <%= link_to event_path(event) do %>
-
-          <div class="card d-flex flex-row m-2 shadow">
-            <div style="max-width: 350px; max-height: 300px;">
-              <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
-            </div>
-
-            <div class="m-3">
-              <p><%= event.name  %></p>
-            <% end %>
-              <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
-              <p><%= event.date_time.strftime("%I:%M%p") %></p>
-              <p><%= event.address %></p>
-            </div>
-          </div>
+          <%= render partial: "event_card", locals: { event: event } %>
         <% end %>
       </div>
     <% end %>
     <h2 class="mt-5">Closest to you:</h2>
     <div class="d-flex flex-column-reverse">
       <% @events.each do |event|  %>
-        <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
-        <%= link_to event_path(event) do %>
-
-        <div class="card d-flex flex-row m-2 shadow">
-          <div style="max-width: 350px; max-height: 300px;">
-            <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
-          </div>
-
-          <div class="m-3">
-            <p><%= event.name  %></p>
-          <% end %>
-            <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
-            <p><%= event.date_time.strftime("%I:%M%p") %></p>
-            <p><%= event.address %></p>
-          </div>
-        </div>
+        <%= render partial: "event_card", locals: { event: event } %>
       <% end %>
     </div>
+  <% end %>
   <% end %>
 </div>
