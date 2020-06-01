@@ -19,8 +19,8 @@
           <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
           <p><%= event.date_time.strftime("%I:%M%p") %></p>
           <p><%= event.address %></p>
-          <%= link_to 'Choose a Buddy!', incoming_requests_path(event) %>
-        </div> 
+          <%= link_to 'Choose your Buddy!', incoming_requests_path(event), class: "btn btn-primary mb-3" %>
+        </div>
       </div>
     <% end %>
   </div>
