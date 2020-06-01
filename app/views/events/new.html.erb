@@ -30,12 +30,12 @@
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
         </div>
 
-      <div class="description mt-3">
-          <%= f.input :ticket_url, placeholder: 'Ticket URL (optional)', required: false, label: false %>
-          <%= f.input :description, placeholder: 'Add a description to your event', label: false %>
-          <%= f.submit 'Save' %>
-        <% end %>
-      </div>
+        <div class="description mt-3">
+            <%= f.input :ticket_url, placeholder: 'Ticket URL (optional)', required: false, label: false %>
+            <%= f.input :description, placeholder: 'Add a description to your event', label: false %>
+            <%= f.submit 'Save', class: "btn btn-primary" %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
