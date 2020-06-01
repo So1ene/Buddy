@@ -129,6 +129,18 @@ def generate_categories
   puts ""
 end
 
+def assign_random_categories(event)
+  first_id = rand(1..8)
+  random = rand(1..8)
+  second_id = random unless random == first_id
+  random = rand(1..8)
+  third_id = random unless random == first_id || random == second_id
+  EventCategory.create!(event: event, category: Category.find(first_id))
+  EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
+  EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
+end
+
+
 def event_name(counter)
   return "Fireworks" if counter == 0
   return "Movie Theater" if counter == 1
@@ -157,78 +169,9 @@ def event_name(counter)
 end
 
 
-# => Generate events
-
-def generate_events
-  Event.destroy_all
-  puts ""
-  puts "> Destroyed all events"
-
-  counter = 0
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: event_name(counter),
-                        date_time: Faker::Time.between_dates(from: Date.today - 5, to: Date.today + 12, period: :day),
-                        address: Faker::Address.street_address + ", Montreal QC",
-                        description: Faker::Lorem.sentence(word_count: rand(20)),
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-  User.all.each do |user|
-    3.times do
-      event = Event.new(user: user,
-                        name: event_name(counter),
-                        date_time: Faker::Time.between_dates(from: Date.today + 13, to: Date.today + 30, period: :day),
-                        address: Faker::Address.street_address + ", Montreal QC",
-                        description: Faker::Lorem.sentence(word_count: rand(20))
-                        )
-      attach_image(event, counter)
-      event.save!
-      counter += 1
-      first_id = rand(1..8)
-      random = rand(1..8)
-      second_id = random unless random == first_id
-      random = rand(1..8)
-      third_id = random unless random == first_id || random == second_id
-      EventCategory.create!(event: event, category: Category.find(first_id))
-      EventCategory.create!(event: event, category: Category.find(second_id)) unless second_id.nil?
-      EventCategory.create!(event: event, category: Category.find(third_id)) unless third_id.nil?
-    end
-  end
-
-  puts ""
-  puts "> Gave each user 6 events"
-  puts ""
-  puts "> Attached pictures to events"
-  puts "> Attached categories to events"
-  puts ""
-end
-
-
 # => Fix categories
 
 def fix_categories
-  # Category.create!(name: "outdoors", id: 1)
-  # Category.create!(name: "live music", id: 2)
-  # Category.create!(name: "food", id: 3)
-  # Category.create!(name: "drinks", id: 4)
-  # Category.create!(name: "sports", id: 5)
-  # Category.create!(name: "theater", id: 6)
-  # Category.create!(name: "festival", id: 7)
-  # Category.create!(name: "other", id: 8)
-  EventCategory.destroy_all
   EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Fireworks"), category: Category.find_by(name: "festival"))
   EventCategory.create!(event: Event.find_by(name: "Movie Theater"), category: Category.find_by(name: "other"))
@@ -278,6 +221,53 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
   EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
+end
+
+
+
+# => Generate events
+
+def generate_events
+  Event.destroy_all
+  puts ""
+  puts "> Destroyed all events"
+
+  counter = 0
+  User.all.each do |user|
+    6.times do
+      event = Event.new(user: user,
+                        name: Faker::TvShows::Simpsons.location,
+                        date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC",
+                        description: Faker::Lorem.sentence(word_count: rand(20)),
+                        )
+      attach_image(event, counter)
+      event.save!
+      counter += 1
+      assign_random_categories(Event.last)
+    end
+  end
+  counter = 0
+  User.all.each do |user|
+    6.times do
+      event = Event.new(user: user,
+                        name: event_name(counter),
+                        date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
+                        address: Faker::Address.street_address + ", Montreal QC",
+                        description: Faker::Lorem.sentence(word_count: rand(20))
+                        )
+      attach_image(event, counter)
+      event.save!
+      counter += 1
+    end
+  end
+
+  puts ""
+  puts "> Gave each user 6 events"
+  puts ""
+  puts "> Attached pictures to events"
+  puts "> Attached categories to events"
+  puts ""
 end
 
 
