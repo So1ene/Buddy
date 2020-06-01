@@ -20,12 +20,17 @@
     <div class="form-group">
         <%= f.label "Profile picture" %>
         <%= f.file_field :photo,
-                    required: false,
-                    input_html: { autocomplete: "Last name" } %>
-        </div>
+                    required: false %>
+    </div>
     <%= f.input :bio,
                 required: true,
                 input_html: { autocomplete: "Tell us about yourself!" }%>
+    <%= f.input :living_in,
+                required: true,
+                input_html: { autocomplete: "" }%>
+    <%= f.input :language_ids,
+                required: false,
+                collection: Language.all, input_html: { multiple: true } %>  
     <%= f.input :email,
                 required: true,
                 input_html: { autocomplete: "email" }%>

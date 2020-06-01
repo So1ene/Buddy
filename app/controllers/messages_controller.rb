@@ -9,19 +9,22 @@ class MessagesController < ApplicationController
     # => GET    /inbox/:user_id
     @message = Message.new
     @event = Event.find(params[:event])
+    @user = User.find(params[:user_id])
+    @messages = Message.where("(sender_id = :user AND receiver_id = :other_user) OR (sender_id = :other_user AND receiver_id = :user)", user: current_user, other_user: @user).order(created_at: :asc)
   end
 
   def create
-    # => POST    /inbox
-    #@chatroom = Chatroom.find(params[:chatroom_id])
+    # => POST    /user/user_id/messages
+    @user = User.find(params[:user_id])
     @message = Message.new(message_params)
-    #@message.chatroom = @chatroom
-    @message.user = current_user
-    #if @message.save
-      #redirect_to chatroom_path(@chatroom)
-    #else
-      #render "inbox/new"
-    #end
+    @message.receiver = @user
+    @message.sender = current_user
+    @event = Event.find(params[:event_id])
+    if @message.save!
+      redirect_to new_message_path(@user, event: @event.id)
+    else
+      render :new
+    end
   end
 
 

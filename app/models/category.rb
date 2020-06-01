@@ -6,21 +6,21 @@ class Category < ApplicationRecord
   def color
     case name
       when "outdoors"
-        "#007782"
+        "#2EC5A6"
       when "live music"
-        "#FF7662"
+        "#1B98ED"
       when "food"
-        "#FF4E40"
+        "#F7B576"
       when "drinks"
-        "#007B70"
+        "#C64834"
       when "sports"
-        "#00C6B4"
+        "#427434"
       when "theater"
-        "#FFA899"
+        "#855BCE"
       when "festival"
-        "#FD8377"
+        "#F87ABF"
       when "other"
-        "#003B41"
+        "#3E484A"
     end
   end
 end

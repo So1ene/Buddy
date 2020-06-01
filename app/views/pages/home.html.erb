@@ -6,6 +6,9 @@
 <div class="container">
   <h1 class="py-3">Search events:</h1>
 
+  <% if @events.length == 0 %>
+    <p class="py-5">No events listed for "<%= current_user.search_location %>"</p>
+  <% end %>
 
   <div class="d-flex">
     <span class="filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
@@ -19,30 +22,65 @@
     <span class="filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
     <span class="filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
   </div>
-
+  <div class="calendar-location mt-3" id="calendar-top"><%= current_user.search_location %></div>
   <%= render partial: "calendar", locals: { events: @events } %>
+  <div class="my-2"></div>
 
-  <h1>TO-DO: Search bar</h1>
+<%= form_tag "#calendar-top", method: :get, class: "d-flex" do %>
+   <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Search by keyword" %>
+                <%= submit_tag "Search", class: "btn btn-primary mb-3" %>
+              <% end %>
 
-  <h2>Closest to you:</h2>
-  <div class="d-flex flex-column-reverse">
-    <% @events.each do |event|  %>
-      <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
-      <%= link_to event_path(event) do %>
+  <% if @events.length > 0 %>
+    <% if @search_results.length == 0 && params[:query] != "" && params[:query] != nil%>
+      <p>No results for "<%= params[:query] %>"</p>
+    <% end %>
+    <% if @search_results.length > 0 && params[:query] != "" && params[:query] != nil%>
+      <h2 class="mt-5">Search results:</h2>
+      <div class="d-flex flex-column-reverse">
+        <% @search_results.each do |event|  %>
+          <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+          <%= link_to event_path(event) do %>
 
-      <div class="card d-flex flex-row m-2 shadow">
-        <div style="max-width: 350px; max-height: 300px;">
-          <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
-        </div>
+          <div class="card d-flex flex-row m-2 shadow">
+            <div style="max-width: 350px; max-height: 300px;">
+              <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
+            </div>
 
-        <div class="m-3">
-          <p><%= event.name  %></p>
+            <div class="m-3">
+              <p><%= event.name  %></p>
+            <% end %>
+              <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
+              <p><%= event.date_time.strftime("%I:%M%p") %></p>
+              <p><%= event.address %></p>
+            </div>
+          </div>
         <% end %>
-          <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
-          <p><%= event.date_time.strftime("%I:%M%p") %></p>
-          <p><%= event.address %></p>
-        </div>
       </div>
     <% end %>
-  </div>
+    <h2 class="mt-5">Closest to you:</h2>
+    <div class="d-flex flex-column-reverse">
+      <% @events.each do |event|  %>
+        <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
+        <%= link_to event_path(event) do %>
+
+        <div class="card d-flex flex-row m-2 shadow">
+          <div style="max-width: 350px; max-height: 300px;">
+            <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
+          </div>
+
+          <div class="m-3">
+            <p><%= event.name  %></p>
+          <% end %>
+            <p><%= event.date_time.strftime("%m/%d/%Y") %></p>
+            <p><%= event.date_time.strftime("%I:%M%p") %></p>
+            <p><%= event.address %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
