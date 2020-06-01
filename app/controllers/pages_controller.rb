@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     end
     @events = Event.where("address ILIKE ?", "%#{current_user.search_location}%")
     @categories = Category.all
+    @search_results = Event.where("name ILIKE ?", "%#{params[:query]}%")
   end
 
   def welcome
