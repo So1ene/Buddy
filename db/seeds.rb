@@ -324,18 +324,18 @@ def generate_messages
 end
 
 def generate_accepted_requests
-  Request.find_by(user_id: 1, event: Event.where(user_id: 2).first).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 3).first).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 4).first).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 1).first).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 3).second).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 4).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 1).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 2).second).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 4).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 1).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 2).third).update(status: "Accepted")
-  Request.find_by(user_id: 4, event: Event.where(user_id: 3).third).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 2)[4]).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 3)[4]).update(status: "Accepted")
+  Request.find_by(user_id: 1, event: Event.where(user_id: 4)[4]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 1)[4]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 3)[5]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 4)[5]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 1)[5]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 2)[5]).update(status: "Accepted")
+  Request.find_by(user_id: 3, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 1)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 2)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 4, event: Event.where(user_id: 3)[6]).update(status: "Accepted")
   puts ""
   puts "> Generated some accepted requests (to test inbox)"
   puts ""
