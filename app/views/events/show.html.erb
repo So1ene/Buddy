@@ -10,6 +10,13 @@
     <div style="max-width: 730px; max-height: 450px;">
       <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
     </div>
+      <% if @event.user == current_user %>
+        <div style="text-align:right; width:100%; padding:0;">
+          <%= link_to event_path(@event), method: :delete, class: "btn btn-danger" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+      <% end %>
+    </div>
     <div class="cards">
       <p><%= @event.name %></p>
       <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
