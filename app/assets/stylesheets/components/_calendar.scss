@@ -8,3 +8,17 @@
   width: 85px;
   text-align: center;
 }
+
+.filter:hover {
+  box-shadow:  rgba(0, 0, 0, 0.4) 2px 2px 10px 100px inset;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deselected-filter {
+  box-shadow:  rgba(0, 0, 0, 0.3) 0 0 0 100px inset;
+  color: black;
+  background-color: white !important;
+}
+

@@ -7,6 +7,7 @@ class PagesController < ApplicationController
       redirect_to welcome_path
     end
     @events = Event.all
+    @categories = Category.all
   end
 
   def welcome
