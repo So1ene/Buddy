@@ -1,0 +1,13 @@
+<div class="card-product">
+  <%= link_to event_path(event) do %>
+    <%=  cl_image_tag url_for(event.photo), height: 300, width: 400, crop: :fill %>
+  <% end %>
+  <ul class="card-product-infos">
+    <%= link_to event_path(event) do %>
+      <li><h2><%= event.name %></h2></li>
+    <% end %>
+    <li><%= event.date_time.strftime("%m/%d/%Y") %></li>
+    <li><%= event.date_time.strftime("%I:%M%p") %></li>
+    <li><%= event.address %></li>
+  </ul>
+</div>
