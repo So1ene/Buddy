@@ -4,37 +4,38 @@
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
+  <div class="card shadow p-5 mb-6 bg-white rounded width: 50rem;">
+  
+    <div class="form">
 
-  <div class="form">
+      <h1 class="py-4">Suggest an event</h1>
 
-    <h1 class="py-4">Suggest an event</h1>
+      <%= simple_form_for @event do |f| %>
+        <%= f.input :name, placeholder: 'Event name', label: false %>
+        <%= f.input :photo, placeholder: 'photo', label: false %>
+        <%= f.input :date_time, label: false %>
+        <%= f.input :address, placeholder: 'Address', label: false %>
 
-    <%= simple_form_for @event do |f| %>
-      <%= f.input :name, placeholder: 'Event name', label: false %>
-      <%= f.input :photo, placeholder: 'photo', label: false %>
-      <%= f.input :date_time, label: false %>
-      <%= f.input :address, placeholder: 'Address', label: false %>
+        <h2>Pick your category: (limit of 3)</h2>
+        <div class="d-flex">
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "live music").color %>">live music</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "food").color %>">food</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "drinks").color %>">drinks</span>
+        </div>
+        <div class="d-flex">
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "sports").color %>">sports</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "theater").color %>">theater</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
+          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
+        </div>
 
-      <h2>Pick your category:</h2>
-      <div class="d-flex">
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "live music").color %>">live music</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "food").color %>">food</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "drinks").color %>">drinks</span>
+      <div class="description mt-3">
+          <%= f.input :ticket_url, placeholder: 'Ticket URL (optional)', required: false, label: false %>
+          <%= f.input :description, placeholder: 'Add a description to your event', label: false %>
+          <%= f.submit 'Save' %>
+        <% end %>
       </div>
-      <div class="d-flex">
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "sports").color %>">sports</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "theater").color %>">theater</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
-        <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
-      </div>
-
-    <div class="description mt-3">
-        <%= f.input :ticket_url, placeholder: 'Ticket URL (optional)', required: false, label: false %>
-        <%= f.input :description, placeholder: 'Add a description to your event', label: false %>
-        <%= f.submit 'Save' %>
-      <% end %>
     </div>
   </div>
-
 </div>
