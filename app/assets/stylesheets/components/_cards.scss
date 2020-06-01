@@ -1,6 +1,17 @@
+.card-filter {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 6px;
+  color: white;
+  font-weight: bolder;
+  font-size: 12px;
+  width: 85px;
+  text-align: center;
+}
+
 .card-product {
   overflow: hidden;
-  height: 200px;
+  height: 170px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
@@ -10,8 +21,8 @@
 }
 
 .card-product img {
-  height: 200px;
-  width: 200px;
+  height: 170px;
+  width: 170px;
   object-fit: cover;
 }
 
@@ -44,6 +55,6 @@
 }
 
 .card-product .card-product-infos {
-  padding: 18px;
+  padding: 14px;
   width: 100%;
 }
