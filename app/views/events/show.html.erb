@@ -18,20 +18,19 @@
       <% end %>
     </div>
     <div class="cards">
-      <p><%= @event.name %></p>
-      <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
-      <p><%= @event.date_time.strftime("%I:%M%p") %></p>
+      <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
+      <p style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></p>
       <p><%= @event.address %></p>
       <p><%= @event.ticket_url %></p>
       <p><%= @event.description %></p>
     </div>
     <% if @event.user == current_user %>
-    <p> <%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
+      <p><%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
     <% else %>
       <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
     <% end %>
     </div>
-    
+
     <%# # Delete request Modal stuff, do not change %>
     <div class="modal fade" id="event-<%= @event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -55,5 +54,5 @@
     <%# # Delete request Modal stuff, do not change %>
 
   </div>
-  
+
 </div>

@@ -2,6 +2,7 @@
   <%= link_to event_path(event) do %>
     <%=  cl_image_tag url_for(event.photo), height: 300, width: 400, crop: :fill %>
   <% end %>
+
   <div class="flex-column">
     <ul class="card-product-infos">
       <%= link_to event_path(event) do %>
@@ -10,6 +11,7 @@
       <li><%= event.address %></li>
       <li style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
     </ul>
+
     <div class="d-flex">
       <span class="card-filter ml-2" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
       <% unless event.categories.second.nil? %>
@@ -19,5 +21,8 @@
         <span class="card-filter" style="background-color: <%= event.categories.third.color %>"><%= event.categories.third.name %></span>
       <% end %>
     </div>
+      <div>
+        <%= cl_image_tag(event.user.photo.key, class: "card-avatar") %>
+      </div>
   </div>
 </div>
