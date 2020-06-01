@@ -31,7 +31,7 @@
                 <%= submit_tag "Search", class: "btn btn-primary mb-3" %>
               <% end %>
 
-  <% if @search_results.length > 0 %>
+  <% if @search_results.length > 0 && params[:query] != "" %>
     <h2 class="mt-5">Search results:</h2>
     <div class="d-flex flex-column-reverse">
       <% @search_results.each do |event|  %>
