@@ -22,3 +22,46 @@
   background-color: white !important;
 }
 
+.calendar-date {
+ text-decoration: none;
+ width: 30px;
+ height: 30px;
+ color: gray;
+}
+
+.calendar-date:hover {
+ color: black;
+ text-decoration: none;
+}
+
+.day a:hover {
+  text-decoration: none !important;
+}
+
+.calendar-heading {
+  display: flex;
+  background: rgb(200,200,205);
+  justify-content: space-between;
+  padding: 6px 16px;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-heading a {
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-heading a hover {
+  text-decoration: none;
+}
+
+.calendar-location{
+  width: 390px;
+  display: flex;
+  justify-content: center;
+  padding: 12px 16px;
+  color: rgb(240,240,240);
+  background: rgb(180,180,185);
+  border-radius: 20px 20px 0 0;
+}

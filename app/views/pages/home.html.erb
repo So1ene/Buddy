@@ -19,7 +19,7 @@
     <span class="filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
     <span class="filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
   </div>
-
+  <div class="calendar-location mt-3"><%= current_user.search_location %></div>
   <%= render partial: "calendar", locals: { events: @events } %>
 
   <h1>TO-DO: Search bar</h1>
