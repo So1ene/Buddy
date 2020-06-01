@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :incoming_requests, through: :events, source: :requests
   has_one_attached :photo, dependent: :destroy
   has_many :spoken_languages, dependent: :destroy
+  has_many :messages
 
   validates :first_name, :last_name, :age, :living_in, :photo, presence: true
 
