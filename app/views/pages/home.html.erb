@@ -38,11 +38,9 @@
     <% end %>
     <% if @search_results.length > 0 && params[:query] != "" && params[:query] != nil%>
       <h2 class="mt-5">Search results:</h2>
-      <div class="d-flex flex-column-reverse">
         <% @search_results.each do |event|  %>
           <%= render partial: "event_card", locals: { event: event } %>
         <% end %>
-      </div>
     <% end %>
     <h2 class="mt-5">Closest to you:</h2>
     <div class="d-flex flex-column-reverse">

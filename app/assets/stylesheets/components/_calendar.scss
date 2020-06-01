@@ -41,9 +41,9 @@
 }
 
 .selected-calendar-filter {
-  box-shadow:  rgba(0, 0, 0, 0.3) 0 0 0 100px inset;
-  color: black;
-  background-color: white !important;
+  color: black !important;
+  background: rgb(245,245,250) !important;
+  box-shadow: 2px 2px 5px #000;
 }
 
 .calendar-date {
