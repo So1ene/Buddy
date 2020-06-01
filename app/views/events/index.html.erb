@@ -30,7 +30,7 @@
       <%#= event.created_at.to_formatted_s(:short): <%= event.message %>
       <%= link_to event_path(event) do %>
       <div class="card d-flex flex-row m-4 shadow" >
-        <div style="max-width: 350px; max-height: 300px;">
+        <div class="card-img-container">
           <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
         </div>
         <div class="m-4">
