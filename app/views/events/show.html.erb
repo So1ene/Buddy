@@ -4,9 +4,12 @@
 
 <h1 class="page-title">BUDDY</h1>
 
-<div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;">
-<div class="card-body">
-  <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
+<div class="container">
+  <div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;">
+  <div class="card-body">
+    <div style="max-width: 730px; max-height: 450px;">
+      <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
+    </div>
     <div class="cards">
       <p><%= @event.name %></p>
       <p><%= @event.date_time.strftime("%m/%d/%Y") %></p>
@@ -15,10 +18,11 @@
       <p><%= @event.ticket_url %></p>
       <p><%= @event.description %></p>
     </div>
-  <% if @event.user != current_user %>
-  <p> <%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
-  <% else %>
-    <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
-  <% end %>
+    <% if @event.user != current_user %>
+    <p> <%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
+    <% else %>
+      <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
+    <% end %>
+    </div>
   </div>
 </div>
