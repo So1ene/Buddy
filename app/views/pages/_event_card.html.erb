@@ -19,5 +19,8 @@
         <span class="card-filter" style="background-color: <%= event.categories.third.color %>"><%= event.categories.third.name %></span>
       <% end %>
     </div>
+      <div>
+        <%= cl_image_tag(event.user.photo.key, class: "card-avatar") %>
+      </div>
   </div>
 </div>
