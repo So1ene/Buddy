@@ -35,12 +35,13 @@ class EventsController < ApplicationController
 
   def delete
     # => GET    /events/:id/delete
-    @events = Event.all
-    set_event
+    @event = Event.find(params[:id])
+    @event.destroy!
   end
 
   def destroy
     # => DELETE /events/:id
+    @event = Event.find(params[:id])
     @event.destroy
     redirect_to events_path
   end
