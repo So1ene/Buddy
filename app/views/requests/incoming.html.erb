@@ -4,51 +4,58 @@
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
-<% @requests.each do |request| %>
-<h1> <%= request.event.name %> </h1>
-<h2>Request received! </h2>
-<div class="card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <%= cl_image_tag url_for(request.user.photo), class:"card-img" %>
-    </div>
-    <div class="col-md-8">
+<% if @request.present? %>
 
-      <div class="card-body">
-        <h3 class="card-title"> <%= request.event.name  %> </h3>
-        <div class="card-info">
-          <p style="font-weight:bold;">Address:</p><p><%= request.event.address  %> </p>
-          <p> <%= request.event.date_time %> </p>
-          <p style="font-weight:bold;"> <%= request.user.first_name %>'s motivation: </p>
-          <p> <cite><%= request.motivation %><cite> </p>
-        </div>
-      <div class="category-container">
-        <div style="font-weight:bold;"><p> Categories </p></div>
-          <% request.event.categories.each do |category| %>
-            <% if category.present? %>
-              <span class="badge badge-primary"> <%= category.name %> </span>
-            <% end %>
-          <% end %>
-        </div>
+  <% @requests.each do |request| %>
+    <h1> <%= request.event.name %> </h1>
+    <h2>Request received! </h2>
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;">
+      <div class="row no-gutters">
+      <div class="col-md-4">
+        <%= cl_image_tag url_for(request.user.photo), class:"card-img" %>
       </div>
-      <% if request.pending? %>
-        <div class="d-flex justify-content align-items-center">
-          <%= form_for request, url: request_path(request), method: :patch do |f| %>
-            <%= f.hidden_field :status, value: "Accepted" %>
-            <%= f.submit 'Accept', class: "btn btn-success" %>
-          <% end %>
-          <%= form_for request, url: request_path(request), method: :patch do |f| %>
-            <%= f.hidden_field :status, value: "Declined" %>
-            <%= f.submit 'Decline', class: "btn btn-danger my-2 ml-3" %>
-          <% end %>
-        </div>
-      <% elsif request.accepted? %>
-        <span class="green-text font-weight-bold mt-3" style="color:MediumSeaGreen;"><%= request.status %></span>
-      <% elsif request.declined? %>
-        <span class="red-text font-weight-bold mt-3" style="color:Tomato;"><%= request.status %></span>
-      <% end %>
-    </div>
-  </div>
+      <div class="col-md-8">
 
-</div>
-<% end  %>
+        <div class="card-body">
+          <h3 class="card-title"> <%= request.event.name  %> </h3>
+          <div class="card-info">
+            <p style="font-weight:bold;">Address:</p><p><%= request.event.address  %> </p>
+            <p> <%= request.event.date_time %> </p>
+            <p style="font-weight:bold;"> <%= request.user.first_name %>'s motivation: </p>
+            <p> <cite><%= request.motivation %><cite> </p>
+          </div>
+        <div class="category-container">
+          <div style="font-weight:bold;"><p> Categories </p></div>
+            <% request.event.categories.each do |category| %>
+              <% if category.present? %>
+                <span class="badge badge-primary"> <%= category.name %> </span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <% if request.pending? %>
+          <div class="d-flex justify-content align-items-center">
+            <%= form_for request, url: request_path(request), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: "Accepted" %>
+              <%= f.submit 'Accept', class: "btn btn-success" %>
+            <% end %>
+            <%= form_for request, url: request_path(request), method: :patch do |f| %>
+              <%= f.hidden_field :status, value: "Declined" %>
+              <%= f.submit 'Decline', class: "btn btn-danger my-2 ml-3" %>
+            <% end %>
+          </div>
+        <% elsif request.accepted? %>
+          <span class="green-text font-weight-bold mt-3" style="color:MediumSeaGreen;"><%= request.status %></span>
+        <% elsif request.declined? %>
+          <span class="red-text font-weight-bold mt-3" style="color:Tomato;"><%= request.status %></span>
+        <% end %>
+      </div>
+    </div>
+    <% end  %>
+  </div>
+  <% else %>
+    <div class="">
+      <h3> You don't have any requests, so far. Check this page again in a few days! </h3>
+    </div>
+<% end %>
+
