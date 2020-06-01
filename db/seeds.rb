@@ -104,9 +104,9 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg"]
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg"]
   file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
 end
@@ -163,9 +163,9 @@ def event_name(counter)
   return "Surfing" if counter == 18
   return "Rave" if counter == 19
   return "Hike with Me" if counter == 20
-  return "Light Garden" if counter == 21
-  return "Theme Park" if counter == 22
-  return "Open Mic Night" if counter == 23
+  return "Open Mic Night" if counter == 21
+  return "Light Garden" if counter == 22
+  return "Theme Park" if counter == 23
 end
 
 
@@ -215,12 +215,12 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
 end
 
 
