@@ -108,7 +108,7 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg"]
 
-  file = URI.open(event_urls[rand(event_urls.length)])
+  file = URI.open(event_urls[counter])
   event.photo.attach(io: file, filename: "image#{counter}.jpg", content_type: 'image/jpg')
 end
 
@@ -166,7 +166,7 @@ def event_name(counter)
   return "Hike with Me" if counter == 20
   return "Open Mic Night" if counter == 21
   return "Light Garden" if counter == 22
-  return "Theme Park" if counter >= 23
+  return "Theme Park" if counter == 23
 end
 
 
@@ -235,9 +235,9 @@ def generate_events
 
 
   counter = 0
-  User.all.each do |user|
+  User.all[1..4].each do |user|
     6.times do
-      event = Event.new(user_id: user.id,
+      event = Event.new(user: user,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
                         address: "Montreal, Québec, Canada",
@@ -250,9 +250,9 @@ def generate_events
     end
   end
   counter = 0
-  User.all.each do |user|
+  User.all[1..4].each do |user|
     6.times do
-      event = Event.new(user_id: user.id,
+      event = Event.new(user: user,
                         name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
                         address: "Montreal, Québec, Canada",
