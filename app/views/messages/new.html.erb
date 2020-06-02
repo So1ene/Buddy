@@ -3,10 +3,9 @@
 <% end %>
 <h1 class="page-title"><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></h1>
 
-<div class="container" style="text-align: center">
+<div class="container">
   <div class="card align-items-center mb-4 mt-0" style="border: none;">
-    <h2><strong>You are now buddies for </h2>
-    <h2><%= @event.name %>!</strong></h2>
+    <h2><strong>You are now buddies for <%= @event.name %>!</strong></h2>
     <div>
       <%= cl_image_tag(@user.photo.key, class: "avatar") %>
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
