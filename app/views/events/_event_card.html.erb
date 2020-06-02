@@ -13,7 +13,9 @@
     </ul>
 
     <div class="d-flex">
-      <span class="card-filter ml-2" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
+      <% unless event.categories.first.nil? %>
+        <span class="card-filter ml-2" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
+      <% end %>
       <% unless event.categories.second.nil? %>
         <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
       <% end %>

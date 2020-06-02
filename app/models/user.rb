@@ -13,5 +13,6 @@ class User < ApplicationRecord
   has_many :messages
   has_many :languages, through: :spoken_languages
   validates :first_name, :last_name, :age, :living_in, :photo, presence: true
-
+  geocoded_by :search_location
+  after_validation :geocode, if: :will_save_change_to_search_location?
 end
