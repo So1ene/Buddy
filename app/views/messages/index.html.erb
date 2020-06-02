@@ -1,19 +1,26 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
   <h1 class="pb-1">Inbox</h1>
   <hr style="background-color:#50bda1;height:2px;width:50%;text-align:left;margin-left:">
 
-  <% @my_requests.each do |request| %>
-    <%= render partial: "inbox_message", locals: { request: request } %>
-  <% end %>
+  <% if @my_requests.length == 0 %>
 
-  <% @incoming_requests.each do |request| %>
-    <%= render partial: "inbox_message_incoming", locals: { request: request } %>
-  <% end %>
+    <p>You don't have any messages!</p>
+    <%= link_to "Search for a buddy", welcome_path, class: "btn btn-primary" %>
 
+  <% else %>
+
+    <% @my_requests.each do |request| %>
+      <%= render partial: "inbox_message", locals: { request: request } %>
+    <% end %>
+
+    <% @incoming_requests.each do |request| %>
+      <%= render partial: "inbox_message_incoming", locals: { request: request } %>
+    <% end %>
+
+  <% end %>
 </div>
