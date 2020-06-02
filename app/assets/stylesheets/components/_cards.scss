@@ -69,5 +69,10 @@ img.card-img {
 .card-show {
   display: flex;
   align-items: center;
-  margin-bottom: 115px;
+  margin-bottom: 30px;
+}
+
+.description {
+  justify-content: flex-start;
+  margin-bottom: 100px;
 }

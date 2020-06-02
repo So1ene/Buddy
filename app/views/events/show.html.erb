@@ -8,7 +8,7 @@
   <div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;">
     <div class="card-show">
       <div style="max-width: 730px; max-height: 225px;">
-        <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100 py-5" %>
+        <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100" %>
       </div>
         <% if @event.user == current_user %>
           <div style="text-align:right; width:100%; padding:0;">
@@ -17,7 +17,7 @@
             </button>
         <% end %>
       </div>
-      <div class="cards">
+      <div class="cards description">
         <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
         <p style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></p>
         <p><%= @event.address %></p>
