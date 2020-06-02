@@ -43,7 +43,9 @@ class PagesController < ApplicationController
       request.event
     end
     if params[:categories].present?
-      @events = @events.joins(:categories).where(categories: {name: params[:categories]})
+      @events = @events.select do |event|
+        params[:categories].include?(event.categories.first.name || event.categories.second.name || event.categories.third.name)
+      end
     end
   end
 
