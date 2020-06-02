@@ -1,4 +1,59 @@
+<% if params[:categories].present? %>
+  <div class="d-flex">
 
+    <% if params[:categories].present? && params[:categories].include?("outdoors") %>
+      <%= link_to 'outdoors', remove_from_category_params("outdoors"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "outdoors").color}" %>
+    <% else %>
+      <%= link_to 'outdoors', append_to_category_params("outdoors"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "outdoors").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("live music") %>
+      <%= link_to 'live music', remove_from_category_params("live music"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "live music").color}" %>
+    <% else %>
+      <%= link_to 'live music', append_to_category_params("live music"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "live music").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("food") %>
+      <%= link_to 'food', remove_from_category_params("food"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "food").color}" %>
+    <% else %>
+      <%= link_to 'food', append_to_category_params("food"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "food").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("drinks") %>
+      <%= link_to 'drinks', remove_from_category_params("drinks"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "drinks").color}" %>
+    <% else %>
+      <%= link_to 'drinks', append_to_category_params("drinks"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "drinks").color}" %>
+    <% end %>
+
+  </div>
+
+  <div class="d-flex">
+
+    <% if params[:categories].present? && params[:categories].include?("sports") %>
+      <%= link_to 'sports', remove_from_category_params("sports"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "sports").color}" %>
+    <% else %>
+      <%= link_to 'sports', append_to_category_params("sports"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "sports").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("theater") %>
+      <%= link_to 'theater', remove_from_category_params("theater"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "theater").color}" %>
+    <% else %>
+      <%= link_to 'theater', append_to_category_params("theater"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "theater").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("festival") %>
+      <%= link_to 'festival', remove_from_category_params("festival"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "festival").color}" %>
+    <% else %>
+      <%= link_to 'festival', append_to_category_params("festival"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "festival").color}" %>
+    <% end %>
+
+    <% if params[:categories].present? && params[:categories].include?("other") %>
+      <%= link_to 'other', remove_from_category_params("other"), class:"calendar-filter selected-calendar-filter", style:"background-color: #{Category.find_by(name: "other").color}" %>
+    <% else %>
+      <%= link_to 'other', append_to_category_params("other"), class:"calendar-filter deselected-filter", style:"background-color: #{Category.find_by(name: "other").color}" %>
+    <% end %>
+  </div>
+<% else %>
   <div class="d-flex">
 
     <% if params[:categories].present? && params[:categories].include?("outdoors") %>
@@ -53,3 +108,4 @@
       <%= link_to 'other', append_to_category_params("other"), class:"calendar-filter", style:"background-color: #{Category.find_by(name: "other").color}" %>
     <% end %>
   </div>
+<% end %>
