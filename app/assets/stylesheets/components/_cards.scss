@@ -21,9 +21,9 @@
   position: relative;
 }
 
-.card-product img {
-  height: 170px;
-  width: 170px;
+img.card-img {
+  height: 200px !important;
+  width: 300px !important;
   object-fit: cover;
 }
 
