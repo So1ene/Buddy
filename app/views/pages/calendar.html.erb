@@ -19,7 +19,37 @@
 
     <div class="d-flex flex-column-reverse">
       <% @events.each do |event|  %>
-        <%= render partial: "event_card", locals: { event: event } %>
+
+        <div class="card-product">
+          <%= link_to event_path(event) do %>
+            <%=  cl_image_tag url_for(event.photo), height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="flex-column">
+            <ul class="card-product-infos">
+              <%= link_to event_path(event) do %>
+                <li><h2 style="margin: 0"><%= event.name %></h2></li>
+              <% end %>
+              <li><%= event.address %></li>
+              <li style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
+            </ul>
+            <div class="d-flex">
+              <% unless event.categories.first.nil? %>
+                <span class="card-filter ml-2" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
+              <% end %>
+              <% unless event.categories.second.nil? %>
+                <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
+              <% end %>
+              <% unless event.categories.third.nil? %>
+                <span class="card-filter" style="background-color: <%= event.categories.third.color %>"><%= event.categories.third.name %></span>
+              <% end %>
+            </div>
+              <div>
+                  <%= cl_image_tag(event.requests.find_by(status:"Accepted").user.photo.key, class: "card-avatar") %>
+                  <%= cl_image_tag(event.user.photo.key, class: "card-avatar", style: "right: 50px;") %>
+              </div>
+          </div>
+        </div>
+
       <% end %>
     </div>
   </div>
