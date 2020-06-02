@@ -7,6 +7,9 @@ class EventsController < ApplicationController
       redirect_to welcome_path
     end
     @events = Event.all
+    if params[:date].present?
+      @events = @events.where('date_time BETWEEN ? AND ?', DateTime.parse(params[:date]).beginning_of_day, DateTime.parse(params[:date]).end_of_day)
+    end
   end
 
   def show

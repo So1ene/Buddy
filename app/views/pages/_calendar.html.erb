@@ -1,5 +1,5 @@
 <%= month_calendar events: @events do |date, events| %>
-  <%= link_to events_path do %>
+  <%= link_to events_path({date: date}) do %>
     <div class="calendar-date">
       <%= date.day %>
 
