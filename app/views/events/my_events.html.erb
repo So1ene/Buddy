@@ -9,7 +9,7 @@
     <div class="d-flex flex-column-reverse">
       <% @events.each do |event|  %>
         <%= link_to event_path(event) do %>
-        <div class="card d-flex flex-row m-2 shadow">
+        <div class="card-product d-flex flex-row m-2 shadow">
           <div style="max-width: 350px; max-height: 300px;">
             <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
           </div>
