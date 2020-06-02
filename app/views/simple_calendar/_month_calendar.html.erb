@@ -1,8 +1,13 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
+    <div class="d-flex">
+    <%= link_to 'Reset Filters', root_path, class:"calendar-filter selected-calendar-filter", style:"background-color: #aaa; width: 120px" %>
+    </div>
+    <div class="d-flex align-items-center w-100 justify-content-around">
     <%= link_to "<", calendar.url_for_previous_view %>
     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
     <%= link_to ">", calendar.url_for_next_view %>
+    </div>
   </div>
 
   <table class="table table-striped">
