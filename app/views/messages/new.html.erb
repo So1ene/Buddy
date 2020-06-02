@@ -1,6 +1,7 @@
 <%= link_to messages_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+<h1 class="page-title"><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></h1>
 
 <div class="container" style="text-align: center">
   <div class="card align-items-center mb-4 mt-0" style="border: none;">
@@ -15,28 +16,18 @@
 
   <div id="messages" style="display: inline-block">
     <% @messages.each do |message| %>
-      <div class="d-flex message-container" id="message-<%= message.id %>">
-        <div class="card pt-1 px-2 mt-0" style="border: none;">
-          <%= cl_image_tag(message.sender.photo.key, class: "avatar") %>
-          <small><%= message.created_at.strftime("%l:%M%p") %></small>
-        </div>
-
-        <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left">
-          <span><strong><%= message.sender.first_name %></strong></span>
-          <p><%= message.content %></p>
-        </div>
-      </div>
+      <%= render partial: "message", locals: { message: message } %>
     <% end %>
   </div>
 
-  <div class="form" style="text-align: center">
+  <div class="d-flex justify-content-between" style="text-align: center">
     <%= simple_form_for [ @event, @user, @message ] do |f| %>
-    <div class="m-2" style="max-width: 500px; display: inline-block">
-      <%= f.input :content, label: false, placeholder: "Message #{@user.first_name}" %>
-    </div>
-    <div>
-      <%= f.button :submit, ">", class: "btn btn-primary" %>
-    </div>
+      <div class="p-2" style="max-width: 300px; display: inline-block">
+        <%= f.input :content, label: false, placeholder: "Message #{@user.first_name}" %>
+      </div>
+      <div class="p-2" style="display: inline-block">
+        <%= f.button :submit, ">", class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

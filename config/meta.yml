@@ -1,0 +1,5 @@
+meta_product_name: "Buddy"
+meta_title: "Buddy - Make Friends Anywhere!"
+meta_description: "Search for activities, suggest activities, match with a buddy for your activities and more!"
+meta_image: "cover.jpg" # in `app/assets/images/`
+twitter_account: "@TheBuddySite"   # required for Twitter Cards

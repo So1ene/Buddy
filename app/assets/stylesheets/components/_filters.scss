@@ -1,0 +1,60 @@
+.filter {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 6px;
+  color: white !important;
+  font-weight: bolder;
+  font-size: 12px;
+  width: 85px;
+  text-align: center;
+}
+
+.filter:hover {
+  box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 10px 100px inset;
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deselected-filter {
+  box-shadow:  rgba(0, 0, 0, 0.3) 0 0 0 100px inset;
+  color: white !important;
+  background-color: white !important;
+}
+
+.calendar-filter {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 6px;
+  color: white !important;
+  font-weight: bolder;
+  font-size: 12px;
+  width: 85px;
+  text-align: center;
+}
+
+.calendar-filter:hover {
+  box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 10px 100px inset;
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.selected-calendar-filter {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 6px;
+  color: white !important;
+  font-weight: bolder;
+  font-size: 12px;
+  width: 85px;
+  text-align: center;
+}
+
+.selected-calendar-filter:hover {
+  box-shadow:  rgba(0, 0, 0, 0.2) 2px 2px 10px 100px inset;
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+

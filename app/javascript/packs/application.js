@@ -30,9 +30,12 @@ import { navbar } from '../components/navbar';
 import { filters } from '../components/filters';
 import { initAutocomplete } from "../plugins/init_autocomplete";
 
+import { initUserChannelCable } from '../channels/user_channel';
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here
   initAutocomplete();
+  initUserChannelCable();
   navbar();
   filters();
 

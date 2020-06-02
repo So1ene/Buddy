@@ -185,7 +185,6 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Concert"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "outdoors"))
-  EventCategory.create!(event: Event.find_by(name: "Football Match"), category: Category.find_by(name: "live music"))
   EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "live music"))
   EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Karaoke Night"), category: Category.find_by(name: "other"))

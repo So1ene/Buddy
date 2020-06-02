@@ -5,7 +5,11 @@
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
-  <h1>Events for 20/05/2020</h1>
+  <% if @date.present? %>
+  <h1>Events for <%= @date %></h1>
+  <% else %>
+  <h1>All events</h1>
+  <% end %>
 
   <div class="d-flex">
 

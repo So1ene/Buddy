@@ -21,6 +21,12 @@
   position: relative;
 }
 
+img.card-img {
+  height: 200px !important;
+  width: 300px !important;
+  object-fit: cover;
+}
+
 .card-product img {
   height: 170px;
   width: 170px;
@@ -58,4 +64,15 @@
 .card-product .card-product-infos {
   padding: 14px;
   width: 100%;
+}
+
+.card-show {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.description {
+  justify-content: flex-start;
+  margin-bottom: 100px;
 }
