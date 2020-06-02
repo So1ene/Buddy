@@ -27,15 +27,16 @@ class EventsController < ApplicationController
     # => POST   /events
     @event = Event.new(event_params)
     @event.user = current_user
-    if !params[:event][:category_ids].length == 1 && !params[:event][:category_ids].length > 4 && @event.save
+    if params[:event][:category_ids].length != 1 && params[:event][:category_ids].length <= 4 && @event.save
       category_ids = params[:event][:category_ids]
-      category_ids.delete_at!(0)
+      category_ids.delete_at(0)
       category_ids.each do |catetogy_id|
         EventCategory.create(category_id: catetogy_id, event_id: @event.id)
       end
       redirect_to event_path(@event)
     else
       @event.valid?
+      p params[:event][:category_ids]
       flash[:notice] = "Please select up to 3 categories" if params[:event][:category_ids].length > 4 || params[:event][:category_ids].length == 1
       render :new
     end
