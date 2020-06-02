@@ -5,8 +5,10 @@
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
 
-  <h1 class="pb-1">Inbox</h1>
-  <hr style="background-color:#50bda1;height:2px;width:50%;text-align:left;margin-left:">
+<!--   <h1 style="text-align: left; width: 50%;"><strong>Inbox</strong></h1>
+  <hr style="background-color:#50bda1;height:2px;width:50%;text-align:left;margin-left:"> -->
+
+  <h1 class="title"><strong>Inbox</strong></h1>
 
   <% @my_requests.each do |request| %>
     <%= render partial: "inbox_message", locals: { request: request } %>
