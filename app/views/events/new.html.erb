@@ -19,16 +19,34 @@
         <%= f.association :categories, as: :check_boxes %>
 
         <div class="d-flex">
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "live music").color %>">live music</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "food").color %>">food</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "drinks").color %>">drinks</span>
+
+        <input class="d-none" type="checkbox" value="1" name="event[category_ids][]" id="event_category_ids_1">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 1).color %>" for="event_category_ids_1">outdoors</label>
+
+        <input class="d-none" type="checkbox" value="2" name="event[category_ids][]" id="event_category_ids_2">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 2).color %>" for="event_category_ids_2">live music</label>
+
+        <input class="d-none" type="checkbox" value="3" name="event[category_ids][]" id="event_category_ids_3">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 3).color %>" for="event_category_ids_3">food</label>
+
+        <input class="d-none" type="checkbox" value="4" name="event[category_ids][]" id="event_category_ids_4">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 4).color %>" for="event_category_ids_4">drinks</label>
+
         </div>
         <div class="d-flex">
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "sports").color %>">sports</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "theater").color %>">theater</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
-          <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
+
+        <input class="d-none" type="checkbox" value="5" name="event[category_ids][]" id="event_category_ids_5">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 5).color %>" for="event_category_ids_5">sports</label>
+
+        <input class="d-none" type="checkbox" value="6" name="event[category_ids][]" id="event_category_ids_6">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 6).color %>" for="event_category_ids_6">theater</label>
+
+        <input class="d-none" type="checkbox" value="7" name="event[category_ids][]" id="event_category_ids_7">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 7).color %>" for="event_category_ids_7">festival</label>
+
+        <input class="d-none" type="checkbox" value="8" name="event[category_ids][]" id="event_category_ids_8">
+        <label class="filter deselected-filter" style="background-color: <%= Category.find_by(id: 8).color %>" for="event_category_ids_8">other</label>
+
         </div>
 
         <div class="description mt-3">
