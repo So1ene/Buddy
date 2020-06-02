@@ -8,7 +8,7 @@
 <h1 class="py-3">Your upcoming events:</h1>
 
 
-<% if @events.length == 0 %>
+<% if @events.length == 0 && params[:categories].nil?%>
 <p>You don't have any planned events!</p>
 <%= link_to "Search for a buddy", welcome_path, class: "btn btn-primary" %>
 <% else %>
