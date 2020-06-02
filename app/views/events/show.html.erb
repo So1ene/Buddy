@@ -7,18 +7,23 @@
 <div class="container">
   <div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;">
     <div class="card-show">
+      
       <div style="max-width: 730px; max-height: 225px;">
         <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100" %>
       </div>
+
         <% if @event.user == current_user %>
           <div style="text-align:right; width:100%; padding:0;">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-<%= @event.id %>">
               <i class="fas fa-trash"></i>
             </button>
+          </div>
         <% end %>
       </div>
         <div style="text-align:right;">
-          <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+          </button>
         </div>
       <div class="cards description">
         <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
@@ -33,6 +38,7 @@
         <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
       <% end %>
       </div>
+
 
       <%# # Delete request Modal stuff, do not change %>
       <div class="modal fade" id="event-<%= @event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,6 +61,30 @@
         </div>
       </div>
       <%# # Delete request Modal stuff, do not change %>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle"> <%= @event.user.first_name %> <%= @event.user.last_name %>'s profile </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <div style="text-align:center;">
+                <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+              </div><br><br>
+              Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
+              Age: <%= @event.user.age %><br><br>
+              <%= @event.user.bio %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
 
     </div>
   </div>
