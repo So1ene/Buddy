@@ -238,7 +238,7 @@ def generate_events
       event = Event.new(user: user,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
-                        address: Faker::Address.street_address + ", Montreal, Québec, Canada",
+                        address: "Montreal, Québec, Canada",
                         description: Faker::Lorem.sentence(word_count: rand(20)),
                         )
       attach_image(event, counter)
@@ -253,7 +253,7 @@ def generate_events
       event = Event.new(user: user,
                         name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
-                        address: Faker::Address.street_address + ", Montreal, Québec, Canada",
+                        address: "Montreal, Québec, Canada",
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
       attach_image(event, counter)
