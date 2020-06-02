@@ -22,6 +22,30 @@
   background-color: white !important;
 }
 
+.calendar-filter {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 6px;
+  color: white !important;
+  font-weight: bolder;
+  font-size: 12px;
+  width: 85px;
+  text-align: center;
+}
+
+.calendar-filter:hover {
+  box-shadow:  rgba(0, 0, 0, 0.4) 2px 2px 10px 100px inset;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.selected-calendar-filter {
+  color: black !important;
+  background: rgb(245,245,250) !important;
+  box-shadow: 2px 2px 5px #000;
+}
+
 .calendar-date {
  text-decoration: none;
  width: 30px;
