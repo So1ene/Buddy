@@ -42,6 +42,9 @@ class PagesController < ApplicationController
     @events = requests.flatten.map do |request|
       request.event
     end
+    if params[:categories].present?
+      @events = @events.joins(:categories).where(categories: {name: params[:categories]})
+    end
   end
 
   private
