@@ -166,7 +166,7 @@ def event_name(counter)
   return "Hike with Me" if counter == 20
   return "Open Mic Night" if counter == 21
   return "Light Garden" if counter == 22
-  return "Theme Park" if counter == 23
+  return "Theme Park" if counter >= 23
 end
 
 
