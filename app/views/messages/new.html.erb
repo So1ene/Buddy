@@ -2,61 +2,41 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 
-<h1 class="page-title">Name of Person</h1>
-<div class="container">
-  <div class="card p-1 m-1 align-items-center">
-    <h4>You are now buddies for</h4><br>
-    <h4><%= @event.name %>!</h4>
+<div class="container" style="text-align: center">
+  <div class="card align-items-center mb-4 mt-0" style="border: none;">
+    <h2><strong>You are now buddies for </h2>
+    <h2><%= @event.name %>!</strong></h2>
     <div>
       <%= cl_image_tag(@user.photo.key, class: "avatar") %>
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
     </div>
-    <p>Start your conversation below</p>
+    <p>Start your conversation below...</p>
   </div>
 
-  <div class="container">
-  <div id="messages">
+  <div id="messages" style="display: inline-block">
     <% @messages.each do |message| %>
-      <div class="message-container" id="message-<%= message.id %>">
-        <i class="author">
-          <span><%= message.sender.first_name %></span>
-          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-        </i>
-        <p><%= message.content %></p>
+      <div class="d-flex message-container" id="message-<%= message.id %>">
+        <div class="card pt-1 px-2 mt-0" style="border: none;">
+          <%= cl_image_tag(message.sender.photo.key, class: "avatar") %>
+          <small><%= message.created_at.strftime("%l:%M%p") %></small>
+        </div>
+
+        <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left">
+          <span><strong><%= message.sender.first_name %></strong></span>
+          <p><%= message.content %></p>
+        </div>
       </div>
     <% end %>
   </div>
 
-<%= simple_form_for [ @event, @user, @message ] do |f| %>
-  <%= f.input :content, label: false, placeholder: "Message #{@user.first_name}" %>
-  <%= f.submit %>
-<% end %>
-
-</div>
-
-
-<!--   <div class="card d-flex flex-row m-2" style="width: 300px;">
-    <div class="card p-2 m-2">
-      <%#= cl_image_tag(@event.user.photo.key, class: "avatar") %>
-      <%#= Time.now.strftime("%I:%M %P") %>
+  <div class="form" style="text-align: center">
+    <%= simple_form_for [ @event, @user, @message ] do |f| %>
+    <div class="m-2" style="max-width: 500px; display: inline-block">
+      <%= f.input :content, label: false, placeholder: "Message #{@user.first_name}" %>
     </div>
-
-    <div class="card p-2 m-2 flex-grow-1">
-      <strong><%= @event.user.first_name %></strong>
-      <%#= @message.content %>
+    <div>
+      <%= f.button :submit, ">", class: "btn btn-primary" %>
     </div>
+    <% end %>
   </div>
-
-  <div class="card d-flex flex-row m-2" style="width: 300px;">
-    <div class="card p-2 m-2 flex-grow-1">
-      <strong><%= current_user.first_name %></strong>
-      <%= @message.content %>
-    </div>
-
-    <div class="card p-2 m-2">
-      <%#= cl_image_tag(current_user.photo.key, class: "avatar") %>
-      <%#= Time.now.strftime("%I:%M %P") %>
-    </div>
-  </div> -->
-
 </div>
