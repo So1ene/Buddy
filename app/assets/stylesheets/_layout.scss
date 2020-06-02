@@ -23,13 +23,13 @@ a:link {
 .title {
   text-align: left;
   border-bottom: 3px solid #50bda1;
-  width:40%;
-  padding: 10px;
+  width:50vw;
+  padding: 10px 0;
   margin-bottom: 48px;
 }
 
 @media screen and (min-width: 1220px) {
   .container {
-    width: 700ox;
+    width: 700px;
   }
 }
