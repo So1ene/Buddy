@@ -9,10 +9,13 @@
     <h2 class="mb-3 mt-2">Browse events</h2>
 
     <%= form_for @user, url: root_path, method: :patch do |f| %>
-      <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
-      <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
-    <% end %>
-
+      <div class="d-flex">
+        <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
+      </div>
+      <div>
+        <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
+        <% end %>
+      </div>
     <h2 class="mt-5">or</h2>
     <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5" %>
 
