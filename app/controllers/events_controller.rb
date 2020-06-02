@@ -8,6 +8,7 @@ class EventsController < ApplicationController
     end
     @events = Event.all
     if params[:date].present?
+      @date = params[:date]
       @events = @events.where('date_time BETWEEN ? AND ?', DateTime.parse(params[:date]).beginning_of_day, DateTime.parse(params[:date]).end_of_day)
     end
   end
