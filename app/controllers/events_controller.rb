@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if @event.categories == []
-      EventCategory.create(event: @event, category: Category.find_by(name: "outdoors"))
+      #EventCategory.create(event: @event, category: Category.find_by(name: "outdoors"))
     end
     if @event.save
       redirect_to event_path(@event)
