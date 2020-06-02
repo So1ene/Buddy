@@ -42,13 +42,13 @@
 
 .selected-calendar-filter {
   color: #222 !important;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+  box-shadow: 4px 4px 4px #222;
   background: linear-gradient(45deg, rgba(0,0,0,0.2) 0%, rgba(255,255,255,0.3) 40%, rgba(0,0,0,0.1) 100%);
 }
 
 .selected-calendar-filter:hover {
   color: #222 !important;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+  box-shadow: 4px 4px 4px #222;
   background: linear-gradient(45deg, rgba(0,0,0,0.4) 0%, rgba(255,255,255,0.3) 40%, rgba(0,0,0,0.3) 100%);
 
 }
