@@ -235,7 +235,7 @@ def generate_events
 
 
   counter = 0
-  User.all[1..4].each do |user|
+  User.all[0...4].each do |user|
     6.times do
       event = Event.new(user: user,
                         name: Faker::TvShows::Simpsons.location,
@@ -250,7 +250,7 @@ def generate_events
     end
   end
   counter = 0
-  User.all[1..4].each do |user|
+  User.all[0...4].each do |user|
     6.times do
       event = Event.new(user: user,
                         name: event_name(counter),
