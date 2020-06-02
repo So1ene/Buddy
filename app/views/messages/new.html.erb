@@ -1,6 +1,7 @@
 <%= link_to messages_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+<h1 class="page-title"><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></h1>
 
 <div class="container" style="text-align: center">
   <div class="card align-items-center mb-4 mt-0" style="border: none;">
