@@ -21,6 +21,10 @@ class MessagesController < ApplicationController
     @message.sender = current_user
     @event = Event.find(params[:event_id])
     if @message.save!
+      UserChannel.broadcast_to(
+        @user,
+        render_to_string(partial: "message", locals: { message: @message })
+      )
       redirect_to new_message_path(@user, event: @event.id)
     else
       render :new
