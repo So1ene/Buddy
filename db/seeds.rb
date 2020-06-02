@@ -166,7 +166,7 @@ def event_name(counter)
   return "Hike with Me" if counter == 20
   return "Open Mic Night" if counter == 21
   return "Light Garden" if counter == 22
-  return "Theme Park" if counter >= 23
+  return "Theme Park" if counter == 23
 end
 
 
@@ -245,23 +245,22 @@ def generate_events
                         )
       attach_image(event, counter)
       event.save!
-      puts "#{second_counter} events created"
       counter += 1
       assign_random_categories(Event.last)
     end
   end
-  second_counter = 0
+  counter = 0
   User.all.each do |user|
     6.times do
       event = Event.new(user: user,
-                        name: event_name(second_counter),
+                        name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
                         address: "Montreal, Québec, Canada",
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
-      attach_image(event, second_counter)
+      attach_image(event, counter)
       event.save!
-      second_counter += 1
+      counter += 1
     end
   end
 
