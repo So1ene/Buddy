@@ -1,11 +1,16 @@
 <% last_message = Message.where("(sender_id = :user AND receiver_id = :host) OR (sender_id = :host AND receiver_id = :user)", user: current_user, host: request.event.user).order(created_at: :desc).first %>
 
 <%= link_to new_message_path(request.user, event: request.event) do %>
-<div class="card" style="width: 24rem;">
-  <div class="d-flex align-items-center p-2">
-    <div><%= cl_image_tag(request.user.photo.key, class: "avatar") %></div>
-      <div>
-        <div class="px-3"><strong><%= request.user.first_name %></strong></div>
+<div class="card m-2" style="width: 24rem; border-top: none; border-left: none; border-right: none;">
+  <div class="d-flex align-items-start p-2">
+    <div>
+      <%= cl_image_tag(request.user.photo.key, class: "avatar") %>
+    </div>
+
+    <div>
+      <div class="px-3">
+        <strong><%= request.user.first_name %></strong>
+      </div>
         <% if last_message %>
           <div class="px-3">
             <%= last_message.content %>
@@ -15,6 +20,10 @@
             <%= "You have a new buddy for #{request.event.name}!" %>
           </div>
         <% end %>
+      </div>
+
+      <div>
+        <small style="color: gray;"><%#= last_message.created_at.strftime("%l:%M%p") %></small>
       </div>
   </div>
 </div>

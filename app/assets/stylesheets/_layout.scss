@@ -20,6 +20,14 @@ a:link {
   align-items: center;
 }
 
+.title {
+  text-align: left;
+  border-bottom: 3px solid #50bda1;
+  width:40%;
+  padding: 10px;
+  margin-bottom: 60px;
+}
+
 @media screen and (min-width: 1220px) {
   .container {
     width: 700ox;
