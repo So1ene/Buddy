@@ -231,6 +231,8 @@ def generate_events
   Event.destroy_all
   puts ""
   puts "> Destroyed all events"
+  puts "> Generating..."
+
 
   counter = 0
   User.all.each do |user|
@@ -243,22 +245,23 @@ def generate_events
                         )
       attach_image(event, counter)
       event.save!
+      puts "#{second_counter} events created"
       counter += 1
       assign_random_categories(Event.last)
     end
   end
-  counter = 0
+  second_counter = 0
   User.all.each do |user|
     6.times do
       event = Event.new(user: user,
-                        name: event_name(counter),
+                        name: event_name(second_counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
                         address: "Montreal, Québec, Canada",
                         description: Faker::Lorem.sentence(word_count: rand(20))
                         )
-      attach_image(event, counter)
+      attach_image(event, second_counter)
       event.save!
-      counter += 1
+      second_counter += 1
     end
   end
 

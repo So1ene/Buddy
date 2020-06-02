@@ -3,10 +3,7 @@
 <% end %>
 <h1 class="page-title">BUDDY</h1>
 <div class="container">
-
-<!--   Card is not mobile-friendly, it scrolls from side to side   -->
   <div>
-
     <div class="form">
 
       <h1 class="title py-4"><strong>Suggest an event</strong></h1>
@@ -18,7 +15,9 @@
         <%= f.input :address, placeholder: 'Address', label: false %>
 
         <h2>Pick your category: (limit of 3)</h2>
-        <div class="d-flex">
+        <%= f.association :categories, as: :check_boxes, class: "filter deselected-filter" %>
+
+        <!-- <div class="d-flex">
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "outdoors").color %>">outdoors</span>
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "live music").color %>">live music</span>
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "food").color %>">food</span>
@@ -29,7 +28,7 @@
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "theater").color %>">theater</span>
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "festival").color %>">festival</span>
           <span class="filter deselected-filter" style="background-color: <%= Category.find_by(name: "other").color %>">other</span>
-        </div>
+        </div> -->
 
         <div class="description mt-3">
             <%= f.input :ticket_url, placeholder: 'Ticket URL (optional)', required: false, label: false %>

@@ -27,6 +27,24 @@ class EventsController < ApplicationController
     # => POST   /events
     @event = Event.new(event_params)
     @event.user = current_user
+    if !params[:event][:category_ids].length == 1 && !params[:event][:category_ids].length > 4 && @event.save
+      category_ids = params[:event][:category_ids]
+      category_ids.delete_at!(0)
+      category_ids.each do |catetogy_id|
+        raise
+        EventCategory.create(category_id: catetogy_id, event_id: @event.id)
+      end
+      redirect_to event_path(@event)
+    else
+      flash[:notice] = "Please select up to 3 categories" if params[:event][:category_ids].length > 4 || params[:event][:category_ids].length == 1
+      render :new
+    end
+  end
+
+  def create
+    # => POST   /events
+    @event = Event.new(event_params)
+    @event.user = current_user
     if @event.categories == []
       #EventCategory.create(event: @event, category: Category.find_by(name: "outdoors"))
     end
