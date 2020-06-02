@@ -237,7 +237,7 @@ def generate_events
   counter = 0
   User.all.each do |user|
     6.times do
-      event = Event.new(user: user,
+      event = Event.new(user_id: user.id,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
                         address: "Montreal, Québec, Canada",
@@ -252,7 +252,7 @@ def generate_events
   counter = 0
   User.all.each do |user|
     6.times do
-      event = Event.new(user: user,
+      event = Event.new(user_id: user.id,
                         name: event_name(counter),
                         date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
                         address: "Montreal, Québec, Canada",
