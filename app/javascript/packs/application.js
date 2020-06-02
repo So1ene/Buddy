@@ -28,11 +28,11 @@ import "bootstrap";
 // Internal imports
 import { navbar } from '../components/navbar';
 import { filters } from '../components/filters';
-
+import { initAutocomplete } from "../plugins/init_autocomplete";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here
-
+  initAutocomplete();
   navbar();
   filters();
 

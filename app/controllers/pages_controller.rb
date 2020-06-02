@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     if @user == nil || @user.search_location == "" || @user.search_location == nil
       redirect_to welcome_path
     end
-    @events = Event.where("address ILIKE ?", "%#{current_user.search_location}%")
+    @events = Event.near(current_user.search_location, 25)
     @categories = Category.all
     @search_results = Event.where("name ILIKE ?", "%#{params[:query]}%")
     if params[:categories].present?
