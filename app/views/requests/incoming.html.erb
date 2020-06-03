@@ -3,26 +3,24 @@
 <% end %>
 <h1 class="page-title">BUDDY</h1>
 
-<% if @requests.present? %>
+<% if @event.requests.present? %>
 
   <div class="container">
     <div class="row">
-      <% @requests.each do |request| %>
-
+      <h1 class="title"> <%= @event.name %> </h1>
+      <% @event.requests.each do |request| %>
         <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 30rem;" style="height: calc(100vh - 160px); position: relative;">
-         <h1> <%= request.event.name %> </h1>
-        <h2>Request received! </h2>
+         
           <div class="row no-gutters">
           <div class="col-md-4">
-            <%= cl_image_tag url_for(request.user.photo), class:"card-img" %>
+          <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModalCenter">
+            <%= cl_image_tag url_for(request.user.photo), class:"avatar-large" %>
+          </button>
           </div>
           <div class="col-md-8">
 
             <div class="card-body">
-              <h3 class="card-title"> <%= request.event.name  %> </h3>
               <div class="card-info">
-                <p style="font-weight:bold;">Address:</p><p><%= request.event.address  %> </p>
-                <p> <%= request.event.date_time %> </p>
                 <p style="font-weight:bold;"> <%= request.user.first_name %>'s motivation: </p>
                 <p> <cite><%= request.motivation %><cite> </p>
               </div>
@@ -55,6 +53,33 @@
         </div>
         </div>
         <% end  %>
+
+      <!-- Profile Modal, do not change! -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="height:500px;border-radius: 6px">
+            <div>
+              <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="margin:20px" >
+
+              <div style="text-align:center;">
+                <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+              </div><br>
+              <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
+              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
+              Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
+              Age: <%= @event.user.age %><br><br>
+              <%= @event.user.bio %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Profile Modal, do not change! -->
+
     </div>
   </div>
 <% else %>
