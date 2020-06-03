@@ -47,8 +47,8 @@ class RequestsController < ApplicationController
 
   def incoming
     # => GET    /events/:event_id/requests/incoming
-    event = Event.find(params[:event_id])
-    @requests = event.requests
+    @event = Event.find(params[:event_id])
+    # @requests = @event.requests
   end
 
   def show
