@@ -40,13 +40,15 @@
       <% end %>
       <% if @search_results.length > 0 && params[:query] != "" && params[:query] != nil%>
         <h2 class="my-5">Search results:</h2>
+        <div class="d-flex flex-column-reverse w-100">
           <% @search_results.each do |event|  %>
             <%= render partial: "event_card", locals: { event: event } %>
           <% end %>
+        </div>
       <% end %>
 
       <h2 class="title mt-5"><strong>Suggested for you</strong></h2>
-      <div class="d-flex flex-column-reverse">
+      <div class="d-flex flex-column-reverse w-100">
         <% @events.each do |event|  %>
           <%= render partial: "event_card", locals: { event: event } %>
         <% end %>

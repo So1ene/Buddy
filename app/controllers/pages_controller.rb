@@ -25,10 +25,6 @@ class PagesController < ApplicationController
     redirect_to root_path
   end
 
-  def buddy
-    # => GET    /buddy/:user_id
-  end
-
   def calendar
     # => GET    /calendar
 

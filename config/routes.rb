@@ -18,8 +18,6 @@ Rails.application.routes.draw do
   get '/inbox', to: 'messages#index', as: 'messages'
   get '/inbox/:user_id', to: 'messages#new', as: 'new_message'
 
-
-  get '/buddy/:user_id', to: 'pages#buddy', as: 'buddy'
   get '/welcome', to: 'pages#welcome', as: 'welcome'
   get '/calendar', to: 'pages#calendar', as: 'calendar'
   patch '/', to: 'pages#update_location'
