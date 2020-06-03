@@ -12,7 +12,7 @@
       <% @events.each do |event|  %>
         <%= link_to event_path(event) do %>
         <div class="card-product d-flex flex-row m-2 shadow">
-          <div style="max-width: 350px; max-height: 300px;">
+          <div style="max-width: 350px; height: 100%;">
             <%= cl_image_tag event.photo.key, crop: :fill, class:"img" %>
           </div>
           <div class="card-product-infos ml-2 mt-2">
