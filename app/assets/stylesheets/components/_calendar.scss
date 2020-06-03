@@ -1,8 +1,8 @@
 
 .calendar-date {
  text-decoration: none;
- width: 25px;
- height: 25px;
+ width: 18px;
+ height: 30px;
  color: gray;
 }
 
@@ -34,11 +34,10 @@
 }
 
 .calendar-location{
-  width: 381px;
+  width: 378px;
   display: flex;
   justify-content: center;
   padding: 12px 16px;
   color: rgb(240,240,240);
   background: rgb(180,180,185);
-  border-radius: 20px 20px 0 0;
 }
