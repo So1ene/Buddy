@@ -16,7 +16,7 @@
     <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5" %>
   <% else %>
     <div class="w-100">
-      <h1 class="title py-3">Browse events</h1>
+      <h1 class="title py-3" id="filters">Browse events</h1>
     </div>
     <%= render partial: "filters" %>
 

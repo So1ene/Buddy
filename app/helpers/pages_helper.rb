@@ -7,7 +7,7 @@ module PagesHelper
     else
       categories = {categories: [category_name]}
     end
-      return "?" + categories.to_param
+      return "?" + categories.to_param + "#filters"
   end
 
   def remove_from_category_params(category_name)
@@ -15,7 +15,7 @@ module PagesHelper
     if params_categories.class == Array
       params_categories.delete(category_name)
       categories = {categories: params_categories}
-      return "?" + categories.to_param
+      return "?" + categories.to_param + "#filters"
     end
   end
 end
