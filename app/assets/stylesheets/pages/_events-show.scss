@@ -1,0 +1,29 @@
+#events-show.container {
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  .event-banner {
+    position: relative;
+    margin-top: -10px;
+    height: 300px;
+    background-size: cover;
+  }
+  .event-delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .event-avatar {
+    position: absolute;
+    bottom: -75px;
+    right: 0px;
+  }
+  .event-body {
+    padding: 0 20px;
+    padding-top: 10px;
+  }
+  .card-show {
+    display: block;
+  }
+}
