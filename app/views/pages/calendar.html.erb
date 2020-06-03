@@ -13,10 +13,8 @@
     <%= link_to "Search for a buddy", welcome_path, class: "btn btn-primary" %>
   <% else %>
     <%= render partial: "filters" %>
-    <div class="p-2">
     <%= render partial: "calendar", locals: { events: @events } %>
     <div class="my-2"></div>
-    </div>
     <div class="p-2">
 
     <div class="d-flex flex-column-reverse">
