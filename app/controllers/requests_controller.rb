@@ -31,12 +31,12 @@ class RequestsController < ApplicationController
       @request.status = status_params[:status]
       @request.save!
       if status_params[:status] == "Accepted"
-        Message.create(sender: current_user, receiver: @request.user, content: "Your request has been accepted! Lets start planning :)")
+        Message.create(sender: current_user, receiver: @request.user, content: "(Automated Message) -     Your request has been accepted. Let's start planning!:)")
         @request.event.requests.where(status: "Pending").update_all(status: "Declined")
         redirect_to_path =  new_message_path(@request.user, {event: @request.event.id} )
       end
     end
-    
+
     redirect_to redirect_to_path
   end
 

@@ -1,11 +1,33 @@
 <div class="d-flex message-container" id="message-<%= message.id %>">
+
+<% if message.sender != current_user %>
+
   <div class="card pt-1 px-2 mt-0" style="border: none;">
     <%= cl_image_tag(message.sender.photo.key, class: "avatar") %>
     <small><%= message.created_at.strftime("%l:%M%p") %></small>
   </div>
 
-  <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left">
+  <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left; max-width: 250px;">
     <span><strong><%= message.sender.first_name %></strong></span>
     <p><%= message.content %></p>
   </div>
+
+<% else %>
+
+<div style="display: flex; flex-direction: row-reverse; width: 100%">
+
+  <div class="card pt-1 px-2 mt-0" style="border: none;">
+    <%= cl_image_tag(message.sender.photo.key, class: "avatar") %>
+    <small><%= message.created_at.strftime("%l:%M%p") %></small>
+  </div>
+
+  <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left; max-width: 250px;">
+    <span class="pl-3"><strong><%= message.sender.first_name %></strong></span>
+    <p class="pl-3"><%= message.content %></p>
+  </div>
+
+</div>
+
+<% end %>
+
 </div>
