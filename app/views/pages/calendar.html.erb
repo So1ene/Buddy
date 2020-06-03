@@ -13,7 +13,7 @@
     <%= link_to "Search for a buddy", welcome_path, class: "btn btn-primary" %>
   <% else %>
       <%= render partial: "filters" %>
-    <div class="pt-1"></div>
+    <div class="pt-1 pt-2 pb-3"></div>
     <%= render partial: "calendar", locals: { events: @events } %>
     <div class="p-2"></div>
 
@@ -56,10 +56,3 @@
     </div>
   <% end %>
 </div>
-
-
-
-              <div>
-                  <%#= cl_image_tag(event.requests.find_by(status:"Accepted").user.photo.key, class: "card-avatar") %>
-                  <%#= cl_image_tag(event.user.photo.key, class: "card-avatar", style: "right: 50px;") %>
-              </div>
