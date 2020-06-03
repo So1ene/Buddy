@@ -10,12 +10,12 @@
     <h2 style="text-align: center"><strong>You are now buddies for <%= @event.name %>!</strong></h2>
     <div>
       <%= cl_image_tag(@user.photo.key, class: "avatar") %>
-      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
+      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>      
     </div>
     <p>Start your conversation below...</p>
-     <%= link_to event_path(@event) do %>
-    <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view event</h2>
-    <% end %>
+     <%= link_to request_path(@request) do %>
+      <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view request</h2>
+     <% end %>
   </div>
 
   <div id="messages" style="display: inline-block">

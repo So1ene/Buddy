@@ -8,8 +8,14 @@ class MessagesController < ApplicationController
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
-    @event = Event.find(params[:event])
+    @event = Event.find(params[:event])    
     @user = User.find(params[:user_id])
+    
+    if @user == @event.user
+      @request = @event.requests.find_by(user: current_user)
+    else
+      @request = @event.requests.find_by(user: @user)
+    end
     @messages = Message.where("(sender_id = :user AND receiver_id = :other_user) OR (sender_id = :other_user AND receiver_id = :user)", user: current_user, other_user: @user).order(created_at: :asc)
   end
 
