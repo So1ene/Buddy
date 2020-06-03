@@ -41,10 +41,12 @@
                 label: "Spoken Languages",
                 collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :password,
+                label: "Change password",
                 hint: "leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
+                label: "New password confirmation",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
