@@ -38,6 +38,7 @@
                 input_html: { autocomplete: "" } %>
     <%= f.input :language_ids,
                 required: false,
+                label: "Spoken Languages",
                 collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",

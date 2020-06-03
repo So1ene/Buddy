@@ -30,7 +30,8 @@
                 input_html: { autocomplete: "" }%>
     <%= f.input :language_ids,
                 required: false,
-                collection: Language.all, input_html: { multiple: true } %>  
+                label: "Spoken Languages",
+                collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :email,
                 required: true,
                 input_html: { autocomplete: "email" }%>
