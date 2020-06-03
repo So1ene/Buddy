@@ -3,8 +3,8 @@
 <% end %>
 <h1 class="page-title"><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></h1>
 
-<div class="container">
-  <h1 class="btn btn-primary align-items-right">view event</h1>
+<div id="event-chat" class="container">
+  
 
   <div class="card align-items-center mb-4 mt-3" style="border: none;">
     <h2 style="text-align: center"><strong>You are now buddies for <%= @event.name %>!</strong></h2>
@@ -13,6 +13,9 @@
       <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
     </div>
     <p>Start your conversation below...</p>
+     <%= link_to event_path(@event) do %>
+    <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view event</h2>
+    <% end %>
   </div>
 
   <div id="messages" style="display: inline-block">
