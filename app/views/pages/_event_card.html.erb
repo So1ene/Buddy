@@ -1,9 +1,9 @@
 <div class="card-product">
-  <%= link_to event_path(event) do %>
-    <%=  cl_image_tag url_for(event.photo), height: 300, width: 400, crop: :fill %>
-  <% end %>
+  <%#= link_to event_path(event), style: "width: 45%;" do %>
+  <%= link_to '', event_path(event), style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
+  <%# end %>
 
-  <div class="flex-column">
+  <div class="flex-column card-right">
     <ul class="card-product-infos ml-2">
       <%= link_to event_path(event) do %>
         <li><h2 style="margin: 0"><%= event.name %></h2></li>
@@ -18,9 +18,6 @@
       <% end %>
       <% unless event.categories.second.nil? %>
         <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
-      <% end %>
-      <% unless event.categories.third.nil? %>
-        <span class="card-filter" style="background-color: <%= event.categories.third.color %>"><%= event.categories.third.name %></span>
       <% end %>
     </div>
       <div>
