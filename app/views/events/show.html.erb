@@ -4,39 +4,42 @@
 
 <h1 class="page-title">BUDDY</h1>
 
-<div class="container">
-  <div class="card shadow p-3 mb-5 bg-white rounded width: 50rem;" style="height: calc(100vh - -60px); position: relative;">
+<div id="events-show" class="container">
+  <div class="card shadow mb-5 bg-white rounded width: 50rem;">
     <div class="card-show">
       
-      <div style="max-width: 730px; max-height: 225px;">
-        <%= cl_image_tag @event.photo.key, crop: :fill, class: "w-100" %>
-      </div>
-
+      <div style="max-width: 730px; max-height: 225px; background-image: url('<%= cl_image_path @event.photo.key, crop: :fill %>')" class="event-banner">
+        
+        <div style="text-align:right;" class="event-avatar">
+          <div data-toggle="modal" data-target="#exampleModalCenter">
+            <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-medium" %>
+          </div>
+        </div>
         <% if @event.user == current_user %>
-          <div style="text-align:right; width:100%; padding:0;">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-<%= @event.id %>">
+          <div style="text-align:right; width:100%; padding:0;" class="event-delete">
+            <button id="trash" type="button" class="btn btn-primary" data-toggle="modal" data-target="#event-<%= @event.id %>">
               <i class="fas fa-trash"></i>
             </button>
           </div>
         <% end %>
       </div>
-        <div style="text-align:right;">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-            <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
-          </button>
+
+        
+      <div class="event-body">
+        
+        <div class="cards description">
+          <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
+          <p style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></p>
+          <p><%= @event.address %></p>
+          <p><%= @event.ticket_url %></p>
+          <p><%= @event.description %></p>
+          <% if @event.user == current_user %>
+            <p><%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
+          <% else %>
+            <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
+          <% end %>
         </div>
-      <div class="cards description">
-        <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
-        <p style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></p>
-        <p><%= @event.address %></p>
-        <p><%= @event.ticket_url %></p>
-        <p><%= @event.description %></p>
-      </div>
-      <% if @event.user == current_user %>
-        <p><%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
-      <% else %>
-        <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
-      <% end %>
+      
       </div>
 
 

@@ -13,7 +13,7 @@
 
           <div class="row no-gutters">
           <div class="d-flex col-md-4">
-            <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-ghost" data-toggle="modal" data-target="#exampleModalCenter-<%= request.id %>">
               <%= cl_image_tag url_for(request.user.photo), class:"avatar-request" %>
             </button>
             <div class="request-info">
@@ -39,10 +39,9 @@
           </div>
         </div>
         </div>
-        <% end  %>
 
       <!-- Profile Modal, do not change! -->
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="exampleModalCenter-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="height:500px;border-radius: 6px">
             <div>
@@ -54,18 +53,20 @@
             <div class="modal-body" style="margin:20px" >
 
               <div style="text-align:center;">
-                <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+                <%= cl_image_tag request.user.photo.key, crop: :fill, class: "avatar-large" %>
               </div><br>
-              <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
+              <h4 style="text-align:center;"> <%= request.user.first_name %> <%= request.user.last_name %> </h4>
               <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-              Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
-              Age: <%= @event.user.age %><br><br>
-              <%= @event.user.bio %>
+              Languages: <%= request.user.languages.map(&:name).join(', ') %><br>
+              Age: <%= request.user.age %><br><br>
+              <%= request.user.bio %>
             </div>
           </div>
         </div>
       </div>
       <!-- Profile Modal, do not change! -->
+
+        <% end  %>
 
     </div>
   </div>
