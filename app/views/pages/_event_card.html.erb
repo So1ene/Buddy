@@ -2,17 +2,19 @@
   <%= link_to event_path(event) do %>
     <%=  cl_image_tag url_for(event.photo), height: 300, width: 400, crop: :fill %>
   <% end %>
+
   <div class="flex-column">
-    <ul class="card-product-infos">
+    <ul class="card-product-infos ml-2">
       <%= link_to event_path(event) do %>
         <li><h2 style="margin: 0"><%= event.name %></h2></li>
       <% end %>
       <li><%= event.address %></li>
       <li style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
     </ul>
+
     <div class="d-flex">
       <% unless event.categories.first.nil? %>
-        <span class="card-filter ml-2" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
+        <span class="card-filter ml-3" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
       <% end %>
       <% unless event.categories.second.nil? %>
         <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
