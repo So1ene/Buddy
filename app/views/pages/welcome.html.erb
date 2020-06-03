@@ -1,24 +1,37 @@
 <span class="back-button"></span>
 <h1 class="page-title">BUDDY</h1>
+  <div class="container">
 
-<div class="container">
+    <div class="py-2"></div>
+      <%= cl_image_tag @user.photo.key, height: 130, width: 130, crop: :fill, class: "avatar-large mt-3 mb-2" %>
+      <h1 class="mt-2 mb-5"><strong>Hi <%= @user.first_name %></strong></h1>
+      <h2 class="mb-3 mt-2">Browse events</h2>
 
-  <div class="py-2"></div>
-    <%= cl_image_tag @user.photo.key, height: 130, width: 130, crop: :fill, class: "avatar-large mt-3 mb-2" %>
-    <h1 class="mt-2 mb-5"><strong>Hi <%= @user.first_name %></strong></h1>
-    <h2 class="mb-3 mt-2">Browse events</h2>
-
-    <%= form_for @user, url: root_path, method: :patch do |f| %>
-      <div class="d-flex">
-        <div>
-        <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
+      <%= form_for @user, url: root_path, method: :patch do |f| %>
+        <div class="d-flex">
+          <div>
+          <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
+          </div>
+          <div>
+          <%= f.submit '>', class: "btn btn-primary", style: "padding: 7px 12px; margin-bottom: 2px; border-radius: 2px; color: white;" %>
+          </div>
+          <% end %>
         </div>
-        <div>
-        <%= f.submit '>', class: "btn btn-primary", style: "padding: 7px 12px; margin-bottom: 2px; border-radius: 2px; color: white;" %>
-        </div>
-        <% end %>
-      </div>
-    <h2 class="mt-4">or</h2>
-    <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2", style: "color: white;" %>
+      <h2 class="mt-4">or</h2>
+      <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2", style: "color: white;" %>
 
-</div>
+  </div>
+  </div>
+
+<style>
+  @media screen and (max-width: 600px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 26px;
+  }
+}
+
+</style>
