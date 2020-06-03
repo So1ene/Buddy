@@ -1,4 +1,5 @@
 .card-filter {
+  white-space: nowrap;
   padding: 6px 12px;
   border-radius: 6px;
   margin: 6px;
@@ -11,16 +12,17 @@
 
 .card-product {
   overflow: hidden;
-  width: 500px;
-  height: 170px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
-  align-items: center;
   margin-bottom: 12px;
   color: #3B3B3B;
   position: relative;
   border-radius: 6px;
+}
+
+.card-right {
+  width: 50%;
 }
 
 img.card-img {
@@ -31,17 +33,17 @@ img.card-img {
 
 .card-product img {
   height: 170px;
-  width: 170px;
+  width: 100%;
   object-fit: cover;
 }
 
 .card-product h2 {
   font-size: 22px;
+  max-width: 78%;
   font-weight: bold;
   margin-bottom: 10px;
   color: black;
   max-height: 50px;
-  max-width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
@@ -99,5 +101,5 @@ img.card-img {
   width: 60px;
   border-radius: 50%;
  }
- 
+
 }
