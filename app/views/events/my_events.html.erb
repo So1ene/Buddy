@@ -7,20 +7,20 @@
   <div class="w-100">
     <h1 class="title"><strong>Choose a buddy for your activities!</strong></h1>
   </div>
-  <div class="card-body">
+  <div>
     <div class="d-flex flex-column-reverse">
       <% @events.each do |event|  %>
         <%= link_to event_path(event) do %>
         <div class="card-product d-flex flex-row m-2 shadow">
           <div style="max-width: 350px; max-height: 300px;">
-            <%= cl_image_tag event.photo.key, crop: :fill, class:"card-img" %>
+            <%= cl_image_tag event.photo.key, crop: :fill, class:"img" %>
           </div>
-          <div class="m-3">
-            <h2 style="margin: 0"><strong><%= event.name %></h2></strong>
+          <div class="card-product-infos ml-2 mt-2">
+            <h2 class="mt-2 mb-1" style="margin: 0"><strong><%= event.name %></strong></h2>
           <% end %>
-            <p style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></p>
-            <p><%= event.address %></p>
-            <%= link_to 'Choose your Buddy!', incoming_requests_path(event), class: "btn btn-primary mb-3" %>
+            <p class="mb-1" style="font-size: 14px"><%= event.address %></p>
+            <p style="color:gray; font-size: 14px;"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></p>
+            <%= link_to 'Choose Buddy', incoming_requests_path(event), class: "btn btn-primary mb-3 ml-0" %>
           </div>
         </div>
       <% end %>
