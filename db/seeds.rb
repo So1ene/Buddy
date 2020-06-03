@@ -154,17 +154,17 @@ def event_name(counter)
   return "Just Drinks" if counter == 8
   return "Dinner at Herbert's" if counter == 9
   return "Summer festival" if counter == 10
-  return "Beach relaxation" if counter == 11
+  return "Beach Relaxation" if counter == 11
   return "Ice Skating" if counter == 12
   return "Skiing" if counter == 13
   return "Hot-Air Balloon Ride" if counter == 14
   return "Theater Show" if counter == 15
-  return "Downtown Fun" if counter == 16
-  return "Pink After-Party" if counter == 17
+  return "Downtown Hangout" if counter == 16
+  return "Pink Afterparty" if counter == 17
   return "Surfing" if counter == 18
   return "Rave" if counter == 19
   return "Hike with Me" if counter == 20
-  return "Open Mic Night" if counter == 21
+  return "Open Mic Day" if counter == 21
   return "Light Garden" if counter == 22
   return "Theme Park" if counter == 23
 end
@@ -196,18 +196,18 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Dinner at Herbert's"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Summer festival"), category: Category.find_by(name: "festival"))
   EventCategory.create!(event: Event.find_by(name: "Summer festival"), category: Category.find_by(name: "outdoors"))
-  EventCategory.create!(event: Event.find_by(name: "Beach relaxation"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Beach Relaxation"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Ice Skating"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Skiing"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Skiing"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Hot-Air Balloon Ride"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Hot-Air Balloon Ride"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theater Show"), category: Category.find_by(name: "theater"))
-  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "drinks"))
-  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "outdoors"))
-  EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "other"))
-  EventCategory.create!(event: Event.find_by(name: "Pink After-Party"), category: Category.find_by(name: "drinks"))
-  EventCategory.create!(event: Event.find_by(name: "Pink After-Party"), category: Category.find_by(name: "food"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Hangout"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Hangout"), category: Category.find_by(name: "outdoors"))
+  EventCategory.create!(event: Event.find_by(name: "Downtown Hangout"), category: Category.find_by(name: "other"))
+  EventCategory.create!(event: Event.find_by(name: "Pink Afterparty"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Pink Afterparty"), category: Category.find_by(name: "food"))
   EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "live music"))
@@ -215,8 +215,8 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "live music"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Night"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "outdoors"))
