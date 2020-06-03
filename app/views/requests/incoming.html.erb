@@ -2,11 +2,10 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title">BUDDY</h1>
-
+<div class="container">
+    <div class="row">
 <% if @event.requests.present? %>
 
-  <div class="container">
-    <div class="row">
       <h1 class="title"> <%= @event.name %> </h1>
       <% @event.requests.each do |request| %>
         <div class="card card-request shadow p-3 mb-5 bg-white rounded" style="width: 30rem;" style="height: calc(100vh - 160px); position: relative;">
@@ -41,7 +40,7 @@
         </div>
 
       <!-- Profile Modal, do not change! -->
-      <div class="modal fade" id="exampleModalCenter-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade modal-profile" id="exampleModalCenter-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="height:500px;border-radius: 6px">
             <div>
@@ -56,10 +55,12 @@
                 <%= cl_image_tag request.user.photo.key, crop: :fill, class: "avatar-large" %>
               </div><br>
               <h4 style="text-align:center;"> <%= request.user.first_name %> <%= request.user.last_name %> </h4>
-              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-              Languages: <%= request.user.languages.map(&:name).join(', ') %><br>
-              Age: <%= request.user.age %><br><br>
-              <%= request.user.bio %>
+              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:60%;text-align:left;margin-left:" >
+              <span class="font-weight-light">
+                Languages: <%= request.user.languages.map(&:name).join(', ') %><br>
+                Age: <%= request.user.age %><br><br>
+              </span>
+              <span class="font-weight-normal"> <%= request.user.bio %> <span>
             </div>
           </div>
         </div>
@@ -68,11 +69,10 @@
 
         <% end  %>
 
-    </div>
-  </div>
 <% else %>
-  <div>
-    <h2> You don't have any requests to join your event yet. Check this page again in a few days! </h2>
-  </div>
+        <h2> You don't have any requests to join your event yet. Check this page again in a few days! </h2>
 <% end %>
 
+
+    </div>
+  </div>
