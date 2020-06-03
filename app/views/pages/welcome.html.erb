@@ -3,9 +3,9 @@
 
 <div class="container">
 
-  <div class="py-3"><p></p></div>
-    <%= cl_image_tag @user.photo.key, height: 150, width: 150, crop: :fill, class: "avatar-large mt-3" %>
-    <h1 class="mt-4 mb-5">Hi <%= @user.first_name %></h1>
+  <div class="py-2"></div>
+    <%= cl_image_tag @user.photo.key, height: 130, width: 130, crop: :fill, class: "avatar-large mt-3 mb-2" %>
+    <h1 class="mt-2 mb-5"><strong>Hi <%= @user.first_name %></strong></h1>
     <h2 class="mb-3 mt-2">Browse events</h2>
 
     <%= form_for @user, url: root_path, method: :patch do |f| %>
@@ -18,7 +18,7 @@
         </div>
         <% end %>
       </div>
-    <h2 class="mt-5">or</h2>
-    <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5", style: "color: white;" %>
+    <h2 class="mt-4">or</h2>
+    <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2", style: "color: white;" %>
 
 </div>
