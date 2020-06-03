@@ -27,7 +27,7 @@ class EventsController < ApplicationController
     # => POST   /events
     @event = Event.new(event_params)
     @event.user = current_user
-    if params[:event][:category_ids].length != 1 && params[:event][:category_ids].length <= 4 && @event.save
+    if params[:event][:category_ids].length != 1 && params[:event][:category_ids].length < 4 && @event.save
       category_ids = params[:event][:category_ids]
       category_ids.delete_at(0)
       category_ids.each do |catetogy_id|
