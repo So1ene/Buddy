@@ -30,7 +30,7 @@
                 input_html: { autocomplete: "" }%>
     <%= f.input :language_ids,
                 required: false,
-                label: "Spoken Languages (Ctrl-click to select multiple)",
+                label: "Spoken Languages",
                 collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :email,
                 required: true,
@@ -49,3 +49,26 @@
   </div>
 <% end %>
 </div>
+
+<style>
+  select {
+    height: 100px;
+    width: 100px;
+    display: block;
+  }
+</style>
+<script>
+  $('option').mousedown(function(e) {
+    e.preventDefault();
+    var originalScrollTop = $(this).parent().scrollTop();
+    console.log(originalScrollTop);
+    $(this).prop('selected', $(this).prop('selected') ? false : true);
+    var self = this;
+    $(this).parent().focus();
+    setTimeout(function() {
+      $(self).parent().scrollTop(originalScrollTop);
+    }, 0);
+
+    return false;
+  });
+</script>

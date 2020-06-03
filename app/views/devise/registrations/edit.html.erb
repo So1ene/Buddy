@@ -38,7 +38,7 @@
                 input_html: { autocomplete: "" } %>
     <%= f.input :language_ids,
                 required: false,
-                label: "Spoken Languages (Ctrl-click to select multiple)",
+                label: "Spoken Languages",
                 collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
@@ -65,3 +65,29 @@
 <%= link_to "Back", :back %>
 
 </div>
+
+
+
+<style>
+  select {
+    height: 100px;
+    width: 100px;
+    display: block;
+  }
+</style>
+<script>
+  window.onmousedown = function (e) {
+      var el = e.target;
+      if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+          e.preventDefault();
+
+          // toggle selection
+          if (el.hasAttribute('selected')) el.removeAttribute('selected');
+          else el.setAttribute('selected', '');
+
+          // hack to correct buggy behavior
+          var select = el.parentNode.cloneNode(true);
+          el.parentNode.parentNode.replaceChild(select, el.parentNode);
+      }
+  }
+</script>
