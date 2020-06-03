@@ -157,7 +157,7 @@ header {
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
 
-.page-title {
+.page- {
   display: none;
 }
   .back-button {
@@ -281,7 +281,7 @@ header nav a:hover {
   transition: 0.3s;
 }
 
-.page-title {
+.page- {
   letter-spacing: 2px;
   color: white;
   font-size: 18px;

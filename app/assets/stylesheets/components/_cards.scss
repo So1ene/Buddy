@@ -77,3 +77,26 @@ img.card-img {
   justify-content: flex-start;
   margin-bottom: 35px;
 }
+
+
+.card-request {
+  display: flex;
+  align-items: center;
+  max-width: 100vw;
+  width: 100px;
+
+ .request-info {
+  padding: 16px;
+  font-size: 15px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  margin-top: 8px;
+  margin-left: 2px;
+ }
+
+ .avatar-request {
+  width: 60px;
+  border-radius: 50%;
+ }
+ 
+}
