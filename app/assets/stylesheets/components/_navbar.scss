@@ -1,6 +1,8 @@
 
 // Don't touch this file, the navbar is perfect right now and somehow works, don't break it!
 
+// Daniela if you touch this file again I will cry, literally, I spent so long on this, please make a new file next time
+
 
 header {
   position: fixed;
@@ -157,7 +159,7 @@ header {
 // This media query styles the menu for a large environment (think a desktop)
 @media screen and (min-width: 1220px) {
 
-.page- {
+.page-title {
   display: none;
 }
   .back-button {
@@ -281,7 +283,7 @@ header nav a:hover {
   transition: 0.3s;
 }
 
-.page- {
+.page-title {
   letter-spacing: 2px;
   color: white;
   font-size: 18px;
