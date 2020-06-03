@@ -13,7 +13,7 @@
       <li style="color:#222; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %></li>
     </ul>
 
-    <div class="d-flex">
+    <div class="d-flex pb-1">
       <% unless event.categories.first.nil? %>
         <span class="card-filter ml-3" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
       <% end %>
