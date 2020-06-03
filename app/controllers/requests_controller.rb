@@ -24,16 +24,20 @@ class RequestsController < ApplicationController
 
   def update
     # => PATCH  /requests/:id
+    session[:return_to] = request.referer
+    redirect_to_path = session.delete(:return_to)
     @request = Request.find(params[:id])
     if ["Accepted", "Declined", "Deleted"].include?(status_params[:status])
       @request.status = status_params[:status]
       @request.save!
       if status_params[:status] == "Accepted"
-        Message.create(sender: current_user, receiver: @request.user, content: "Your request has been accepted! Lets start planning :) (this is an automated message)")
+        Message.create(sender: current_user, receiver: @request.user, content: "Your request has been accepted! Lets start planning :)")
+        @request.event.requests.where(status: "Pending").update_all(status: "Declined")
+        redirect_to_path =  new_message_path(@request.user, {event: @request.event.id} )
       end
     end
-    session[:return_to] = request.referer
-    redirect_to session.delete(:return_to)
+    
+    redirect_to redirect_to_path
   end
 
   def submitted
