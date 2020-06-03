@@ -4,7 +4,9 @@
 <div class="container">
 
 
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="w-100">
+<h1 class="title py-3"><strong>Edit <%= resource_name.to_s.humanize %></strong></h1>
+</div>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -36,7 +38,7 @@
                 input_html: { autocomplete: "" } %>
     <%= f.input :language_ids,
                 required: false,
-                collection: Language.all, input_html: { multiple: true } %>   
+                collection: Language.all, input_html: { multiple: true } %>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
                 required: false,

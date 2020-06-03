@@ -10,7 +10,6 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
   end
-  get '/requests/:id/delete', to: 'requests#delete', as: 'delete_request'
 
   get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
   get '/events/:event_id/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'

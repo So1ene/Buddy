@@ -6,8 +6,9 @@
   <div>
     <div class="form">
 
-      <h1 class="title py-4"><strong>Suggest an event</strong></h1>
-
+      <div class="w-100">
+        <h1 class="title py-4"><strong>Suggest an event</strong></h1>
+      </div>
       <%= simple_form_for @event do |f| %>
         <%= f.input :name, placeholder: 'Event name', label: false %>
         <%= f.input :photo, placeholder: 'photo', label: false %>
