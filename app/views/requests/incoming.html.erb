@@ -55,10 +55,12 @@
                 <%= cl_image_tag request.user.photo.key, crop: :fill, class: "avatar-large" %>
               </div><br>
               <h4 style="text-align:center;"> <%= request.user.first_name %> <%= request.user.last_name %> </h4>
-              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-              Languages: <%= request.user.languages.map(&:name).join(', ') %><br>
-              Age: <%= request.user.age %><br><br>
-              <%= request.user.bio %>
+              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:60%;text-align:left;margin-left:" >
+              <span class="font-weight-light">
+                Languages: <%= request.user.languages.map(&:name).join(', ') %><br>
+                Age: <%= request.user.age %><br><br>
+              </span>
+              <span class="font-weight-normal"> <%= request.user.bio %> <span>
             </div>
           </div>
         </div>
