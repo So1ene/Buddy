@@ -2,11 +2,10 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title">BUDDY</h1>
-
+<div class="container">
+    <div class="row">
 <% if @event.requests.present? %>
 
-  <div class="container">
-    <div class="row">
       <h1 class="title"> <%= @event.name %> </h1>
       <% @event.requests.each do |request| %>
         <div class="card card-request shadow p-3 mb-5 bg-white rounded" style="width: 30rem;" style="height: calc(100vh - 160px); position: relative;">
@@ -41,7 +40,7 @@
         </div>
 
       <!-- Profile Modal, do not change! -->
-      <div class="modal fade" id="exampleModalCenter-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade modal-profile" id="exampleModalCenter-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="height:500px;border-radius: 6px">
             <div>
@@ -68,11 +67,10 @@
 
         <% end  %>
 
-    </div>
-  </div>
 <% else %>
-  <div>
-    <h2> You don't have any requests to join your event yet. Check this page again in a few days! </h2>
-  </div>
+        <h2> You don't have any requests to join your event yet. Check this page again in a few days! </h2>
 <% end %>
 
+
+    </div>
+  </div>
