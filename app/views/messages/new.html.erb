@@ -1,7 +1,7 @@
 <%= link_to messages_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<h1 class="page-title" style="top:1.8rem; font-size: 24px"><strong><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></strong></h1>
+<h1 class="page-title" style="top:1.8rem; font-size: 24px"><strong><%= "#{@user.first_name.capitalize}" %></strong></h1>
 <div class="container">
 
 
@@ -36,7 +36,7 @@
 
     <!-- Event popup Modal, do not change! -->
 
-      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="overflow-y: hidden">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="margin-bottom:120px;height:645px;border-radius: 6px">
             <div>
@@ -46,57 +46,74 @@
               </button>
             </div>
             <div class="modal-body" style="margin:20px height: 50%" >
+
               <% if @event.user != current_user %>
-
-
-              <div style="text-align:center;">
-                <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
-              </div>
-              <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
-              <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
-              <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-              <div class="px-2">
-                <span style="color:gray">Languages: <%= @event.user.languages.map(&:name).join(', ') %></span><br />
-                <span class="pb-3"style="color:gray">Age: <%= @event.user.age %></span><br /><br />
-                <span><%= @event.user.bio %></span>
-              </div>
-
-
-            </div>
-
-
-              <div class="card-product" style="width: 100%; border-radius: 0; border-left: 12px solid white; border-right: 12px solid white;">
-
-              <div style="width: 45%; background-size: cover; background-position: center; background-image: url(<%= cl_image_path url_for(@event.photo), height: 300, width: 400, crop: :fill %>)"></div>
-
-              <div class="flex-column card-right">
-                <ul class="card-product-infos ml-2" style="padding-right:0 !important">
-
-                    <li><h2 style="margin: 0;max-width: 156px !important; white-space:nowrap; max-height: 20px;"><%= @event.name %></h2></li>
-
-                  <li><%= @event.address %></li>
-                  <li style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%I:%M%p") %></li>
-                  <li style="color:#222; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %></li>
-                </ul>
-
-                <div class="d-flex pb-1">
-                  <% unless @event.categories.first.nil? %>
-                    <span class="card-filter ml-3" style="background-color: <%= @event.categories.first.color %>"><%= @event.categories.first.name %></span>
-                  <% end %>
-                  <% unless @event.categories.second.nil? %>
-                    <span class="card-filter" style="background-color: <%= @event.categories.second.color %>"><%= @event.categories.second.name %></span>
-                  <% end %>
+                <div style="text-align:center;">
+                  <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
                 </div>
-              </div>
-            </div>
-
-
-
-
-
+                <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
+                <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
+                <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
+                <div class="px-2">
+                  <span style="color:gray">Languages: <%= @event.user.languages.map(&:name).join(', ') %></span><br />
+                  <span class="pb-3"style="color:gray">Age: <%= @event.user.age %></span><br /><br />
+                  <span><%= @event.user.bio %></span>
+                </div>
+                </div>
+                  <div class="card-product" style="width: 100%; border-radius: 0; border-left: 12px solid white; border-right: 12px solid white;">
+                  <div style="width: 45%; background-size: cover; background-position: center; background-image: url(<%= cl_image_path url_for(@event.photo), height: 300, width: 400, crop: :fill %>)"></div>
+                  <div class="flex-column card-right">
+                    <ul class="card-product-infos ml-2" style="padding-right:0 !important">
+                        <li><h2 style="margin: 0;max-width: 156px !important; white-space:nowrap; max-height: 20px;"><%= @event.name %></h2></li>
+                      <li><%= @event.address %></li>
+                      <li style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%I:%M%p") %></li>
+                      <li style="color:#222; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %></li>
+                    </ul>
+                    <div class="d-flex pb-1">
+                      <% unless @event.categories.first.nil? %>
+                        <span class="card-filter ml-3" style="background-color: <%= @event.categories.first.color %>"><%= @event.categories.first.name %></span>
+                      <% end %>
+                      <% unless @event.categories.second.nil? %>
+                        <span class="card-filter" style="background-color: <%= @event.categories.second.color %>"><%= @event.categories.second.name %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
 
               <% else %>
-              <!-- copy code above but replace @event.user with event.requests.find_by(status:"Accepted").user -->
+              <!-- copy code above but replace @event.user with @event.requests.find_by(status:"Accepted").user -->
+
+                <div style="text-align:center;">
+                  <%= cl_image_tag @event.requests.find_by(status:"Accepted").user.photo.key, crop: :fill, class: "avatar-large" %>
+                </div>
+                <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
+                <h4 style="text-align:center;"> <%= @event.requests.find_by(status:"Accepted").user.first_name %> <%= @event.requests.find_by(status:"Accepted").user.last_name %> </h4>
+                <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
+                <div class="px-2">
+                  <span style="color:gray">Languages: <%= @event.requests.find_by(status:"Accepted").user.languages.map(&:name).join(', ') %></span><br />
+                  <span class="pb-3"style="color:gray">Age: <%= @event.requests.find_by(status:"Accepted").user.age %></span><br /><br />
+                  <span><%= @event.requests.find_by(status:"Accepted").user.bio %></span>
+                </div>
+                </div>
+                  <div class="card-product" style="width: 100%; border-radius: 0; border-left: 12px solid white; border-right: 12px solid white;">
+                  <div style="width: 45%; background-size: cover; background-position: center; background-image: url(<%= cl_image_path url_for(@event.photo), height: 300, width: 400, crop: :fill %>)"></div>
+                  <div class="flex-column card-right">
+                    <ul class="card-product-infos ml-2" style="padding-right:0 !important">
+                        <li><h2 style="margin: 0;max-width: 156px !important; white-space:nowrap; max-height: 20px;"><%= @event.name %></h2></li>
+                      <li><%= @event.address %></li>
+                      <li style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%I:%M%p") %></li>
+                      <li style="color:#222; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %></li>
+                    </ul>
+                    <div class="d-flex pb-1">
+                      <% unless @event.categories.first.nil? %>
+                        <span class="card-filter ml-3" style="background-color: <%= @event.categories.first.color %>"><%= @event.categories.first.name %></span>
+                      <% end %>
+                      <% unless @event.categories.second.nil? %>
+                        <span class="card-filter" style="background-color: <%= @event.categories.second.color %>"><%= @event.categories.second.name %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
               <% end %>
 
 
