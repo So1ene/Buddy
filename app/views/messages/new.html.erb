@@ -1,7 +1,7 @@
 <%= link_to messages_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<h1 class="page-title"><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></h1>
+<h1 class="page-title" style="top:1.8rem; font-size: 24px"><strong><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></strong></h1>
 
 <div id="event-chat" class="container">
 
@@ -10,7 +10,7 @@
     <h2 style="text-align: center"><strong>You are now buddies for <%= @event.name %>!</strong></h2>
     <div>
       <%= cl_image_tag(@user.photo.key, class: "avatar") %>
-      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>      
+      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
     </div>
     <p>Start your conversation below...</p>
      <%= link_to request_path(@request) do %>
