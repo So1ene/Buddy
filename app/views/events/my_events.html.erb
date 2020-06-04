@@ -7,6 +7,10 @@
 <div style="width: 90vw d-flex">
 <h1 class="title py-3" style="width: 260px; font-size: 26px; margin-right: 60px" id="filters"><strong>Choose a buddy for your activities!</strong></h1>
 </div>
+  <% if @events.length == 0 %>
+    <p>You don't have any events!</p>
+    <%= link_to "Suggest an event", new_event_path, class: "btn btn-primary" %>
+  <% end %>
 
 
     <div class="d-flex flex-column-reverse" style="width: 360px">

@@ -233,28 +233,46 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
 end
 
-def random_address
-  [
-  "22 Chemin Macdonald, Montreal",
-  "87 Saint-Catherine E., Montreal",
+def random_address(counter)
+  addresses = [
   "1312 Wolfe St, Montreal",
   "300 Ontario Est, Montreal",
   "1254 rue MacKay, Montreal",
   "1627 St. Denis, Montreal",
-  "1351 Rachel St East, Montreal",
-  "1470 Crescent street, Montreal",
+  "4627 St Denis St, Montreal",
   "1219 St. Laurent, Montreal",
   "104 Saint-Paul E., Montreal",
   "4101 Sherbrooke St E, Montreal",
+  "4338 St Denis St, Montreal",
   "5200 Brebeuf St, Montreal",
   "7070 Henri Julien Ave, Montreal",
   "3800 Queen Mary Rd, Montreal",
   "138 Atwater Ave, Montreal",
-  "185 Saint-Catherine St W, Montreal",
   "859 Sherbrooke St W, Montreal",
   "3895 St Laurent Blvd, Montreal",
-  "2098 Kimberley St, Montreal"
+  "2098 Kimberley St, Montreal",
+  "1499 Jeanne-Mance St, Montreal",
+  "1594 St Denis St, Montreal",
+  "1230 St Hubert St, Montreal",
+  "1023 Ontario St E, Montreal",
+  "3660 St Denis St, Montreal",
+  "903 Lorimier Ave, Montreal",
+  "1365 Ontario St E, Montreal",
+  "4701 St Denis St, Montreal",
+  "1603 Ontario St E, Montreal",
+  "994 Rachel St E, Montreal",
+  "536 Duluth Ave E, Montreal",
+  "4408 St Denis St, Montreal",
+  "4185 Drolet St, Montreal",
+  "4801 St Laurent Blvd, Montreal",
+  "4505 St Denis St, Montreal",
+  "4265 Papineau Ave, Montreal",
+  "1251 Gilford St, Montreal",
+  "4710 Lanaudiere St, Montreal",
+  "540 Boucher St, Montreal",
+  "5035 St Denis St, Montreal"
   ]
+  return addresses[counter]
 end
 
 # => Generate events
@@ -272,7 +290,7 @@ def generate_random_events
       event = Event.new(user_id: user.id,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
-                        address: random_address.sample,
+                        address: random_address(counter),
                         description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                         )
       attach_image(event, counter)
@@ -291,7 +309,7 @@ def generate_specific_events
         event = Event.new(user_id: user.id,
                           name: event_name(counter),
                           date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
-                          address: random_address.sample,
+                          address: random_address(counter),
                           description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                           )
         attach_image(event, counter)
