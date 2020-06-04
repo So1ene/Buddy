@@ -27,7 +27,7 @@ def generate_users
            first_name: "Solène",
            last_name: "Duprat",
            age: 22,
-           bio: "My name is Solene and I love dogs! I love outdoor acitivties, so invite me to hike with you and I'll bring my dog!",
+           bio: "My name is Solene and I love dogs! I love outdoor acitivties, invite me to hike with you, I'll bring my dog!",
            living_in: "Montreal"
            )
   solene.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161778/solene.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
@@ -38,7 +38,8 @@ def generate_users
            first_name: "Daniela",
            last_name: "Santana",
            age: 27,
-           bio: "Hi! I'm from Brazil, living in Montreal, and always waiting for the next adventure in this city! Let's explore and have fun together!"
+           bio: "Hi! I'm from Brazil, living in Montreal, and always waiting for my next adventure! Let's explore together!",
+           living_in: "Montreal"
            )
   daniela.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "daniela.jpg", content_type: 'image/jpg')
   daniela.save
@@ -271,7 +272,7 @@ def generate_random_events
       event = Event.new(user_id: user.id,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
-                        address: random_address,
+                        address: random_address.sample,
                         description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                         )
       attach_image(event, counter)
@@ -290,7 +291,7 @@ def generate_specific_events
         event = Event.new(user_id: user.id,
                           name: event_name(counter),
                           date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
-                          address: random_address,
+                          address: random_address.sample,
                           description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                           )
         attach_image(event, counter)
