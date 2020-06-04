@@ -2,8 +2,7 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <h1 class="page-title" style="top:1.8rem; font-size: 24px"><strong><%= "#{@user.first_name.capitalize} #{@user.last_name.first.upcase}" %></strong></h1>
-
-<div id="event-chat" class="container">
+<div class="container">
 
 
   <div class="card align-items-center mb-4 mt-3" style="border: none;">
@@ -23,8 +22,8 @@
       <%= render partial: "message", locals: { message: message } %>
     <% end %>
   </div>
-    <%= simple_form_for [ @event, @user, @message ] do |f| %>
-      <div class="p-2" style="display: flex">
+    <%= simple_form_for [ @event, @user, @message ], id:"new_message" do |f| %>
+      <div class="p-2" style="display: flex", id="event-chat">
         <%= f.input :content, label: false, as: :text, placeholder: "Message #{@user.first_name}", input_html: {rows: 2}, style: "width: 600px !important" %>
         <%= f.button :submit, ">", class: "btn btn-primary", style:"height: 62px; margin-top: 20px" %>
       </div>
@@ -38,3 +37,17 @@
     margin-bottom: none;
   }
 </style>
+
+<script type="text/javascript">
+  // SUBMIT MESSAGE ON ENTER! :)
+      function submitOnEnter(event){
+      if(event.which === 13 && !event.shiftKey){
+          event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+          event.preventDefault();
+          event.target.form.submit();
+      }
+  }
+
+  document.getElementById("new_message").addEventListener("keypress", submitOnEnter);
+
+</script>

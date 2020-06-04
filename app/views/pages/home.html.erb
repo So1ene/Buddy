@@ -39,7 +39,11 @@
         <p>No results for "<%= params[:query] %>"</p>
       <% end %>
       <% if @search_results.length > 0 && params[:query] != "" && params[:query] != nil%>
-      <h2 class="title mt-4" style="margin-right: 90px;"><strong>Search Results</strong></h2>
+
+    <div class="w-100">
+      <h1 class="title py-3">Search Results</h1>
+    </div>
+
         <div class="d-flex flex-column-reverse" style="width: 360px">
           <% @search_results.each do |event|  %>
             <%= render partial: "event_card", locals: { event: event } %>
@@ -47,7 +51,11 @@
         </div>
       <% end %>
 
-      <h2 class="title mt-4 " style="margin-right: 90px;"><strong>Suggested for you</strong></h2>
+
+    <div class="w-100">
+      <h1 class="title pb-3 pt-4">Suggested for you</h1>
+    </div>
+
       <div class="d-flex flex-column-reverse" style="width: 360px">
         <% @events.each do |event|  %>
           <%= render partial: "event_card", locals: { event: event } %>

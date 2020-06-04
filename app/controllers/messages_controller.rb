@@ -8,9 +8,9 @@ class MessagesController < ApplicationController
   def new
     # => GET    /inbox/:user_id
     @message = Message.new
-    @event = Event.find(params[:event])    
+    @event = Event.find(params[:event])
     @user = User.find(params[:user_id])
-    
+
     if @user == @event.user
       @request = @event.requests.find_by(user: current_user)
     else
@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
         @user,
         render_to_string(partial: "message", locals: { message: @message })
       )
-      redirect_to new_message_path(@user, event: @event.id)
+      redirect_to new_message_path(@user, event: @event.id) + "#event-chat"
     else
       render :new
     end
