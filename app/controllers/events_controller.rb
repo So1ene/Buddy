@@ -28,6 +28,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.user = current_user
     if params[:event][:category_ids].length != 0 && params[:event][:category_ids].length < 3 && @event.save
+      @event.update(status: "Pending")
       category_ids = params[:event][:category_ids]
       category_ids.each do |catetogy_id|
         EventCategory.create(category_id: catetogy_id, event_id: @event.id)
