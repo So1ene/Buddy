@@ -26,23 +26,28 @@
     <% end %>
   </div>
     <%= simple_form_for [ @event, @user, @message ], id:"new_message" do |f| %>
-      <div class="p-2" style="display: flex", id="event-chat">
+      <div class="pt-2" style="display: flex", id="event-chat">
         <%= f.input :content, label: false, as: :text, placeholder: "Message #{@user.first_name}", input_html: {rows: 2}, style: "width: 600px !important" %>
         <%= f.button :submit, ">", class: "btn btn-primary", style:"height: 62px; margin-top: 20px" %>
       </div>
     <% end %>
 </div>
-      <!-- Event popup Modal, do not change! -->
+
+
+    <!-- Event popup Modal, do not change! -->
+
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="margin-bottom:120px;height:500px;border-radius: 6px">
+          <div class="modal-content" style="margin-bottom:120px;height:600px;border-radius: 6px">
             <div>
               <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
               <button type="button" class="close pt-3 pr-3" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body" style="margin:20px" >
+            <div class="modal-body" style="margin:20px height: 50%" >
+              <% if @event.user != current_user %>
+
 
               <div style="text-align:center;">
                 <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
@@ -52,11 +57,53 @@
               Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
               Age: <%= @event.user.age %><br><br>
               <%= @event.user.bio %>
+
+
             </div>
+
+
+              <div class="card-product" style="width: 100%; border-radius: 0; border-left: 12px solid white; border-right: 12px solid white;">
+
+              <div style="width: 45%; background-size: cover; background-position: center; background-image: url(<%= cl_image_path url_for(@event.photo), height: 300, width: 400, crop: :fill %>)"></div>
+
+              <div class="flex-column card-right">
+                <ul class="card-product-infos ml-2" style="padding-right:0 !important">
+
+                    <li><h2 style="margin: 0;max-width: 156px !important; white-space:nowrap; max-height: 20px;"><%= @event.name %></h2></li>
+
+                  <li><%= @event.address %></li>
+                  <li style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%I:%M%p") %></li>
+                  <li style="color:#222; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %></li>
+                </ul>
+
+                <div class="d-flex pb-1">
+                  <% unless @event.categories.first.nil? %>
+                    <span class="card-filter ml-3" style="background-color: <%= @event.categories.first.color %>"><%= @event.categories.first.name %></span>
+                  <% end %>
+                  <% unless @event.categories.second.nil? %>
+                    <span class="card-filter" style="background-color: <%= @event.categories.second.color %>"><%= @event.categories.second.name %></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+              <% else %>
+              <!-- copy code above but replace @event.user with event.requests.find_by(status:"Accepted").user -->
+              <% end %>
+
+
           </div>
         </div>
       </div>
-      <!-- Event popup Modal, do not change! -->
+
+    <!-- Event popup Modal, do not change! -->
+
+
 <style>
   .form-control {
     width: 300px;
@@ -68,17 +115,3 @@
     z-index: 1000000 !important;
   }
 </style>
-
-<script type="text/javascript">
-  // SUBMITS MESSAGE ON ENTER! :D But not shift-enter
-      function submitOnEnter(event){
-      if(event.which === 13 && !event.shiftKey){
-          event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
-          event.preventDefault();
-          event.target.form.submit();
-      }
-  }
-
-  document.getElementById("new_message").addEventListener("keypress", submitOnEnter);
-
-</script>
