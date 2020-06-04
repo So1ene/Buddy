@@ -9,7 +9,7 @@
 
   <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left; max-width: 250px;">
     <span><strong><%= message.sender.first_name %></strong></span>
-    <p><%= message.content %></p>
+    <p class="pl-1 pr-3"><%= message.content %></p>
   </div>
 
 <% else %>
@@ -23,7 +23,7 @@
 
   <div class="card p-3 m-2" style="background-color: #F7F7F7; border: none; border-radius: 12px;text-align: left; max-width: 250px;">
     <span class="pl-3"><strong><%= message.sender.first_name %></strong></span>
-    <p class="pl-3"><%= message.content %></p>
+    <p class="pl-2 pr-2"><%= message.content %></p>
   </div>
 
 </div>
