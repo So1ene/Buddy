@@ -21,20 +21,20 @@
         <div class="card-product">
 
           <% if event.user == current_user%>
-            <%= link_to '', new_message_path(event.requests.find_by(status:"Accepted").user, event: event), style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
+            <%= link_to '', new_message_path(event.requests.find_by(status:"Accepted").user, event: event) + "#event-chat", style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
           <% else %>
-            <%= link_to '', new_message_path(event.user, event: event), style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
+            <%= link_to '', new_message_path(event.user, event: event) + "#event-chat", style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
           <% end %>
 
           <div class="flex-column card-right">
             <ul class="card-product-infos ml-2">
 
           <% if event.user == current_user%>
-              <%= link_to new_message_path(event.requests.find_by(status:"Accepted").user, event: event) do %>
+              <%= link_to new_message_path(event.requests.find_by(status:"Accepted").user, event: event) + "#event-chat" do %>
                 <li><h2 style="margin: 0"><%= event.name %></h2></li>
               <% end %>
           <% else %>
-              <%= link_to new_message_path(event.user, event: event) do %>
+              <%= link_to new_message_path(event.user, event: event) + "#event-chat" do %>
                 <li><h2 style="margin: 0"><%= event.name %></h2></li>
               <% end %>
           <% end %>
@@ -53,7 +53,7 @@
               <% end %>
             </div>
             <% if event.user == current_user%>
-              <%= link_to new_message_path(event.requests.find_by(status:"Accepted").user, event: event) do %>
+              <%= link_to new_message_path(event.requests.find_by(status:"Accepted").user, event: event) + "#event-chat" do %>
               <div style="position: absolute; top: 4px; left: 4px; background: white; width: 136px; height: 44px; border-radius: 300px; opacity: 0.7">
                 <p style="position: absolute; right: 10px; font-size: 12px; color: #444; top: 12px;">Buddies!</p>
               </div>
@@ -63,7 +63,7 @@
               </div>
               <% end %>
             <% else %>
-              <%= link_to new_message_path(event.user, event: event) do %>
+              <%= link_to new_message_path(event.user, event: event) + "#event-chat" do %>
               <div style="position: absolute; top: 4px; left: 4px; background: white; width: 136px; height: 44px; border-radius: 300px; opacity: 0.7">
                 <p style="position: absolute; right: 10px; font-size: 12px; color: #444; top: 12px;">Buddies!</p>
               </div>
