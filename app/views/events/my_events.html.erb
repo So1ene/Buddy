@@ -5,7 +5,7 @@
 <div class="container">
 
 <div style="width: 90vw d-flex">
-<h1 class="title py-3" style="width: 260px; font-size: 26px; margin-right: 60px" id="filters"><strong>Choose a buddy for your activities!</strong></h1>
+<h1 class="title py-3" style="width: 260px; font-size: 26px; margin-right: 60px" id="filters">Choose a buddy for your activities!</h1>
 </div>
   <% if @events.length == 0 %>
     <p>You don't have any events!</p>
@@ -23,7 +23,7 @@
               <%= link_to incoming_requests_path(event) do %>
                 <li><h2 style="margin: 0;max-width: 156px !important; white-space:nowrap; max-height: 20px;"><%= event.name %></h2></li>
               <% end %>
-              <li><%= event.address %></li>
+              <li style="font-size: 12px;"><%= event.address %></li>
               <li style="color:gray; font-size: 12px; margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
             </ul>
 
