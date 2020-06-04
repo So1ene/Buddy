@@ -38,6 +38,17 @@ document.addEventListener('turbolinks:load', () => {
   navbar();
   filters();
 
+  // SUBMITS MESSAGE ON ENTER! :D But not shift-enter
+      function submitOnEnter(event){
+      if(event.which === 13 && !event.shiftKey){
+          event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
+          event.preventDefault();
+          event.target.form.submit();
+      }
+  }
+
+  document.getElementById("new_message").addEventListener("keypress", submitOnEnter);
+
 });
 
 

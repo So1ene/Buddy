@@ -1,9 +1,9 @@
 <span class="back-button"></span>
-<h1 class="page-title">BUDDY</h1>
+<%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
   <div class="container">
 
     <div class="py-2"></div>
-      <%= cl_image_tag @user.photo.key, height: 130, width: 130, crop: :fill, class: "avatar-large mt-3 mb-2" %>
+      <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar-welcome-page mt-3 mb-2" %>
       <h1 class="mt-2 mb-5"><strong>Hi <%= @user.first_name %></strong></h1>
       <h2 class="mb-3 mt-2">Browse events</h2>
 

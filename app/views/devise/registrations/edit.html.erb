@@ -1,6 +1,7 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
+<%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
 
@@ -60,11 +61,13 @@
   </div>
 <% end %>
 
-<h5>Cancel my account</h5>
+<div class="w-100">
+<h1 class="title py-3"><strong>Cancel Account</strong></h1>
+</div>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="w-100">
+<p style="padding-left:12px">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, style:"text-decoration:underline" %></p>
+</div>
 
 </div>
 

@@ -1,7 +1,7 @@
 <%= link_to welcome_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<h1 class="page-title">BUDDY</h1>
+<%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
   <% if @events.length == 0 %>
@@ -39,16 +39,24 @@
         <p>No results for "<%= params[:query] %>"</p>
       <% end %>
       <% if @search_results.length > 0 && params[:query] != "" && params[:query] != nil%>
-        <h2 class="my-5">Search results:</h2>
-        <div class="d-flex flex-column-reverse w-100">
+
+    <div class="w-100">
+      <h1 class="title py-3">Search Results</h1>
+    </div>
+
+        <div class="d-flex flex-column-reverse" style="width: 360px">
           <% @search_results.each do |event|  %>
             <%= render partial: "event_card", locals: { event: event } %>
           <% end %>
         </div>
       <% end %>
 
-      <h2 class="title mt-5"><strong>Suggested for you</strong></h2>
-      <div class="d-flex flex-column-reverse w-100">
+
+    <div class="w-100">
+      <h1 class="title pb-3 pt-4">Suggested for you</h1>
+    </div>
+
+      <div class="d-flex flex-column-reverse" style="width: 360px">
         <% @events.each do |event|  %>
           <%= render partial: "event_card", locals: { event: event } %>
         <% end %>

@@ -10,6 +10,12 @@ class MessagesController < ApplicationController
     @message = Message.new
     @event = Event.find(params[:event])
     @user = User.find(params[:user_id])
+
+    if @user == @event.user
+      @request = @event.requests.find_by(user: current_user)
+    else
+      @request = @event.requests.find_by(user: @user)
+    end
     @messages = Message.where("(sender_id = :user AND receiver_id = :other_user) OR (sender_id = :other_user AND receiver_id = :user)", user: current_user, other_user: @user).order(created_at: :asc)
   end
 
@@ -25,7 +31,7 @@ class MessagesController < ApplicationController
         @user,
         render_to_string(partial: "message", locals: { message: @message })
       )
-      redirect_to new_message_path(@user, event: @event.id)
+      redirect_to new_message_path(@user, event: @event.id) + "#event-chat"
     else
       render :new
     end

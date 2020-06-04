@@ -1,12 +1,13 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-<h1 class="page-title">BUDDY</h1>
+<%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
-  <div class="w-100">
-    <h1 class="title">Choose a buddy for your activities!</h1>
-  </div>
+<div style="width: 90vw d-flex">
+<h1 class="title py-3" style="width: 260px; font-size: 26px; margin-right: 60px" id="filters"><strong>Choose a buddy for your activities!</strong></h1>
+</div>
+
   <div>
     <div class="d-flex flex-column-reverse">
       <% @events.each do |event|  %>

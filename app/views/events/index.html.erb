@@ -1,13 +1,14 @@
 <%= link_to root_path, class: "back-button" do %>
   <i class="fas fa-arrow-left"></i>
 <% end %>
-
-<h1 class="page-title">BUDDY</h1>
+<%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
   <div class="w-100">
     <% if @date.present? %>
-      <h1 class="title">Events for <%= @date %></h1>
+    <div style="width: 90vw d-flex">
+      <h1 class="title py-3" style="width: 300px; font-size: 26px; margin-right: 30px" id="filters"><strong>Events for <%= @date %></strong></h1>
+    </div>
     <% else %>
       <h1 class="title">All events</h1>
     <% end %>
@@ -30,9 +31,13 @@
     </div>
   </div>
 
-  <div class="m-2">
-    <% @events.each do |event|  %>
-      <%= render partial: "event_card", locals: { event: event } %>
-    <% end %>
-  </div>
+  <% if @events.length == 0 %>
+    <p class="mt-4">No events for this date... :(</p>
+  <% else %>
+        <div class="d-flex flex-column-reverse mt-4" style="width: 360px">
+          <% @events.each do |event|  %>
+            <%= render partial: "event_card", locals: { event: event } %>
+          <% end %>
+        </div>
+  <% end %>
 </div>

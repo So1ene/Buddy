@@ -1,7 +1,7 @@
-<div class="card-product">
-  <%#= link_to event_path(event), style: "width: 45%;" do %>
-  <%= link_to '', event_path(event), style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
-  <%# end %>
+        <div class="card-product">
+          <%#= link_to event_path(event), style: "width: 45%;" do %>
+          <%= link_to '', event_path(event), style:"width: 45%; background-size: cover; background-position: center; background-image: url('#{cl_image_path url_for(event.photo), height: 300, width: 400, crop: :fill}')"%>
+          <%# end %>
 
   <div class="flex-column card-right">
     <ul class="card-product-infos ml-2">
@@ -12,16 +12,16 @@
       <li style="color:#222; margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
     </ul>
 
-    <div class="d-flex pb-1">
-      <% unless event.categories.first.nil? %>
-        <span class="card-filter ml-3" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
-      <% end %>
-      <% unless event.categories.second.nil? %>
-        <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
-      <% end %>
-    </div>
-      <div>
-        <%= cl_image_tag(event.user.photo.key, class: "card-avatar") %>
-      </div>
-  </div>
-</div>
+            <div class="d-flex pb-1">
+              <% unless event.categories.first.nil? %>
+                <span class="card-filter ml-3" style="background-color: <%= event.categories.first.color %>"><%= event.categories.first.name %></span>
+              <% end %>
+              <% unless event.categories.second.nil? %>
+                <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
+              <% end %>
+            </div>
+                <div>
+                  <%= cl_image_tag(event.user.photo.key, class: "card-avatar") %>
+                </div>
+          </div>
+        </div>

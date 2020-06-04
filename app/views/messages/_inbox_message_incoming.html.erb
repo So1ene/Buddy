@@ -1,7 +1,7 @@
-<% last_message = Message.where("(sender_id = :user AND receiver_id = :host) OR (sender_id = :host AND receiver_id = :user)", user: current_user, host: request.event.user).order(created_at: :desc).first %>
+<% last_message = Message.where("(sender_id = :user AND receiver_id = :host) OR (sender_id = :host AND receiver_id = :user)", user: current_user, host: request.user).order(created_at: :desc).first %>
 
-<%= link_to new_message_path(request.user, event: request.event) do %>
-<div class="card m-2" style="width: 24rem; border-top: none; border-left: none; border-right: none;">
+<%= link_to new_message_path(request.user, event: request.event) + "#event-chat" do %>
+<div class="card my-2" style="width: 360px; border-top: none; border-left: none; border-right: none;">
   <div class="d-flex align-items-start p-2">
     <div>
       <%= cl_image_tag(request.user.photo.key, class: "avatar") %>
@@ -17,14 +17,16 @@
           </div>
         <% else %>
           <div class="px-3">
-            <%= "You have a new buddy for #{request.event.name}!" %>
+            <%= "You have a new buddy!" %>
           </div>
         <% end %>
       </div>
 
+      <% if last_message %>
       <div>
-        <small style="color: gray;"><%#= last_message.created_at.strftime("%l:%M%p") %></small>
+        <small style="color: gray;"><%= last_message.created_at.strftime("%l:%M%p") %></small>
       </div>
+      <% end %>
   </div>
 </div>
 <% end %>
