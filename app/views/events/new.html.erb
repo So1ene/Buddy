@@ -9,10 +9,12 @@
     <div style="width: 90vw d-flex">
       <h1 class="title py-3" style="width: 250px; font-size: 26px; margin-left: 30px" id="filters"><strong>Suggest an event</strong></h1>
     </div>
-      <%= simple_form_for @event do |f| %>
+      <%= simple_form_for @event, html: {class: "display-time"}  do |f| %>
         <%= f.input :name, placeholder: 'Event name', label: false %>
         <%= f.input :photo, placeholder: 'photo', label: false %>
         <%= f.input :date_time, label: false %>
+        <%= f.date_select :date_time %>
+        <div> <%= f.time_select :date_time %> </div>
         <%= f.input :address, placeholder: 'Address', label: false %>
 
         <h2>Pick your category: (limit of 3)</h2>
