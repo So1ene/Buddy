@@ -8,10 +8,16 @@
     <div class="py-3"><p></p></div>
     <h3 class="mt-4 mb-5">No events listed at the location "<%= current_user.search_location %>"... :(</h3>
     <h2 class="mb-3 mt-2">Try again</h2>
-    <%= form_for @user, url: root_path, method: :patch do |f| %>
-      <%= f.text_field :search_location, placeholder: 'Input another location', value: "", label:false %>
-      <%= f.submit '>', class: "btn btn-primary", style: "padding: 2px 6px; margin-bottom: 2px" %>
-    <% end %>
+          <%= form_for @user, url: root_path, method: :patch do |f| %>
+        <div class="d-flex">
+          <div>
+          <%= f.text_field :search_location, placeholder: 'Input a location', value: "", label:false %>
+          </div>
+          <div>
+          <%= f.submit '>', class: "btn btn-primary", style: "padding: 7px 12px; margin-bottom: 2px; border-radius: 2px; color: white;" %>
+          </div>
+          <% end %>
+        </div>
     <h2 class="mt-5">or</h2>
     <%= link_to "Suggest an event", new_event_path, class: "btn-lg btn-primary mt-2 mb-5" %>
   <% else %>
