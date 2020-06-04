@@ -52,6 +52,8 @@
                 <span class="card-filter" style="background-color: <%= event.categories.second.color %>"><%= event.categories.second.name %></span>
               <% end %>
             </div>
+            <% if event.user == current_user%>
+              <%= link_to new_message_path(event.requests.find_by(status:"Accepted").user, event: event) do %>
               <div style="position: absolute; top: 4px; left: 4px; background: white; width: 136px; height: 44px; border-radius: 300px; opacity: 0.7">
                 <p style="position: absolute; right: 10px; font-size: 12px; color: #444; top: 12px;">Buddies!</p>
               </div>
@@ -59,6 +61,18 @@
                 <%= cl_image_tag(event.requests.find_by(status:"Accepted").user.photo.key, class: "card-avatar", style: "top: 6px; left: 6px; border: 1px solid rgba(255,255,255,0.7)") %>
                 <%= cl_image_tag(event.user.photo.key, class: "card-avatar", style: "top: 6px; left: 35px; border: 1px solid rgba(200,200,200,0.7)") %>
               </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_message_path(event.user, event: event) do %>
+              <div style="position: absolute; top: 4px; left: 4px; background: white; width: 136px; height: 44px; border-radius: 300px; opacity: 0.7">
+                <p style="position: absolute; right: 10px; font-size: 12px; color: #444; top: 12px;">Buddies!</p>
+              </div>
+              <div>
+                <%= cl_image_tag(event.requests.find_by(status:"Accepted").user.photo.key, class: "card-avatar", style: "top: 6px; left: 6px; border: 1px solid rgba(255,255,255,0.7)") %>
+                <%= cl_image_tag(event.user.photo.key, class: "card-avatar", style: "top: 6px; left: 35px; border: 1px solid rgba(200,200,200,0.7)") %>
+              </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
 
