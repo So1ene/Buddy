@@ -20,7 +20,7 @@
           <% end %>
             <p class="mb-1" style="font-size: 14px"><%= event.address %></p>
             <p style="color:gray; font-size: 14px;"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></p>
-            <%= link_to 'Choose a Buddy', incoming_requests_path(event), class: "btn btn-primary mb-3 ml-0" %>
+            <%= link_to 'Choose Buddy', incoming_requests_path(event), class: "btn btn-primary mb-3 ml-0" %>
           </div>
         </div>
       <% end %>
