@@ -60,11 +60,12 @@ img.card-img {
 }
 
 .card-product li {
-  max-height: 50px;
-  max-width: 100%;
+  max-height: 30px;
+  max-width: 152px;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
+  white-space: nowrap;
 }
 
 .card-product .card-product-infos {
