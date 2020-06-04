@@ -5,6 +5,7 @@ class Event < ApplicationRecord
   has_many :categories, through: :event_categories
   has_one_attached :photo
   validates :user, :name, :date_time, :address, :photo, :description, presence: true
+  validates :description, length: { maximum: 150 }
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
