@@ -54,9 +54,9 @@
                 <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
                 <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
                 <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-                <div class="px-2">
+                <div class="px-2" style="margin:6px;">
                   <span style="color:gray">Languages: <%= @event.user.languages.map(&:name).join(', ') %></span><br />
-                  <span class="pb-3"style="color:gray">Age: <%= @event.user.age %></span><br /><br />
+                  <span class="pb-3"style="color:gray">Age: <%= @event.user.age %></span><br><br>
                   <span><%= @event.user.bio %></span>
                 </div>
                 </div>
