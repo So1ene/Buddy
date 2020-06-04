@@ -39,9 +39,8 @@
               <% end %>
           <% end %>
 
-              <li><%= event.address %></li>
-              <li style="color:gray; font-size: 16px, margin: 0"><%= event.date_time.strftime("%I:%M%p") %></li>
-              <li style="color:#222; font-size: 16px, margin: 0"><%= event.date_time.strftime("%m/%d/%Y") %></li>
+      <li class="event-card-address"><%= event.address %></li>
+      <li style="color:#gray; font-size: 12px; margin: 0; margin-bottom:8px"><%= event.date_time.strftime("%m/%d/%Y") %> - <%= event.date_time.strftime("%I:%M%p") %></li>
             </ul>
 
             <div class="d-flex pb-1">
