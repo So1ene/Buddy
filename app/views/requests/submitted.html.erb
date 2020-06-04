@@ -8,18 +8,18 @@
 <div class="card shadow p-3 mb-3 bg-white rounded" id="submitted-@requests" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <%= cl_image_tag @request.event.photo.key, class:"card-img",style:"border-radius:6px" %>
+      <%= cl_image_tag @request.event.photo.key, class:"card-image",style:"border-radius:6px" %>
 
     </div>
     <div class="col-md-8 pl-2 pt-1">
         <h3 class="card-title mt-3"> <strong><%= @request.event.name  %> </strong></h3>
-        <div class="card-info">
-          <p><strong>Address:</strong> <%= @request.event.address  %> </p>
-          <p style="color:gray;margin-bottom: 6px"><%= @request.event.date_time.strftime("%m/%d/%Y") %> - <%= @request.event.date_time.strftime("%I:%M%p") %></p>
+        <div class="card-details">
+          <p><i class="fas fa-map-marker-alt"></i> <%= @request.event.address  %> </p>
+          <p style="margin-bottom: 6px;"><i class="fas fa-calendar"></i> <%= @request.event.date_time.strftime("%m/%d/%Y") %> - <%= @request.event.date_time.strftime("%I:%M%p") %></p>
 
         </div>
     </div>
   </div>
 </div>
 
-  <p class="pl-2 mb-0 pb-0" style="text-align: center;color:gray"> You will get an inbox message if your buddy request has been accepted. </p>
+  <p class="pl-2 mt-3 mb-0 pb-0" style="text-align: center;color:gray;"> Stay tuned!<br> You will get a message if<br> <%= @request.event.user.first_name %> accepts your request. </p>
