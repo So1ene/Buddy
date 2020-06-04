@@ -390,17 +390,8 @@ def generate_messages
   Message.create(receiver: User.first, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.first, sender: User.third, content: "Hi there!")
   Message.create(receiver: User.third, sender: User.first, content: "Hello!")
-  Message.create(receiver: User.first, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.second, sender: User.first, content: "Cool! When do we meet?")
-  Message.create(receiver: User.first, sender: User.second, content: "Ignore the time on the event card, I put a random time there, let's meet at 6pm instead!")
-  Message.create(receiver: User.second, sender: User.first, content: "Sounds good, see you then!")
   Message.create(receiver: User.second, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.second, sender: User.third, content: "That was great, let's do it again sometime")
-  Message.create(receiver: User.second, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.fourth, sender: User.second, content: "See you soon!")
-  Message.create(receiver: User.fourth, sender: User.second, content: "I'm here, where are you?")
-  Message.create(receiver: User.second, sender: User.fourth, content: "I see you")
-  Message.create(receiver: User.fourth, sender: User.second, content: "Awesome! that was fun!")
   Message.create(receiver: User.third, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.fourth, sender: User.third, content: "Awesome! When do we meet?")
   Message.create(receiver: User.third, sender: User.fourth, content: "Soon!")
@@ -413,6 +404,13 @@ def generate_messages
   Message.create(receiver: User.first, sender: User.fifth, content: "I bet you didn't expect me!")
   Message.create(receiver: User.fifth, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.second, sender: User.fifth, content: "I bet you didn't expect me!")
+
+  # => Removed conversation between Samantha and Daniela for the demo:
+  # Message.create(receiver: User.second, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
+  # Message.create(receiver: User.fourth, sender: User.second, content: "See you soon!")
+  # Message.create(receiver: User.fourth, sender: User.second, content: "I'm here, where are you?")
+  # Message.create(receiver: User.second, sender: User.fourth, content: "I see you")
+  # Message.create(receiver: User.fourth, sender: User.second, content: "Awesome! that was fun!")
 
   puts ""
   puts "> Generated messages"
@@ -428,13 +426,16 @@ def generate_accepted_requests
   Request.find_by(user_id: 4, event: Event.where(user_id: 1)[6]).update(status: "Accepted")
   Request.find_by(user_id: 1, event: Event.where(user_id: 2)[6]).update(status: "Accepted")
   Request.find_by(user_id: 1, event: Event.where(user_id: 3)[6]).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
   Request.find_by(user_id: 5, event: Event.where(user_id: 1)[7]).update(status: "Accepted")
   Request.find_by(user_id: 5, event: Event.where(user_id: 2)[7]).update(status: "Accepted")
   Request.find_by(user_id: 2, event: Event.where(user_id: 3)[7]).update(status: "Accepted")
   Request.find_by(user_id: 3, event: Event.where(user_id: 4)[7]).update(status: "Accepted")
   Request.find_by(user_id: 5, event: Event.where(user_id: 3)[8]).update(status: "Accepted")
   Request.find_by(user_id: 5, event: Event.where(user_id: 4)[8]).update(status: "Accepted")
+
+  # => Removed event between Samantha and Daniela for the demo:
+  # Request.find_by(user_id: 2, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
+
   puts ""
   puts "> Generated some accepted requests (to test inbox)"
   puts ""
