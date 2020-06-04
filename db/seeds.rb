@@ -38,7 +38,7 @@ def generate_users
            first_name: "Daniela",
            last_name: "Santana",
            age: 27,
-           bio: "My name is Daniela and I love cats!",
+           bio: "My name is Daniela and I love cats! I am living in Montreal and I love going out and meeting new people.",
            living_in: "Montreal"
            )
   daniela.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "daniela.jpg", content_type: 'image/jpg')
@@ -60,13 +60,23 @@ def generate_users
            first_name: "Samantha",
            last_name: "André",
            age: 37,
-           bio: "My name is Samantha and I'm very beautiful!",
+           bio: "Hi! I am new in town and I am looking to meet all kinds of new people! Let me know if you are interested :)",
            living_in: "Montreal"
            )
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
   samantha.save
+  stephane = User.new(email: "stephane@email.com",
+           password: "123456",
+           first_name: "Stephane",
+           last_name: "Lafontaine",
+           age: 0,
+           bio: "My name is Stephane and I love Ruby!",
+           living_in: "Montreal"
+           )
+  stephane.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1591254821/Buddy/stephane_qxq09j.jpg"), filename: "stephane.jpg", content_type: 'image/jpg')
+  stephane.save
   puts ""
-  puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com - password: '123456'"
+  puts "> Generated users: solene@email.com, daniela@email.com, celine@email.com, samantha@email.com, and 1 secret user ;) - password: '123456'"
   puts ""
   puts "> Attached profile pictures to users"
   SpokenLanguage.create!(user: User.find(1), language: Language.find_by(name: "English"))
@@ -75,6 +85,7 @@ def generate_users
   SpokenLanguage.create!(user: User.find(3), language: Language.find_by(name: "English"))
   SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "English"))
   SpokenLanguage.create!(user: User.find(4), language: Language.find_by(name: "French"))
+  SpokenLanguage.create!(user: User.find(5), language: Language.find_by(name: "English"))
   puts "> Attached languages to users"
   puts ""
 end
@@ -125,7 +136,6 @@ def generate_categories
   Category.create!(name: "theater", id: 6)
   Category.create!(name: "festival", id: 7)
   Category.create!(name: "other", id: 8)
-    puts ""
   puts "> Created 8 categories"
   puts ""
 end
@@ -223,8 +233,6 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "other"))
 end
 
-
-
 # => Generate events
 
 def generate_events
@@ -241,7 +249,7 @@ def generate_events
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
                         address: "Montreal",
-                        description: Faker::Lorem.sentence(word_count: rand(20))
+                        description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                         )
       attach_image(event, counter)
       event.save!
@@ -280,13 +288,33 @@ def generate_requests
   Request.destroy_all
   puts ""
   puts "> Destroyed all requests"
+  Request.new(user_id: 5,
+              motivation: "Fancy meeting you here! :)",
+              status: "Pending",
+              event: Event.where(user_id: 1)[7]
+              ).save!
+  Request.new(user_id: 5,
+              motivation: "Fancy meeting you here! :)",
+              status: "Pending",
+              event: Event.where(user_id: 2)[7]
+              ).save!
+  Request.new(user_id: 5,
+              motivation: "Fancy meeting you here! :)",
+              status: "Pending",
+              event: Event.where(user_id: 3)[8]
+              ).save!
+  Request.new(user_id: 5,
+              motivation: "Fancy meeting you here! :)",
+              status: "Pending",
+              event: Event.where(user_id: 4)[8]
+              ).save!
   counter = 0
   4.times do
     counter += 1
     Event.all.each do |event|
       unless event.user_id == counter
         Request.new(user_id: counter,
-                    motivation: ["I think we will have a fun time together! What do you say?", "I really really enjoy this activity and you seem like a nice person!", "I would love to join you! This sounds really fun!", "Thanks for considering me, I will be very happy if you pick me", "Hi I am a very nice person who loves outdoor activities and animals", "Fun!", "This is a great idea! We should totally do this together :)", "I loooove doing this! I will be very good company", "This sounds cool!", "I am very excited to do this, let's gooo!", "thanks for consider me", "You seem nice! I am also a traveller who doesn't know anyone here yet", "I love doing this, let's have fun", "Can we go tomorrow instead? If that's ok with you", "Hi I am just applying so I can chat with you haha", "Can we have drinks after too?", "Heyy add me on instagram and snapchat and facebook and stuff", "Hey I would love to do this with you!", "I think we will have fun!","Cool idea","Hey we will have a great time if you choose me, promise!","If you don't choose me you will regret it","I think we will have a really fun time together!","thanks for considering me!","Your activity sounds like a blast!"].sample,
+                    motivation: ["I think we will have a fun time together! What do you say?", "I really really enjoy this activity and you seem like a nice person!", "I would love to join you! This sounds really fun!", "Thanks for considering me, I will be very happy if you pick me", "Hi I am a very nice person who loves outdoor activities and animals", "Fun!", "This is a great idea! We should totally do this together :)", "I loooove doing this! I will be very good company", "This sounds cool!", "I am very excited to do this, let's gooo! Choose me as your buddddy!", "You seem nice! I am also a traveller who doesn't know anyone here yet", "I love doing this, let's have fun", "Can we go tomorrow instead? If that's ok with you", "Hi I am just applying so I can chat with you haha", "Can we have drinks after too?", "Hey I would love to do this with you! Please message me so we can figure out the details", "I think we will have fun!","Cool idea","Hey we will have a great time if you choose me, promise!","If you don't choose me you will regret it","I think we will have a really fun time together!","Thanks for considering me!","Your activity sounds like a blast! So much fun!"].sample,
                     status: "Pending",
                     event: event
                     ).save!
@@ -309,41 +337,63 @@ def generate_messages
   # daniela = User.second
   # celine = User.third
   # samantha = User.fourth
-
+  # stephane = User.fifth
   Message.create(receiver: User.fourth, sender: User.first, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.fourth, sender: User.first, content: "Hi, nice to meet you")
+  Message.create(receiver: User.first, sender: User.fourth, content: "Hi, nice to meet you")
+  Message.create(receiver: User.fourth, sender: User.first, content: "We should do this again sometime :)")
   Message.create(receiver: User.first, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.second, sender: User.first, content: "See you soon!")
   Message.create(receiver: User.second, sender: User.first, content: "I'm here, where are you?")
   Message.create(receiver: User.first, sender: User.second, content: "I see you")
   Message.create(receiver: User.second, sender: User.first, content: "Awesome! that was fun!")
   Message.create(receiver: User.first, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.third, sender: User.first, content: "Cool! When do we meet?")
-  Message.create(receiver: User.first, sender: User.third, content: "Ignore the time, I put a random time there, let's meet at 6pm instead!")
-  Message.create(receiver: User.third, sender: User.first, content: "Sounds good, see you then!")
+  Message.create(receiver: User.first, sender: User.third, content: "Hi there!")
+  Message.create(receiver: User.third, sender: User.first, content: "Hello!")
+  Message.create(receiver: User.first, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
+  Message.create(receiver: User.second, sender: User.first, content: "Cool! When do we meet?")
+  Message.create(receiver: User.first, sender: User.second, content: "Ignore the time on the event card, I put a random time there, let's meet at 6pm instead!")
+  Message.create(receiver: User.second, sender: User.first, content: "Sounds good, see you then!")
   Message.create(receiver: User.second, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
   Message.create(receiver: User.second, sender: User.third, content: "That was great, let's do it again sometime")
   Message.create(receiver: User.second, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.second, sender: User.fourth, content: "Hello...??")
+  Message.create(receiver: User.fourth, sender: User.second, content: "See you soon!")
+  Message.create(receiver: User.fourth, sender: User.second, content: "I'm here, where are you?")
+  Message.create(receiver: User.second, sender: User.fourth, content: "I see you")
+  Message.create(receiver: User.fourth, sender: User.second, content: "Awesome! that was fun!")
   Message.create(receiver: User.third, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.fourth, sender: User.third, content: "That's great!")
+  Message.create(receiver: User.fourth, sender: User.third, content: "Awesome! When do we meet?")
+  Message.create(receiver: User.third, sender: User.fourth, content: "Soon!")
+  Message.create(receiver: User.fourth, sender: User.third, content: "Sounds good!")
+  Message.create(receiver: User.fifth, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
+  Message.create(receiver: User.third, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.fifth, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
+  Message.create(receiver: User.fourth, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.fifth, sender: User.first, content: "(Automated Message) - I picked you! Let's start planning :)")
+  Message.create(receiver: User.first, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.fifth, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
+  Message.create(receiver: User.second, sender: User.fifth, content: "I bet you didn't expect me!")
 
   puts ""
   puts "> Generated messages"
   puts ""
 end
 
-def generate_accepted_requests  solene = User.first
+def generate_accepted_requests
   # solene = 1
   # daniela = 2
   # celine = 3
   # samantha = 4
-  Request.find_by(user_id: 4, event: Event.where(user_id: 1)[7]).update(status: "Accepted")
+  # stephane = 5
+  Request.find_by(user_id: 4, event: Event.where(user_id: 1)[6]).update(status: "Accepted")
   Request.find_by(user_id: 1, event: Event.where(user_id: 2)[6]).update(status: "Accepted")
   Request.find_by(user_id: 1, event: Event.where(user_id: 3)[6]).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 3)[7]).update(status: "Accepted")
   Request.find_by(user_id: 2, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
+  Request.find_by(user_id: 5, event: Event.where(user_id: 1)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 5, event: Event.where(user_id: 2)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 2, event: Event.where(user_id: 3)[7]).update(status: "Accepted")
   Request.find_by(user_id: 3, event: Event.where(user_id: 4)[7]).update(status: "Accepted")
+  Request.find_by(user_id: 5, event: Event.where(user_id: 3)[8]).update(status: "Accepted")
+  Request.find_by(user_id: 5, event: Event.where(user_id: 4)[8]).update(status: "Accepted")
   puts ""
   puts "> Generated some accepted requests (to test inbox)"
   puts ""
