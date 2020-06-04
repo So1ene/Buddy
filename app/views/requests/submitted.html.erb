@@ -4,22 +4,22 @@
 <%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
-<h2 class="p-2">Buddy request has been submitted to <%= @request.event.user.first_name %> <%= @request.event.user.last_name %>! </h2>
+<h2 class="p-2 my-1" style="text-align: center;color:#222"><strong>Buddy request has been submitted to <%= @request.event.user.first_name %> <%= @request.event.user.last_name %>!</strong> </h2>
 <div class="card shadow p-3 mb-3 bg-white rounded" id="submitted-@requests" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <%= cl_image_tag @request.event.photo.key, class:"card-img" %>
+      <%= cl_image_tag @request.event.photo.key, class:"card-img",style:"border-radius:6px" %>
 
     </div>
-    <div class="col-md-8">
-        <h3 class="card-title mt-3"> <%= @request.event.name  %> </h3>
+    <div class="col-md-8 pl-2 pt-1">
+        <h3 class="card-title mt-3"> <strong><%= @request.event.name  %> </strong></h3>
         <div class="card-info">
-          <p>Address: <%= @request.event.address  %> </p>
-          <p><%= @request.event.date_time.strftime("%m/%d/%Y") %> - <%= @request.event.date_time.strftime("%I:%M%p") %></p>
+          <p><strong>Address:</strong> <%= @request.event.address  %> </p>
+          <p style="color:gray;margin-bottom: 6px"><%= @request.event.date_time.strftime("%m/%d/%Y") %> - <%= @request.event.date_time.strftime("%I:%M%p") %></p>
 
         </div>
     </div>
   </div>
 </div>
 
-  <p class="pl-2 mb-0 pb-0"> You will get an inbox message if your buddy request has been accepted! </p>
+  <p class="pl-2 mb-0 pb-0" style="text-align: center;color:gray"> You will get an inbox message if your buddy request has been accepted. </p>
