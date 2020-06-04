@@ -60,12 +60,12 @@ img.card-img {
 }
 
 .card-product li {
-  max-height: 30px;
+  max-height: 60px;
   max-width: 152px;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
-  white-space: nowrap;
+  line-height: 1.2;
 }
 
 .card-product .card-product-infos {
