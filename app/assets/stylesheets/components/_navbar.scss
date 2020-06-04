@@ -1,6 +1,6 @@
 
-// Don't touch this file, the navbar is perfect right now and somehow works, don't break it!
-
+// Don't touch this file. Seriously.
+// Please ask me (solene) instead. One small change can break the ENTIRE navbar.
 
 header {
   position: fixed;
@@ -236,7 +236,7 @@ header nav a:hover {
   display: inline-block;
   position: fixed;
   z-index: 2000 !important;
-  color: white;
+  color: white !important;
   font-size: 1.3rem;
   top: 0.5rem;
 }
