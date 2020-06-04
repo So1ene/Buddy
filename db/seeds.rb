@@ -27,7 +27,7 @@ def generate_users
            first_name: "Solène",
            last_name: "Duprat",
            age: 22,
-           bio: "My name is Solene and I love dogs!",
+           bio: "My name is Solene and I love dogs! I love outdoor acitivties, so invite me to hike with you and I'll bring my dog!",
            living_in: "Montreal"
            )
   solene.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161778/solene.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
@@ -38,8 +38,7 @@ def generate_users
            first_name: "Daniela",
            last_name: "Santana",
            age: 27,
-           bio: "My name is Daniela and I love cats! I am living in Montreal and I love going out and meeting new people.",
-           living_in: "Montreal"
+           bio: "Hi! I'm from Brazil, living in Montreal, and always waiting for the next adventure in this city! Let's explore and have fun together!"
            )
   daniela.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161934/daniela_loxgl0.jpg"), filename: "daniela.jpg", content_type: 'image/jpg')
   daniela.save
@@ -60,7 +59,7 @@ def generate_users
            first_name: "Samantha",
            last_name: "André",
            age: 37,
-           bio: "Hi! I am originally from France, currently living in Montreal and looking to meet all kinds of new people!",
+           bio: "Hi! I am originally from France, currently living in Montreal. Happy to meet folks from all walks of life!",
            living_in: "Montreal"
            )
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
