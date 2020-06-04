@@ -15,9 +15,9 @@
         </div>
         <% if @event.user == current_user %>
           <div style="text-align:right; width:100%; padding:0;" class="event-delete">
-            <button id="trash" type="button" class="btn btn-light" data-toggle="modal" data-target="#event-<%= @event.id %>">
+            <div id="trash" class="btn btn-light" data-toggle="modal" data-target="#event-<%= @event.id %>">
               <i class="fas fa-trash"></i>
-            </button>
+            </div>
           </div>
         <% end %>
       </div>
@@ -46,7 +46,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete event</h5>
+              <h5 class="modal-title" id="exampleModalLabel"></h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -66,10 +66,10 @@
       <!-- Profile Modal, do not change! -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="height:500px;border-radius: 6px">
+          <div class="modal-content" style="margin-bottom:120px;height:500px;border-radius: 6px">
             <div>
               <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button type="button" class="close pt-3 pr-3" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>

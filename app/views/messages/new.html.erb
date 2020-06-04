@@ -13,7 +13,7 @@
     </div>
     <p>Start your conversation below...</p>
      <%= link_to request_path(@request) do %>
-      <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view request</h2>
+      <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view event</h2>
      <% end %>
   </div>
 
@@ -29,7 +29,31 @@
       </div>
     <% end %>
 </div>
+      <!-- Event popup Modal, do not change! -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="margin-bottom:120px;height:500px;border-radius: 6px">
+            <div>
+              <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
+              <button type="button" class="close pt-3 pr-3" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" style="margin:20px" >
 
+              <div style="text-align:center;">
+                <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+              </div><br>
+              <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
+              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
+              Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
+              Age: <%= @event.user.age %><br><br>
+              <%= @event.user.bio %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Event popup Modal, do not change! -->
 <style>
   .form-control {
     width: 300px;
@@ -39,7 +63,7 @@
 </style>
 
 <script type="text/javascript">
-  // SUBMIT MESSAGE ON ENTER! :)
+  // SUBMITS MESSAGE ON ENTER! :D But not shift-enter
       function submitOnEnter(event){
       if(event.which === 13 && !event.shiftKey){
           event.target.form.dispatchEvent(new Event("submit", {cancelable: true}));
