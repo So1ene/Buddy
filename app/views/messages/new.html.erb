@@ -38,7 +38,7 @@
 
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content" style="margin-bottom:120px;height:600px;border-radius: 6px">
+          <div class="modal-content" style="margin-bottom:120px;height:645px;border-radius: 6px">
             <div>
               <h5 class="modal-title" id="exampleModalLongTitle"> </h5>
               <button type="button" class="close pt-3 pr-3" data-dismiss="modal" aria-label="Close">
@@ -51,12 +51,15 @@
 
               <div style="text-align:center;">
                 <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
-              </div><br>
+              </div>
+              <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
               <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
-              <hr style="margin-top:5px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
-              Languages: <%= @event.user.languages.map(&:name).join(', ') %><br>
-              Age: <%= @event.user.age %><br><br>
-              <%= @event.user.bio %>
+              <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
+              <div class="px-2">
+                <span style="color:gray">Languages: <%= @event.user.languages.map(&:name).join(', ') %></span><br />
+                <span class="pb-3"style="color:gray">Age: <%= @event.user.age %></span><br /><br />
+                <span><%= @event.user.bio %></span>
+              </div>
 
 
             </div>
