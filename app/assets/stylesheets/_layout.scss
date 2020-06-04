@@ -75,3 +75,8 @@ a:link {
 .example {
   -ms-overflow-style: none;
 }
+
+.display-time > .datetime {
+  border: 10px solid red;
+  flex-wrap: wrap !important;
+}
