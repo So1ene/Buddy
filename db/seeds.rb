@@ -285,7 +285,7 @@ def generate_random_events
       event = Event.new(user_id: user.id,
                         name: Faker::TvShows::Simpsons.location,
                         date_time: Faker::Time.between_dates(from: Date.today + 15, to: Date.today + 35, period: :day),
-                        address: random_address,
+                        address: random_address(counter),
                         description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                         )
       attach_image(event, counter)
@@ -304,7 +304,7 @@ def generate_specific_events
         event = Event.new(user_id: user.id,
                           name: event_name(counter),
                           date_time: Faker::Time.between_dates(from: Date.today - 1, to: Date.today + 14, period: :day),
-                          address: random_address,
+                          address: random_address(counter),
                           description: "Hey there, I am new in town and I don't know many people, would you like to join me in this activity? I am looking to meet all kinds of people, so please don't be shy and apply!",
                           )
         attach_image(event, counter)
