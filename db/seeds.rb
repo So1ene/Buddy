@@ -49,7 +49,7 @@ def generate_users
            first_name: "Celine",
            last_name: "Rondeau",
            age: 27,
-           bio: "My name is Celine and I'm very awesome!",
+           bio: "Hi! I am new in town and I am looking to meet all kinds of new people! Let me know if you are interested :)",
            living_in: "Montreal"
            )
   celine.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161759/celine.jpg"), filename: "celine.jpg", content_type: 'image/jpg')
@@ -60,7 +60,7 @@ def generate_users
            first_name: "Samantha",
            last_name: "André",
            age: 37,
-           bio: "Hi! I am new in town and I am looking to meet all kinds of new people! Let me know if you are interested :)",
+           bio: "Hi! I am originally from France, currently living in Montreal and looking to meet all kinds of new people!",
            living_in: "Montreal"
            )
   samantha.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161980/samantha_tuybqx.jpg"), filename: "samantha.jpg", content_type: 'image/jpg')
