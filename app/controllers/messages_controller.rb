@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
     if @message.save!
       UserChannel.broadcast_to(
         @user,
-        render_to_string(partial: "message", locals: { message: @message })
+        render_to_string(partial: "message_opposite", locals: { message: @message })
       )
       redirect_to new_message_path(@user, event: @event.id) + "#event-chat"
     else

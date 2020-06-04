@@ -69,7 +69,7 @@ def generate_users
            password: "123456",
            first_name: "Stephane",
            last_name: "Lafontaine",
-           age: 0,
+           age: 53,
            bio: "My name is Stephane and I love Ruby!",
            living_in: "Montreal"
            )
@@ -397,13 +397,13 @@ def generate_messages
   Message.create(receiver: User.third, sender: User.fourth, content: "Soon!")
   Message.create(receiver: User.fourth, sender: User.third, content: "Sounds good!")
   Message.create(receiver: User.fifth, sender: User.third, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.third, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.third, sender: User.fifth, content: "I bet you didn't expect to see me!")
   Message.create(receiver: User.fifth, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.fourth, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.fourth, sender: User.fifth, content: "I bet you didn't expect to see me!")
   Message.create(receiver: User.fifth, sender: User.first, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.first, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.first, sender: User.fifth, content: "I bet you didn't expect to see me!")
   Message.create(receiver: User.fifth, sender: User.second, content: "(Automated Message) - I picked you! Let's start planning :)")
-  Message.create(receiver: User.second, sender: User.fifth, content: "I bet you didn't expect me!")
+  Message.create(receiver: User.second, sender: User.fifth, content: "I bet you didn't expect to see me!")
 
   # => Removed conversation between Samantha and Daniela for the demo:
   # Message.create(receiver: User.second, sender: User.fourth, content: "(Automated Message) - I picked you! Let's start planning :)")
