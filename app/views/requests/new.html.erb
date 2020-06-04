@@ -3,23 +3,19 @@
 <% end %>
 <%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
-
-  <div class="w-100">
-    <h1 class="title add-motivation" ><strong>Send a message</strong></h1>
-  </div>
-
-  <div class="card">
+  <div class="card motivation-card" style="width: 100%;">
     <div class="card-body">
-    <form action="<%= event_requests_path(@event) %>" method="POST">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
+      <h5 class="card-title title"><strong>Send a message</strong></h5>
+      
+      <form action="<%= event_requests_path(@event) %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
 
-      <h5 class="card-title"></h5>
-      <textarea id="motivation" name="request[motivation]" style="width:400px; height:100px;" maxlength="200" placeholder="Let them know why you are interested in the event!" ></textarea><br>
-      <a href="#" class="max-length" >Max 200 characters</a><br>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <h5 class="card-input"></h5>
+        <textarea id="motivation" name="request[motivation]" maxlength="200" placeholder="Let them know why you are interested in the event!" ></textarea><br>
+        <p class="max-length" >Max 200 characters</p><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
   </div>
-
-</div>
-
 </div>
