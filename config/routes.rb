@@ -10,10 +10,9 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
   end
-
-  get '/requests/submitted', to: 'requests#submitted', as: 'submitted_request'
+  get '/requests/submitted/:id', to: 'requests#submitted', as: 'submitted_request'
   get '/events/:event_id/requests/incoming', to: 'requests#incoming', as: 'incoming_requests'
-  resources :requests, only: [:show, :update]
+  resources :requests, only: [:show, :update, :delete]
 
   get '/inbox', to: 'messages#index', as: 'messages'
   get '/inbox/:user_id', to: 'messages#new', as: 'new_message'

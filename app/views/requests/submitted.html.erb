@@ -4,63 +4,22 @@
 <%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
 <div class="container">
 
-<% @requests.each do |request| %>
-<h2>Buddy request has been submitted to <%= request.event.user.first_name %> <%= request.event.user.last_name %> </h2>
-<div class="card shadow p-3 mb-3 bg-white rounded" id="submitted-requests" style="max-width: 540px;">
+<h2 class="p-2">Buddy request has been submitted to <%= @request.event.user.first_name %> <%= @request.event.user.last_name %>! </h2>
+<div class="card shadow p-3 mb-3 bg-white rounded" id="submitted-@requests" style="max-width: 540px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <%= cl_image_tag request.event.user.photo.key, class:"card-img" %>
+      <%= cl_image_tag @request.event.photo.key, class:"card-img" %>
 
     </div>
     <div class="col-md-8">
-      <div class="card-body">
-        <h3 class="card-title"> <%= request.event.name  %> </h3>
+        <h3 class="card-title mt-3"> <%= @request.event.name  %> </h3>
         <div class="card-info">
-          <p>Address: <%= request.event.address  %> </p>
-          <p> <%= request.event.date_time  %> </p>
+          <p>Address: <%= @request.event.address  %> </p>
+          <p><%= @request.event.date_time.strftime("%m/%d/%Y") %> - <%= @request.event.date_time.strftime("%I:%M%p") %></p>
 
         </div>
-        <div class="category-container">
-          <% request.event.categories.each do |category| %>
-            <% if category.present? %>
-              <span class="badge badge-primary"> <%= category.name %> </span>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#request-<%= request.id %>">
-  Delete request
-</button>
-
-</div>
-
-  <p> <%= request.event.user.first_name %> has received your Buddy request!</p>
-  <p> If it is accepted, you will get a match notification. </p>
-
-<%# # Delete request Modal stuff, do not change %>
-<div class="modal fade" id="request-<%= request.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Delete request</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete this request?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= link_to 'Delete', delete_request_path(request), class: "btn btn-primary" %>
-      </div>
     </div>
   </div>
 </div>
-<%# # Delete request Modal stuff, do not change %>
-<% end  %>
 
-<%# # requests/submitted %>
+  <p class="pl-2 mb-0 pb-0"> You will get an inbox message if your buddy request has been accepted! </p>

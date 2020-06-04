@@ -16,7 +16,7 @@ class RequestsController < ApplicationController
     @new_request.user = current_user
     if @new_request.save
       # to change later
-      redirect_to event_path(@event)
+      redirect_to submitted_request_path(@new_request)
     else
       render :new
     end
@@ -41,8 +41,8 @@ class RequestsController < ApplicationController
   end
 
   def submitted
-    # => GET    /requests/submitted
-    @requests = Request.where(user: current_user)
+    # => GET    /requests/submitted/:id
+    @request = Request.where(user: current_user).last
   end
 
   def incoming
@@ -57,6 +57,7 @@ class RequestsController < ApplicationController
   end
 
   def delete
+    # => DELETE    /requests/:id
     @request = Request.find(params[:id])
     @request.destroy
     redirect_to submitted_request_path
