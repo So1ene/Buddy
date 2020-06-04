@@ -67,3 +67,11 @@ a:link {
 .turbolinks-progress-bar {
   display: none;
 }
+
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+.example {
+  -ms-overflow-style: none;
+}
