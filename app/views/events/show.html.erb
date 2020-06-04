@@ -2,9 +2,9 @@
   <i class="fas fa-arrow-left"></i>
 <% end %>
 <%= link_to image_tag("logo.png", width: 20, class: 'page-title', style:"width: 112px") %>
-<div id="events-show" class="container">
-  <div class="card shadow mb-5 bg-white rounded width: 50rem;">
-    <div class="card-show">
+<div id="events-show" class="container", style="height: 98vh">
+  <div class="card shadow bg-white rounded width: 50rem;">
+    <div class="card-show" style="margin-bottom:0; ">
 
       <div style="max-width: 730px; max-height: 225px; background-image: url('<%= cl_image_path @event.photo.key, crop: :fill %>')" class="event-banner">
 
@@ -23,12 +23,12 @@
       </div>
 
 
-      <div class="event-body">
+      <div class="event-body" style="padding: 12px 20px 20px 20px">
 
-        <div class="cards description">
+        <div class="cards description" style="margin-bottom: 0">
           <h2 style="margin: 0"><strong><%= @event.name %></h2></strong>
           <p style="color:gray; font-size: 16px, margin: 0"><%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></p>
-          <p><%= @event.address %></p>
+          <p style="color:#777"><%= @event.address %></p>
           <p><%= @event.ticket_url %></p>
           <p><%= @event.description %></p>
           <% if @event.user == current_user %>
@@ -42,7 +42,7 @@
 
 
       <%# # Delete request Modal stuff, do not change %>
-      <div class="modal fade" id="event-<%= @event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" style="overflow-y: hidden;" id="event-<%= @event.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
