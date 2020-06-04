@@ -34,6 +34,10 @@ a:link {
   font-weight: bold;
 }
 
+.card-details i {
+  opacity: .3;
+}
+
 @media screen and (min-width: 1220px) {
   .container {
     width: 700px;
