@@ -9,8 +9,7 @@ class EventsController < ApplicationController
     @events = Event.all
     if params[:date].present?
       @date = params[:date]
-      @events = @events.where('date_time BETWEEN ? AND ?', DateTime.parse(params[:date]).beginning_of_day, DateTime.parse(params[:date]).end_of_day).near(current_user.search_location, 25).includes(:categories, :user).with_attached_photo
-
+      @events = @events.where('date_time BETWEEN ? AND ?', DateTime.parse(params[:date]).beginning_of_day, DateTime.parse(params[:date]).end_of_day).where("address ILIKE ?", "%#{@user.search_location}%").includes(:categories, :user).with_attached_photo
     end
   end
 
