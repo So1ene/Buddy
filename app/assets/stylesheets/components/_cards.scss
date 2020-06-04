@@ -16,7 +16,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   display: flex;
   margin-bottom: 12px;
-  color: #3B3B3B;
+  // color: #3B3B3B;
   position: relative;
   border-radius: 6px;
 }
@@ -70,6 +70,10 @@ img.card-img {
   line-height: 26px;
 }
 
+.card-product i {
+  opacity: .7;
+}
+
 .card-product .card-product-infos {
   padding: 14px;
   width: 100%;
@@ -90,7 +94,6 @@ img.card-img {
 
 .event-card-address {
   font-size: 14px;
-  color: #777;
   margin-bottom: 10px;
   margin-top: 1px;
 }
