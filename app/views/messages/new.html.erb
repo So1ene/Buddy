@@ -6,15 +6,18 @@
 
 
   <div class="card align-items-center mb-4 mt-3" style="border: none;">
-    <h2 style="text-align: center"><strong>You are now buddies for <%= @event.name %>!</strong></h2>
-    <div>
-      <%= cl_image_tag(@user.photo.key, class: "avatar") %>
-      <%= cl_image_tag(current_user.photo.key, class: "avatar") %>
+
+    <div class="card align-items-center mb-2 mt-3 p-3" style="width:100vw; z-index: 30 !important;position:fixed; z-index: 5000;top:58px; padding-bottom: 6px !important;">
+      <h2 style="text-align: center"><strong>You are buddies for <%= @event.name %>!</strong></h2>
+        <h2 data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view event</h2>
     </div>
-    <p>Start your conversation below...</p>
-     <%= link_to request_path(@request) do %>
-      <h2 class="btn btn-secondary align-items-right" > <i class="fas fa-info-circle"></i> view event</h2>
-     <% end %>
+      <div style="margin-top: 96px; height: 40px; position: relative;">
+        <%= cl_image_tag(@user.photo.key, class: "avatar", style:"position: absolute; left:-12px;") %>
+        <%= cl_image_tag(current_user.photo.key, class: "avatar", style:"position: absolute; right:-12px;") %>
+      </div>
+    </div>
+    <p class="pb-2">Start your conversation below...</p>
+    <div>
   </div>
 
   <div id="messages" style="display: inline-block">
@@ -59,6 +62,10 @@
     width: 300px;
     margin-top: 20px;
     margin-bottom: none;
+  }
+
+  .modal-content{
+    z-index: 1000000 !important;
   }
 </style>
 
