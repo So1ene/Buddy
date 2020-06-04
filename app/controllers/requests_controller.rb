@@ -10,7 +10,7 @@ class RequestsController < ApplicationController
     # => POST   /requests
     @event = Event.find(params[:event_id])
     @new_request = Request.new(request_params)
-    @new_request.status = "Pending..."
+    @new_request.status = "Pending"
     @new_request.event = @event
 
     @new_request.user = current_user
