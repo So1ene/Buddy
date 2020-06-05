@@ -112,10 +112,10 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event6_zeu3nn.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event8_vfvett.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event5_w07laq.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event12_gyhz2x.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event3_b4httm.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event10_k92js7.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event11_ljiuwg.jpg"]
 
@@ -171,10 +171,10 @@ def event_name(counter)
   return "Theater Show" if counter == 15
   return "Downtown Fun" if counter == 16
   return "Pink Afterparty" if counter == 17
-  return "Surfing" if counter == 18
-  return "Rave" if counter == 19
-  return "Hike with Me" if counter == 20
-  return "Open Mic Day" if counter == 21
+  return "Electro Concert" if counter == 18
+  return "Surfing" if counter == 19
+  return "Open Mic Day" if counter == 20
+  return "Hike with Me" if counter == 21
   return "Light Garden" if counter == 22
   return "Theme Park" if counter == 23
 end
@@ -218,15 +218,15 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Downtown Fun"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Pink Afterparty"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Pink Afterparty"), category: Category.find_by(name: "food"))
+  EventCategory.create!(event: Event.find_by(name: "Electro Concert"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Electro Concert"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Electro Concert"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Surfing"), category: Category.find_by(name: "sports"))
-  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "live music"))
-  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "drinks"))
-  EventCategory.create!(event: Event.find_by(name: "Rave"), category: Category.find_by(name: "outdoors"))
-  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
-  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "live music"))
   EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
+  EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theme Park"), category: Category.find_by(name: "outdoors"))
@@ -349,23 +349,44 @@ def generate_requests
               status: "Pending",
               event: Event.where(user_id: 4)[8]
               ).save!
-  counter = 0
-  4.times do
-    counter += 1
-    Event.all.each do |event|
-      unless event.user_id == counter
-        Request.new(user_id: counter,
-                    motivation: ["I think we will have a fun time together! What do you say?", "I really really enjoy this activity and you seem like a nice person!", "I would love to join you! This sounds really fun!", "Thanks for considering me, I will be very happy if you pick me", "Hi I am a very nice person who loves outdoor activities and animals", "Fun!", "This is a great idea! We should totally do this together :)", "I loooove doing this! I will be very good company", "This sounds cool!", "I am very excited to do this, let's gooo! Choose me as your buddddy!", "You seem nice! I am also a traveller who doesn't know anyone here yet", "I love doing this, let's have fun", "Can we go tomorrow instead? If that's ok with you", "Hi I am just applying so I can chat with you haha", "Can we have drinks after too?", "Hey I would love to do this with you! Please message me so we can figure out the details", "I think we will have fun!","Cool idea","Hey we will have a great time if you choose me, promise!","If you don't choose me you will regret it","I think we will have a really fun time together!","Thanks for considering me!","Your activity sounds like a blast! So much fun!"].sample,
-                    status: "Pending",
-                    event: event
-                    ).save!
-      end
-    end
-  end
+  Request.new(user_id: 1,
+              motivation: "Let's go surfing!",
+              status: "Pending",
+              event: Event.where(user_id: 4)[10]
+              ).save!
+  Request.new(user_id: 4, event: Event.where(user_id: 1)[6], status: "Accepted",
+              motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
+  Request.new(user_id: 1, event: Event.where(user_id: 2)[6], status: "Accepted",
+              motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
+  Request.new(user_id: 1, event: Event.where(user_id: 3)[6], status: "Accepted",
+              motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
+  Request.new(user_id: 2, event: Event.where(user_id: 3)[7], status: "Accepted",
+              motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
+  Request.new(user_id: 3, event: Event.where(user_id: 4)[7], status: "Accepted",
+              motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
   puts ""
-  puts "> Gave each event 3 requests"
+  puts "> Generated requests"
   puts ""
 end
+
+
+  # Below = generate requests for all events
+  # def generate_all_requests
+  #   counter = 0
+  #   4.times do
+  #     counter += 1
+  #     Event.all.each do |event|
+  #       unless event.user_id == counter
+  #         Request.new(user_id: counter,
+  #                     motivation: ["I think we will have a fun time together! What do you say?", "I really really enjoy this activity and you seem like a nice person!", "I would love to join you! This sounds really fun!", "Thanks for considering me, I will be very happy if you pick me", "Hi I am a very nice person who loves outdoor activities and animals", "Fun!", "This is a great idea! We should totally do this together :)", "I loooove doing this! I will be very good company", "This sounds cool!", "I am very excited to do this, let's gooo! Choose me as your buddddy!", "You seem nice! I am also a traveller who doesn't know anyone here yet", "I love doing this, let's have fun", "Can we go tomorrow instead? If that's ok with you", "Hi I am just applying so I can chat with you haha", "Can we have drinks after too?", "Hey I would love to do this with you! Please message me so we can figure out the details", "I think we will have fun!","Cool idea","Hey we will have a great time if you choose me, promise!","If you don't choose me you will regret it","I think we will have a really fun time together!","Thanks for considering me!","Your activity sounds like a blast! So much fun!"].sample,
+  #                     status: "Pending",
+  #                     event: event
+  #                     ).save!
+  #       end
+  #     end
+  #   end
+  # end
+
 
 
 # => Generate messages
@@ -441,6 +462,13 @@ def generate_accepted_requests
   puts ""
 end
 
+def update_events_for_demo
+  Event.where(user_id: 4)[2..12].each do |event|
+    event.update(user_id: 5)
+  end
+end
+
+
 generate_languages
 generate_users
 generate_categories
@@ -450,4 +478,4 @@ fix_categories
 generate_requests
 generate_accepted_requests
 generate_messages
-
+update_events_for_demo
