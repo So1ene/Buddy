@@ -7,6 +7,10 @@
 <% if @event.requests.present? %>
 
       <h1 class="title"> <%= @event.name %> </h1>
+      <ul>
+        <li style="font-size: 14px; margin-bottom: 6px;"><i class="fas fa-calendar"></i> <%= @event.date_time.strftime("%m/%d/%Y") %> - <%= @event.date_time.strftime("%I:%M%p") %></li>
+        <li class="event-card-address" style="font-size: 14px;"><i class="fas fa-map-marker-alt"></i> <%= @event.address %></li>
+      </ul>
       <% @event.requests.each do |request| %>
         <div class="card card-request shadow p-3 mb-5 bg-white rounded" style="width: 30rem;" style="height: calc(100vh - 160px); position: relative;">
 
@@ -21,10 +25,8 @@
             </div>
           </div>
           <div class="col-md-8">
-            <div class="card-body">
-            </div>
             <% if request.pending? %>
-              <div class="d-flex justify-content align-items-center">
+              <div class="d-flex justify-content-end align-items-center">
                 <%= form_for request, url: request_path(request), method: :patch do |f| %>
                   <%= f.hidden_field :status, value: "Accepted" %>
                   <%= f.submit 'Choose me!', class: "btn btn-success choose-me" %>
