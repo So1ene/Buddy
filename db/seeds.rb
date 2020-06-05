@@ -444,5 +444,4 @@ generate_random_events
 generate_specific_events
 fix_categories
 generate_requests
-generate_accepted_requests
 generate_messages
