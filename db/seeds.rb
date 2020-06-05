@@ -353,8 +353,8 @@ def generate_requests
               status: "Pending",
               event: Event.where(user_id: 4)[1]
               ).save!
-  Request.new(user_id: 1,
-              motivation: "Hi i love you <3",
+  Request.new(user_id: 2,
+              motivation: "Hii pick me please!",
               status: "Pending",
               event: Event.where(user_id: 4)[0]
               ).save!
