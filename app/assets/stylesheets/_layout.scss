@@ -15,10 +15,6 @@ a:link {
   color: #262626;
 }
 
-i {
-  opacity: .3;
-}
-
 .container {
   width: 95%;
   min-height: 80vh;
@@ -38,7 +34,7 @@ i {
   font-weight: bold;
 }
 
-.card-details i {
+#incoming-requests {
   opacity: .3;
 }
 
