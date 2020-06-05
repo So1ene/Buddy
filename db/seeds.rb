@@ -33,7 +33,7 @@ def generate_users
   solene.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161778/solene.jpg"), filename: "solene.jpg", content_type: 'image/jpg')
   solene.save
   # => Generate daniela@email.com, password 123456
-  daniela = User.new(email: "daniela@email.com",
+  daniela = User.new(email: "daniela.s@gmail.com",
            password: "123456",
            first_name: "Daniela",
            last_name: "Santana",
@@ -55,7 +55,7 @@ def generate_users
   celine.photo.attach(io: URI.open("https://res.cloudinary.com/dkbbawtjw/image/upload/v1590161759/celine.jpg"), filename: "celine.jpg", content_type: 'image/jpg')
   celine.save
   # => Generate samantha@email.com, password 123456
-  samantha = User.new(email: "samantha@email.com",
+  samantha = User.new(email: "samantha.a@gmail.com",
            password: "123456",
            first_name: "Samantha",
            last_name: "André",
@@ -335,27 +335,22 @@ def generate_requests
   puts "> Destroyed all requests"
   Request.new(user_id: 5,
               motivation: "Fancy meeting you here! :)",
-              status: "Pending",
+              status: "Accepted",
               event: Event.where(user_id: 1)[7]
               ).save!
   Request.new(user_id: 5,
               motivation: "Fancy meeting you here! :)",
-              status: "Pending",
+              status: "Accepted",
               event: Event.where(user_id: 2)[7]
               ).save!
   Request.new(user_id: 5,
               motivation: "Fancy meeting you here! :)",
-              status: "Pending",
+              status: "Accepted",
               event: Event.where(user_id: 3)[8]
               ).save!
   Request.new(user_id: 5,
               motivation: "Fancy meeting you here! :)",
-              status: "Pending",
-              event: Event.where(user_id: 4)[1]
-              ).save!
-  Request.new(user_id: 2,
-              motivation: "Hii pick me please!",
-              status: "Pending",
+              status: "Accepted",
               event: Event.where(user_id: 4)[0]
               ).save!
   Request.new(user_id: 4, event: Event.where(user_id: 1)[6], status: "Accepted",
@@ -366,7 +361,7 @@ def generate_requests
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
   Request.new(user_id: 2, event: Event.where(user_id: 3)[7], status: "Accepted",
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
-  Request.new(user_id: 3, event: Event.where(user_id: 4)[0], status: "Accepted",
+  Request.new(user_id: 3, event: Event.where(user_id: 4)[1], status: "Accepted",
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
   puts ""
   puts "> Generated requests"
@@ -439,30 +434,6 @@ def generate_messages
 
   puts ""
   puts "> Generated messages"
-  puts ""
-end
-
-def generate_accepted_requests
-  # solene = 1
-  # daniela = 2
-  # celine = 3
-  # samantha = 4
-  # stephane = 5
-  Request.find_by(user_id: 4, event: Event.where(user_id: 1)[6]).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 2)[6]).update(status: "Accepted")
-  Request.find_by(user_id: 1, event: Event.where(user_id: 3)[6]).update(status: "Accepted")
-  Request.find_by(user_id: 5, event: Event.where(user_id: 1)[7]).update(status: "Accepted")
-  Request.find_by(user_id: 5, event: Event.where(user_id: 2)[7]).update(status: "Accepted")
-  Request.find_by(user_id: 2, event: Event.where(user_id: 3)[7]).update(status: "Accepted")
-  Request.find_by(user_id: 3, event: Event.where(user_id: 4)[0]).update(status: "Accepted")
-  Request.find_by(user_id: 5, event: Event.where(user_id: 3)[8]).update(status: "Accepted")
-  Request.find_by(user_id: 5, event: Event.where(user_id: 4)[1]).update(status: "Accepted")
-
-  # => Removed event between Samantha and Daniela for the demo:
-  # Request.find_by(user_id: 2, event: Event.where(user_id: 4)[6]).update(status: "Accepted")
-
-  puts ""
-  puts "> Generated some accepted requests (to test inbox)"
   puts ""
 end
 
