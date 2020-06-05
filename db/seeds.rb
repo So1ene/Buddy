@@ -173,7 +173,7 @@ def event_name(counter)
   return "Pink Afterparty" if counter == 17
   return "Electro Concert" if counter == 18
   return "Surfing" if counter == 19
-  return "Open Mic Day" if counter == 20
+  return "Demo Day" if counter == 20
   return "Hike with Me" if counter == 21
   return "Light Garden" if counter == 22
   return "Theme Park" if counter == 23
@@ -223,8 +223,8 @@ def fix_categories
   EventCategory.create!(event: Event.find_by(name: "Electro Concert"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Electro Concert"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Theater Show"), category: Category.find_by(name: "theater"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "live music"))
-  EventCategory.create!(event: Event.find_by(name: "Open Mic Day"), category: Category.find_by(name: "drinks"))
+  EventCategory.create!(event: Event.find_by(name: "Demo Day"), category: Category.find_by(name: "live music"))
+  EventCategory.create!(event: Event.find_by(name: "Demo Day"), category: Category.find_by(name: "drinks"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "sports"))
   EventCategory.create!(event: Event.find_by(name: "Hike with Me"), category: Category.find_by(name: "outdoors"))
   EventCategory.create!(event: Event.find_by(name: "Light Garden"), category: Category.find_by(name: "other"))
