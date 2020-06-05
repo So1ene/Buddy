@@ -20,7 +20,7 @@
     <div>
   </div>
 
-  <div id="messages" style="display: inline-block">
+  <div id="messages" style="display: inline-block; min-height: 28vh">
     <% @messages.each do |message| %>
       <%= render partial: "message", locals: { message: message } %>
     <% end %>
@@ -49,15 +49,16 @@
             <div class="modal-body" style="margin:20px height: 50%" >
 
               <% if @event.user != current_user %>
-                <div style="text-align:center;">
-                  <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large" %>
+                <div style="text-align:center; position:relative; height: 130px">
+                  <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large", style: "position: absolute; right:50px" %>
+                  <%= cl_image_tag @event.requests.find_by(status:"Accepted").user.photo.key, crop: :fill, class: "avatar-large", style: "position: absolute; left:50px" %>
                 </div>
-                <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
+                <p style="text-align:center; padding-top: 12px; font-size:16px">Buddies with:</p>
                 <h4 style="text-align:center;"> <%= @event.user.first_name %> <%= @event.user.last_name %> </h4>
                 <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
                 <div class="px-2" style="margin:6px;">
-                  <span style="color:gray"><strong>Languages: <%= @event.user.languages.map(&:name).join(', ') %></strong></span><br />
-                  <span class="pb-3"style="color:gray"><strong>Age: <%= @event.user.age %></strong></span><br><br>
+                  <span style="color:gray"><strong>Languages: </strong><%= @event.user.languages.map(&:name).join(', ') %></span><br />
+                  <span class="pb-3"style="color:gray"><strong>Age: </strong><%= @event.user.age %></span><br><br>
                   <span><%= @event.user.bio %></span>
                 </div>
                 </div>
@@ -83,10 +84,12 @@
               <% else %>
               <!-- copy code above but replace @event.user with @event.requests.find_by(status:"Accepted").user -->
 
-                <div style="text-align:center;">
-                  <%= cl_image_tag @event.requests.find_by(status:"Accepted").user.photo.key, crop: :fill, class: "avatar-large" %>
+                <div style="text-align:center; position: relative;">
+                <div style="text-align:center; position:relative; height: 130px">
+                  <%= cl_image_tag @event.user.photo.key, crop: :fill, class: "avatar-large", style: "position: absolute; right:50px" %>
+                  <%= cl_image_tag @event.requests.find_by(status:"Accepted").user.photo.key, crop: :fill, class: "avatar-large", style: "position: absolute; left:50px" %>
                 </div>
-                <p style="text-align:center; padding-top: 12px; font-size:16px">Your buddy:</p>
+                <p style="text-align:center; padding-top: 12px; font-size:16px">Buddies with:</p>
                 <h4 style="text-align:center;"> <%= @event.requests.find_by(status:"Accepted").user.first_name %> <%= @event.requests.find_by(status:"Accepted").user.last_name %> </h4>
                 <hr style="margin-top:5px;margin-bottom:25px;background-color:#FF7662;height:2px;width:45%;text-align:left;margin-left:" >
                 <div class="px-2">
