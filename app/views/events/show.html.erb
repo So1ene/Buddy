@@ -31,7 +31,7 @@
           <p><%= @event.ticket_url %></p>
           <p><%= @event.description %></p>
           <% if @event.user == current_user %>
-            <p><%= link_to "This is your event! Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
+            <p><%= link_to "Check incoming requests", incoming_requests_path(@event), class:"btn btn-primary" %> </p>
           <% else %>
             <%= link_to "Apply", new_event_request_path(@event), class:"btn btn-primary" %>
           <% end %>
