@@ -105,11 +105,11 @@ def attach_image(event, counter)
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event3_orhjmb.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event8_kt62wn.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534238/Buddy/event10_lkugex.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event4_xokpx4.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event2_mpz94s.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event1_ltudjt.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event9_hmkdqm.jpg",
-                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944323/Buddy/event4_xokpx4.jpg",
+                "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590534239/Buddy/event4_vrdvrg.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event6_zeu3nn.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event8_vfvett.jpg",
                 "https://res.cloudinary.com/dkbbawtjw/image/upload/v1590944324/Buddy/event7_rn3nas.jpg",
@@ -164,11 +164,11 @@ def event_name(counter)
   return "Just Drinks" if counter == 8
   return "Dinner at Jerry's" if counter == 9
   return "Summer festival" if counter == 10
-  return "Theater Show" if counter == 11
+  return "Beach Day" if counter == 11
   return "Ice Skating" if counter == 12
   return "Skiing" if counter == 13
   return "Hot-Air Balloon" if counter == 14
-  return "Beach Day" if counter == 15
+  return "Theater Show" if counter == 15
   return "Downtown Fun" if counter == 16
   return "Pink Afterparty" if counter == 17
   return "Electro Concert" if counter == 18
