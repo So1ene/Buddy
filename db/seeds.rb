@@ -354,9 +354,9 @@ def generate_requests
               event: Event.where(user_id: 4)[1]
               ).save!
   Request.new(user_id: 1,
-              motivation: "Let's go surfing!",
+              motivation: "Hi i love you <3",
               status: "Pending",
-              event: Event.where(user_id: 4)[1]
+              event: Event.where(user_id: 4)[0]
               ).save!
   Request.new(user_id: 4, event: Event.where(user_id: 1)[6], status: "Accepted",
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
