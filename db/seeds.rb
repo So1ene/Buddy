@@ -310,6 +310,9 @@ def generate_specific_events
         attach_image(event, counter)
         event.save!
         sleep(1.seconds)
+        if counter < 10 && user.id == 4
+          event.update(user_id: 5)
+        end
         counter += 1
       end
     end
@@ -462,13 +465,6 @@ def generate_accepted_requests
   puts ""
 end
 
-def update_events_for_demo
-  Event.where(user_id: 4)[2..12].each do |event|
-    event.update(user_id: 5)
-  end
-end
-
-
 generate_languages
 generate_users
 generate_categories
@@ -478,4 +474,3 @@ fix_categories
 generate_requests
 generate_accepted_requests
 generate_messages
-update_events_for_demo
