@@ -366,7 +366,7 @@ def generate_requests
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
   Request.new(user_id: 2, event: Event.where(user_id: 3)[7], status: "Accepted",
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
-  Request.new(user_id: 3, event: Event.where(user_id: 4)[2], status: "Accepted",
+  Request.new(user_id: 3, event: Event.where(user_id: 4)[0], status: "Accepted",
               motivation: "I love this activity! We will have a lot of fun, please pick me!").save!
   puts ""
   puts "> Generated requests"
