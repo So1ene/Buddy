@@ -11,3 +11,4 @@ https://www.facebook.com/watch/live/?v=277616513290698&ref=watch_permalink
 
 
 https://buddy-heroku.herokuapp.com/
+looks best on mobile
